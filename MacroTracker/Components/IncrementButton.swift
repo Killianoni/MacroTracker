@@ -50,6 +50,7 @@ struct IncrementButton: View {
             
             HStack {
                 TextField("", value: $number, formatter: NumberFormatter())
+                    .keyboardType(.numberPad)
             }
             .multilineTextAlignment(.center)
             .frame(width: self.width * Constants.fieldMultiplier)
