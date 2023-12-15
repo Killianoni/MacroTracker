@@ -9,18 +9,26 @@
 /* Begin PBXBuildFile section */
 		0449BD022B2B83BF005CF845 /* MacroTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD012B2B83BF005CF845 /* MacroTrackerApp.swift */; };
 		0449BD042B2B83BF005CF845 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD032B2B83BF005CF845 /* ContentView.swift */; };
-		0449BD062B2B83BF005CF845 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD052B2B83BF005CF845 /* Item.swift */; };
+		0449BD062B2B83BF005CF845 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD052B2B83BF005CF845 /* Macros.swift */; };
 		0449BD082B2B83C1005CF845 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0449BD072B2B83C1005CF845 /* Assets.xcassets */; };
 		0449BD0B2B2B83C1005CF845 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0449BD0A2B2B83C1005CF845 /* Preview Assets.xcassets */; };
+		0449BD132B2B8CF8005CF845 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD122B2B8CF8005CF845 /* ProgressCircleView.swift */; };
+		0449BD152B2BD10A005CF845 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD142B2BD10A005CF845 /* ProgressBarView.swift */; };
+		0449BD172B2BD13E005CF845 /* IncrementButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD162B2BD13E005CF845 /* IncrementButton.swift */; };
+		0449BD192B2BD161005CF845 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD182B2BD161005CF845 /* CustomButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0449BCFE2B2B83BF005CF845 /* MacroTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0449BD012B2B83BF005CF845 /* MacroTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroTrackerApp.swift; sourceTree = "<group>"; };
 		0449BD032B2B83BF005CF845 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		0449BD052B2B83BF005CF845 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		0449BD052B2B83BF005CF845 /* Macros.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
 		0449BD072B2B83C1005CF845 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0449BD0A2B2B83C1005CF845 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0449BD122B2B8CF8005CF845 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
+		0449BD142B2BD10A005CF845 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
+		0449BD162B2BD13E005CF845 /* IncrementButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementButton.swift; sourceTree = "<group>"; };
+		0449BD182B2BD161005CF845 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,9 +61,10 @@
 		0449BD002B2B83BF005CF845 /* MacroTracker */ = {
 			isa = PBXGroup;
 			children = (
+				0449BD112B2B8CCD005CF845 /* Components */,
 				0449BD012B2B83BF005CF845 /* MacroTrackerApp.swift */,
 				0449BD032B2B83BF005CF845 /* ContentView.swift */,
-				0449BD052B2B83BF005CF845 /* Item.swift */,
+				0449BD052B2B83BF005CF845 /* Macros.swift */,
 				0449BD072B2B83C1005CF845 /* Assets.xcassets */,
 				0449BD092B2B83C1005CF845 /* Preview Content */,
 			);
@@ -68,6 +77,17 @@
 				0449BD0A2B2B83C1005CF845 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0449BD112B2B8CCD005CF845 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				0449BD122B2B8CF8005CF845 /* ProgressCircleView.swift */,
+				0449BD142B2BD10A005CF845 /* ProgressBarView.swift */,
+				0449BD162B2BD13E005CF845 /* IncrementButton.swift */,
+				0449BD182B2BD161005CF845 /* CustomButtonView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,9 +160,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0449BD192B2BD161005CF845 /* CustomButtonView.swift in Sources */,
 				0449BD042B2B83BF005CF845 /* ContentView.swift in Sources */,
-				0449BD062B2B83BF005CF845 /* Item.swift in Sources */,
+				0449BD132B2B8CF8005CF845 /* ProgressCircleView.swift in Sources */,
+				0449BD062B2B83BF005CF845 /* Macros.swift in Sources */,
 				0449BD022B2B83BF005CF845 /* MacroTrackerApp.swift in Sources */,
+				0449BD152B2BD10A005CF845 /* ProgressBarView.swift in Sources */,
+				0449BD172B2BD13E005CF845 /* IncrementButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

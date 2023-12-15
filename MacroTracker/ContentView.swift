@@ -8,54 +8,71 @@
 import SwiftUI
 import SwiftData
 
-struct ContentView: View {
+struct DiaryView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
+    @Query var macros: [Macros]
+    var dailyMacros: Macros? {
+        macros.first(where: { Calendar.current.isDate($0.date, equalTo: Date.now, toGranularity: .day) }) ?? nil
+    }
+    
+    @State var incrementCarbs: CGFloat = 0
+    @State var incrementProteins: CGFloat = 0
+    @State var incrementFat: CGFloat = 0
+    
+    private func insert() {
+        modelContext.insert(Macros(date: Date.now, fat: 0, carbs: 0, proteins: 0))
+    }
+    
+    private func add() {
+        dailyMacros?.carbs += incrementCarbs
+        dailyMacros?.fat += incrementFat
+        dailyMacros?.proteins += incrementProteins
+    }
+    
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-                    }
-                }
-                .onDelete(perform: deleteItems)
+        VStack {
+            HStack {
+                Text("Aujourd'hui")
+                    .font(.system(size: 25))
+                    .bold()
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+            if let dailyMacros = dailyMacros {
+                HStack {
+                    ProgressCircleView(number1: dailyMacros.carbs, number2: 180, color: Color.brown, size: 80, title: NSLocalizedString("Carbs", comment: ""))
+                    ProgressCircleView(number1: dailyMacros.fat, number2: 80, color: Color.orange, size: 80, title: NSLocalizedString("Fat", comment: ""))
+                    ProgressCircleView(number1: dailyMacros.proteins, number2: 200, color: Color.red, size: 80, title: NSLocalizedString("Proteins", comment: ""))
                 }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                
+                HStack {
+                    ProgressView()
+                        .progressViewStyle(CustomProgressBar(number1: dailyMacros.calories, number2: 2500, color: Color.purple, width: 300, title: "Calories"))
+                }
+                .padding()
+                
+                HStack {
+                    IncrementButton(number: $incrementCarbs, width: 20, color: Color.brown)
+                    IncrementButton(number: $incrementFat, width: 20, color: Color.orange)
+                    IncrementButton(number: $incrementProteins, width: 20, color: Color.red)
+                }
+                
+                HStack {
+                    CustomButtonView(action: {
+                        add()
+                    }, label: "Appliquer", color: Color.blue, width: 200, height: 50)
+                }
+            } else {
+                Button {
+                    self.insert()
+                } label: {
+                    Text("Insert")
                 }
             }
-        } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
+            Spacer()
         }
     }
 }
 
 #Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+    DiaryView()
+        .modelContainer(for: Macros.self, inMemory: true)
 }
