@@ -39,17 +39,20 @@ class DiaryViewModel: ObservableObject {
         guard let macros = dailyMacros else {
             return
         }
-
-        macros.carbs += incrementCarbs
-        macros.fat += incrementFat
-        macros.proteins += incrementProteins
-
-        let caloriesFromCarbs = incrementCarbs * 4
-        let caloriesFromFat = incrementFat * 9
-        let caloriesFromProteins = incrementProteins * 4
-
-        macros.calories += caloriesFromCarbs + caloriesFromFat + caloriesFromProteins
-
+        
+        if checkQuickEntrys() {
+            
+            macros.carbs += incrementCarbs
+            macros.fat += incrementFat
+            macros.proteins += incrementProteins
+            
+            let caloriesFromCarbs = incrementCarbs * 4
+            let caloriesFromFat = incrementFat * 9
+            let caloriesFromProteins = incrementProteins * 4
+            
+            macros.calories += caloriesFromCarbs + caloriesFromFat + caloriesFromProteins
+            
+        }
         resetMacroIncrements()
     }
 
@@ -57,6 +60,24 @@ class DiaryViewModel: ObservableObject {
         incrementCarbs = 0
         incrementFat = 0
         incrementProteins = 0
+    }
+    
+    private func checkQuickEntrys() -> Bool {
+        guard let macros = dailyMacros,
+                  macros.carbs + incrementCarbs >= 0,
+                  macros.fat + incrementFat >= 0,
+                  macros.proteins + incrementProteins >= 0 else {
+                return false
+            }
+        
+        guard let macros = dailyMacros,
+                  macros.carbs < 999,
+                  macros.fat < 999,
+                  macros.proteins < 999 else {
+                return false
+            }
+        
+        return true
     }
     
     func insert() {
