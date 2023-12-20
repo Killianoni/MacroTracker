@@ -14,6 +14,14 @@ struct CustomButtonView: View {
     var width: CGFloat
     var height: CGFloat
     
+    init(action: @escaping () -> Void, label: String, color: Color, width: CGFloat = 100, height: CGFloat = 50) {
+        self.action = action
+        self.label = label
+        self.color = color
+        self.width = width
+        self.height = height
+    }
+    
     var body: some View {
         Button(action: {
             self.action()

@@ -17,12 +17,22 @@ class DiaryViewModel: ObservableObject {
     
     var context: ModelContext?
     
+    var totalCarbs: CGFloat
+    var totalFat: CGFloat
+    var totalProteins: CGFloat
+    var totalCalories: CGFloat
+    
     init(incrementCarbs: CGFloat = 0, incrementProteins: CGFloat = 0, incrementFat: CGFloat = 0, dailyMacros: Macros? = nil, context: ModelContext? = nil) {
         self.incrementCarbs = incrementCarbs
         self.incrementProteins = incrementProteins
         self.incrementFat = incrementFat
         self.dailyMacros = dailyMacros
         self.context = context
+        
+        self.totalCarbs = (UserDefaults.standard.string(forKey: "carbs")?.toCGFloat())!
+        self.totalFat = (UserDefaults.standard.string(forKey: "fat")?.toCGFloat())!
+        self.totalProteins = (UserDefaults.standard.string(forKey: "proteins")?.toCGFloat())!
+        self.totalCalories = (UserDefaults.standard.string(forKey: "calories")?.toCGFloat())!
     }
     
     func add() {
