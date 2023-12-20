@@ -10,6 +10,11 @@ import SwiftData
 
 class DiaryViewModel: ObservableObject {
     
+    private enum Constants {
+        static let quickAddMaxNumber: CGFloat = 999
+        static let quickAddMinimalNumber: CGFloat = 0
+    }
+    
     @Published var incrementCarbs: CGFloat
     @Published var incrementProteins: CGFloat
     @Published var incrementFat: CGFloat
@@ -64,16 +69,16 @@ class DiaryViewModel: ObservableObject {
     
     private func checkQuickEntrys() -> Bool {
         guard let macros = dailyMacros,
-                  macros.carbs + incrementCarbs >= 0,
-                  macros.fat + incrementFat >= 0,
-                  macros.proteins + incrementProteins >= 0 else {
+              macros.carbs + incrementCarbs >= Constants.quickAddMinimalNumber,
+                  macros.fat + incrementFat >= Constants.quickAddMinimalNumber,
+                  macros.proteins + incrementProteins >= Constants.quickAddMinimalNumber else {
                 return false
             }
         
         guard let macros = dailyMacros,
-                  macros.carbs < 999,
-                  macros.fat < 999,
-                  macros.proteins < 999 else {
+                  macros.carbs < Constants.quickAddMaxNumber,
+                  macros.fat < Constants.quickAddMaxNumber,
+                  macros.proteins < Constants.quickAddMaxNumber else {
                 return false
             }
         
