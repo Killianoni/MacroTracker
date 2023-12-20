@@ -22,14 +22,14 @@ struct DiaryView: View {
             }
             if let dailyMacros = viewModel.dailyMacros {
                 HStack {
-                    ProgressCircleView(number1: dailyMacros.carbs, number2: 180, color: Color.brown, size: 80, title: NSLocalizedString("Carbs", comment: ""))
-                    ProgressCircleView(number1: dailyMacros.fat, number2: 80, color: Color.orange, size: 80, title: NSLocalizedString("Fat", comment: ""))
-                    ProgressCircleView(number1: dailyMacros.proteins, number2: 200, color: Color.red, size: 80, title: NSLocalizedString("Proteins", comment: ""))
+                    ProgressCircleView(number1: dailyMacros.carbs, number2: viewModel.totalCarbs, color: Color.brown, size: 80, title: NSLocalizedString("Carbs", comment: ""))
+                    ProgressCircleView(number1: dailyMacros.fat, number2: viewModel.totalFat, color: Color.orange, size: 80, title: NSLocalizedString("Fat", comment: ""))
+                    ProgressCircleView(number1: dailyMacros.proteins, number2: viewModel.totalProteins, color: Color.red, size: 80, title: NSLocalizedString("Proteins", comment: ""))
                 }
                 
                 HStack {
                     ProgressView()
-                        .progressViewStyle(CustomProgressBar(number1: dailyMacros.calories, number2: 2500, color: Color.purple, width: 300, title: "Calories"))
+                        .progressViewStyle(CustomProgressBar(number1: dailyMacros.calories, number2: viewModel.totalCalories, color: Color.purple, width: 300, title: "Calories"))
                 }
                 .padding()
                 

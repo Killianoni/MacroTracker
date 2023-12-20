@@ -17,6 +17,11 @@
 		0449BD172B2BD13E005CF845 /* IncrementButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD162B2BD13E005CF845 /* IncrementButton.swift */; };
 		0449BD192B2BD161005CF845 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD182B2BD161005CF845 /* CustomButtonView.swift */; };
 		04C7C7792B2C5D2F00EE26FF /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C7782B2C5D2F00EE26FF /* DiaryViewModel.swift */; };
+		04C7C7802B2C716400EE26FF /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C77F2B2C716400EE26FF /* CustomTextFieldView.swift */; };
+		04C7C7842B2C7BF800EE26FF /* ObjectivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C7832B2C7BF800EE26FF /* ObjectivesView.swift */; };
+		04C7C7862B2C7F9900EE26FF /* ObjectivesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C7852B2C7F9900EE26FF /* ObjectivesViewModel.swift */; };
+		04DF991C2B334C6500F7A3E9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF991B2B334C6500F7A3E9 /* UserDefaultsManager.swift */; };
+		04DF991F2B33501600F7A3E9 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF991E2B33501600F7A3E9 /* String+Helpers.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +36,11 @@
 		0449BD162B2BD13E005CF845 /* IncrementButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementButton.swift; sourceTree = "<group>"; };
 		0449BD182B2BD161005CF845 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		04C7C7782B2C5D2F00EE26FF /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
+		04C7C77F2B2C716400EE26FF /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
+		04C7C7832B2C7BF800EE26FF /* ObjectivesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesView.swift; sourceTree = "<group>"; };
+		04C7C7852B2C7F9900EE26FF /* ObjectivesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesViewModel.swift; sourceTree = "<group>"; };
+		04DF991B2B334C6500F7A3E9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
+		04DF991E2B33501600F7A3E9 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +78,9 @@
 				04C7C7782B2C5D2F00EE26FF /* DiaryViewModel.swift */,
 				04C7C77A2B2C5D5500EE26FF /* Models */,
 				0449BD112B2B8CCD005CF845 /* Components */,
+				04DF991A2B334C5600F7A3E9 /* Managers */,
+				04C7C77C2B2C70E700EE26FF /* OnBoarding */,
+				04DF991D2B33500600F7A3E9 /* Helpers */,
 				0449BD072B2B83C1005CF845 /* Assets.xcassets */,
 				0449BD092B2B83C1005CF845 /* Preview Content */,
 			);
@@ -89,6 +102,7 @@
 				0449BD142B2BD10A005CF845 /* ProgressBarView.swift */,
 				0449BD162B2BD13E005CF845 /* IncrementButton.swift */,
 				0449BD182B2BD161005CF845 /* CustomButtonView.swift */,
+				04C7C77F2B2C716400EE26FF /* CustomTextFieldView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -99,6 +113,31 @@
 				0449BD052B2B83BF005CF845 /* Macros.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		04C7C77C2B2C70E700EE26FF /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				04C7C7832B2C7BF800EE26FF /* ObjectivesView.swift */,
+				04C7C7852B2C7F9900EE26FF /* ObjectivesViewModel.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		04DF991A2B334C5600F7A3E9 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				04DF991B2B334C6500F7A3E9 /* UserDefaultsManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		04DF991D2B33500600F7A3E9 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				04DF991E2B33501600F7A3E9 /* String+Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -174,9 +213,14 @@
 				0449BD192B2BD161005CF845 /* CustomButtonView.swift in Sources */,
 				0449BD042B2B83BF005CF845 /* DiaryView.swift in Sources */,
 				0449BD132B2B8CF8005CF845 /* ProgressCircleView.swift in Sources */,
+				04C7C7802B2C716400EE26FF /* CustomTextFieldView.swift in Sources */,
+				04C7C7842B2C7BF800EE26FF /* ObjectivesView.swift in Sources */,
+				04DF991F2B33501600F7A3E9 /* String+Helpers.swift in Sources */,
 				0449BD062B2B83BF005CF845 /* Macros.swift in Sources */,
 				04C7C7792B2C5D2F00EE26FF /* DiaryViewModel.swift in Sources */,
 				0449BD022B2B83BF005CF845 /* MacroTrackerApp.swift in Sources */,
+				04DF991C2B334C6500F7A3E9 /* UserDefaultsManager.swift in Sources */,
+				04C7C7862B2C7F9900EE26FF /* ObjectivesViewModel.swift in Sources */,
 				0449BD152B2BD10A005CF845 /* ProgressBarView.swift in Sources */,
 				0449BD172B2BD13E005CF845 /* IncrementButton.swift in Sources */,
 			);

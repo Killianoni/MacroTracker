@@ -10,6 +10,11 @@ import SwiftData
 
 class DiaryViewModel: ObservableObject {
     
+    private enum Constants {
+        static let quickAddMaxNumber: CGFloat = 999
+        static let quickAddMinimalNumber: CGFloat = 0
+    }
+    
     @Published var incrementCarbs: CGFloat
     @Published var incrementProteins: CGFloat
     @Published var incrementFat: CGFloat
@@ -17,29 +22,42 @@ class DiaryViewModel: ObservableObject {
     
     var context: ModelContext?
     
+    var totalCarbs: CGFloat
+    var totalFat: CGFloat
+    var totalProteins: CGFloat
+    var totalCalories: CGFloat
+    
     init(incrementCarbs: CGFloat = 0, incrementProteins: CGFloat = 0, incrementFat: CGFloat = 0, dailyMacros: Macros? = nil, context: ModelContext? = nil) {
         self.incrementCarbs = incrementCarbs
         self.incrementProteins = incrementProteins
         self.incrementFat = incrementFat
         self.dailyMacros = dailyMacros
         self.context = context
+        
+        self.totalCarbs = (UserDefaults.standard.string(forKey: "carbs")?.toCGFloat())!
+        self.totalFat = (UserDefaults.standard.string(forKey: "fat")?.toCGFloat())!
+        self.totalProteins = (UserDefaults.standard.string(forKey: "proteins")?.toCGFloat())!
+        self.totalCalories = (UserDefaults.standard.string(forKey: "calories")?.toCGFloat())!
     }
     
     func add() {
         guard let macros = dailyMacros else {
             return
         }
-
-        macros.carbs += incrementCarbs
-        macros.fat += incrementFat
-        macros.proteins += incrementProteins
-
-        let caloriesFromCarbs = incrementCarbs * 4
-        let caloriesFromFat = incrementFat * 9
-        let caloriesFromProteins = incrementProteins * 4
-
-        macros.calories += caloriesFromCarbs + caloriesFromFat + caloriesFromProteins
-
+        
+        if checkQuickEntrys() {
+            
+            macros.carbs += incrementCarbs
+            macros.fat += incrementFat
+            macros.proteins += incrementProteins
+            
+            let caloriesFromCarbs = incrementCarbs * 4
+            let caloriesFromFat = incrementFat * 9
+            let caloriesFromProteins = incrementProteins * 4
+            
+            macros.calories += caloriesFromCarbs + caloriesFromFat + caloriesFromProteins
+            
+        }
         resetMacroIncrements()
     }
 
@@ -47,6 +65,24 @@ class DiaryViewModel: ObservableObject {
         incrementCarbs = 0
         incrementFat = 0
         incrementProteins = 0
+    }
+    
+    private func checkQuickEntrys() -> Bool {
+        guard let macros = dailyMacros,
+              macros.carbs + incrementCarbs >= Constants.quickAddMinimalNumber,
+                  macros.fat + incrementFat >= Constants.quickAddMinimalNumber,
+                  macros.proteins + incrementProteins >= Constants.quickAddMinimalNumber else {
+                return false
+            }
+        
+        guard let macros = dailyMacros,
+                  macros.carbs < Constants.quickAddMaxNumber,
+                  macros.fat < Constants.quickAddMaxNumber,
+                  macros.proteins < Constants.quickAddMaxNumber else {
+                return false
+            }
+        
+        return true
     }
     
     func insert() {
