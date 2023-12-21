@@ -27,7 +27,7 @@ struct CustomProgressBar: ProgressViewStyle {
                     .frame(width: self.width, height: Constants.barHeight)
                     .foregroundColor(self.color.opacity(Constants.barOpacity))
                 RoundedRectangle(cornerRadius: 12)
-                    .frame(width: self.width * number1/number2, height: Constants.barHeight)
+                    .frame(width: number1 > number2 ? self.width : self.width * number1/number2, height: Constants.barHeight)
                     .foregroundColor(self.color)
                     .animation(.easeOut, value: number1)
             }
@@ -44,5 +44,5 @@ struct CustomProgressBar: ProgressViewStyle {
 
 #Preview {
     ProgressView()
-        .progressViewStyle(CustomProgressBar(number1: 600, number2: 2500, color: .purple, width: 200, title: "Calories"))
+        .progressViewStyle(CustomProgressBar(number1: 50, number2: 2500, color: .purple, width: 200, title: "Calories"))
 }
