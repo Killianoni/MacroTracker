@@ -15,11 +15,10 @@ struct DiaryView: View {
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Aujourd'hui")
-                    .font(.system(size: 25))
-                    .bold()
-            }
+            DailyDateView(date: $viewModel.currentDate)
+                .onChange(of: viewModel.currentDate) { _ , newValue in
+                    viewModel.fetchMacros(macros, newValue)
+                }
             if let dailyMacros = viewModel.dailyMacros {
                 HStack {
                     ProgressCircleView(number1: dailyMacros.carbs, number2: viewModel.totalCarbs, color: Color.brown, size: 80, title: NSLocalizedString("Carbs", comment: ""))
@@ -45,17 +44,21 @@ struct DiaryView: View {
                     }, label: "Appliquer", color: Color.blue, width: 200, height: 50)
                 }
             } else {
-                Button {
-                    viewModel.insert()
-                } label: {
-                    Text("Insert")
+                VStack(alignment: .center) {
+                    Spacer()
+                    Text("No data")
+                        .bold()
+                        .font(.title)
+                    Spacer()
                 }
             }
             Spacer()
         }
         .onAppear {
-            viewModel.dailyMacros = macros.first(where: { Calendar.current.isDate($0.date, equalTo: Date.now, toGranularity: .day) }) ?? nil
+            viewModel.fetchMacros(macros, .now)
             viewModel.context = modelContext
+            viewModel.isNewDay()
+            viewModel.fetchMacros(macros, .now)
         }
     }
 }

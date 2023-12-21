@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		041E6A7C2B3392A700D81483 /* DailyDateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E6A7B2B3392A700D81483 /* DailyDateView.swift */; };
+		041E6A7E2B3393BD00D81483 /* Date+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 041E6A7D2B3393BD00D81483 /* Date+Helpers.swift */; };
 		0449BD022B2B83BF005CF845 /* MacroTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD012B2B83BF005CF845 /* MacroTrackerApp.swift */; };
 		0449BD042B2B83BF005CF845 /* DiaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD032B2B83BF005CF845 /* DiaryView.swift */; };
 		0449BD062B2B83BF005CF845 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD052B2B83BF005CF845 /* Macros.swift */; };
@@ -25,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		041E6A7B2B3392A700D81483 /* DailyDateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyDateView.swift; sourceTree = "<group>"; };
+		041E6A7D2B3393BD00D81483 /* Date+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Helpers.swift"; sourceTree = "<group>"; };
 		0449BCFE2B2B83BF005CF845 /* MacroTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MacroTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0449BD012B2B83BF005CF845 /* MacroTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MacroTrackerApp.swift; sourceTree = "<group>"; };
 		0449BD032B2B83BF005CF845 /* DiaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryView.swift; sourceTree = "<group>"; };
@@ -103,6 +107,7 @@
 				0449BD162B2BD13E005CF845 /* IncrementButton.swift */,
 				0449BD182B2BD161005CF845 /* CustomButtonView.swift */,
 				04C7C77F2B2C716400EE26FF /* CustomTextFieldView.swift */,
+				041E6A7B2B3392A700D81483 /* DailyDateView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			isa = PBXGroup;
 			children = (
 				04DF991E2B33501600F7A3E9 /* String+Helpers.swift */,
+				041E6A7D2B3393BD00D81483 /* Date+Helpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -214,10 +220,12 @@
 				0449BD042B2B83BF005CF845 /* DiaryView.swift in Sources */,
 				0449BD132B2B8CF8005CF845 /* ProgressCircleView.swift in Sources */,
 				04C7C7802B2C716400EE26FF /* CustomTextFieldView.swift in Sources */,
+				041E6A7E2B3393BD00D81483 /* Date+Helpers.swift in Sources */,
 				04C7C7842B2C7BF800EE26FF /* ObjectivesView.swift in Sources */,
 				04DF991F2B33501600F7A3E9 /* String+Helpers.swift in Sources */,
 				0449BD062B2B83BF005CF845 /* Macros.swift in Sources */,
 				04C7C7792B2C5D2F00EE26FF /* DiaryViewModel.swift in Sources */,
+				041E6A7C2B3392A700D81483 /* DailyDateView.swift in Sources */,
 				0449BD022B2B83BF005CF845 /* MacroTrackerApp.swift in Sources */,
 				04DF991C2B334C6500F7A3E9 /* UserDefaultsManager.swift in Sources */,
 				04C7C7862B2C7F9900EE26FF /* ObjectivesViewModel.swift in Sources */,

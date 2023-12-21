@@ -27,7 +27,9 @@ class DiaryViewModel: ObservableObject {
     var totalProteins: CGFloat
     var totalCalories: CGFloat
     
-    init(incrementCarbs: CGFloat = 0, incrementProteins: CGFloat = 0, incrementFat: CGFloat = 0, dailyMacros: Macros? = nil, context: ModelContext? = nil) {
+    @Published var currentDate: Date
+    
+    init(incrementCarbs: CGFloat = 0, incrementProteins: CGFloat = 0, incrementFat: CGFloat = 0, dailyMacros: Macros? = nil, context: ModelContext? = nil, currentDate: Date = .now) {
         self.incrementCarbs = incrementCarbs
         self.incrementProteins = incrementProteins
         self.incrementFat = incrementFat
@@ -38,6 +40,9 @@ class DiaryViewModel: ObservableObject {
         self.totalFat = (UserDefaults.standard.string(forKey: "fat")?.toCGFloat())!
         self.totalProteins = (UserDefaults.standard.string(forKey: "proteins")?.toCGFloat())!
         self.totalCalories = (UserDefaults.standard.string(forKey: "calories")?.toCGFloat())!
+        
+        self.currentDate = currentDate
+        
     }
     
     func add() {
@@ -85,10 +90,20 @@ class DiaryViewModel: ObservableObject {
         return true
     }
     
-    func insert() {
+    private func insert(_ date: Date) {
         guard context != nil else {
             return
         }
-        context!.insert(Macros(date: Date.now, fat: 0, carbs: 0, proteins: 0))
+        context!.insert(Macros(date: date))
+    }
+    
+    func isNewDay() {
+        if dailyMacros == nil {
+            insert(.now)
+        }
+    }
+    
+    func fetchMacros(_ macros: [Macros], _ date: Date) {
+        dailyMacros = macros.first(where: { Calendar.current.isDate($0.date, equalTo: date, toGranularity: .day) }) ?? nil
     }
 }
