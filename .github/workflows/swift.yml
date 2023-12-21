@@ -1,0 +1,32 @@
+name: Swift Build and Test
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    branches:
+      - develop
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up Xcode
+      uses: actions/setup-xcode@v2
+      with:
+        xcode-version: '15.1'  # Specify the Xcode version you want to use
+
+    - name: Install Dependencies
+      run: |
+        swift package resolve
+
+    - name: Build and Test
+      run: |
+        xcodebuild clean build test \
+          -workspace MacroTracker.xcworkspace \
+          -scheme YourApp \
+          -destination 'platform=iOS Simulator,OS=17.0,name=iPhone 15'  # Specify the iOS version and device you want to test on
