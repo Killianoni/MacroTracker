@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct DailyDateView: View {
-    @State var date: Date
+    @Binding var date: Date
     
     private enum Constants {
         static let spacerWidth: CGFloat = 60
@@ -24,7 +24,7 @@ struct DailyDateView: View {
                 Image(systemName: "chevron.left")
                     .resizable()
                     .renderingMode(.template)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color.primary)
                     .scaledToFit()
                     .frame(width: Constants.chevronWidth)
             }
@@ -44,7 +44,7 @@ struct DailyDateView: View {
                 Image(systemName: "chevron.right")
                     .resizable()
                     .renderingMode(.template)
-                    .foregroundColor(.black)
+                    .foregroundColor(Color.primary)
                     .scaledToFit()
                     .frame(width: Constants.chevronWidth)
             }
@@ -53,5 +53,5 @@ struct DailyDateView: View {
 }
 
 #Preview {
-    DailyDateView(date: .now)
+    DailyDateView(date: .constant(.now))
 }

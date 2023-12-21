@@ -10,6 +10,7 @@ import SwiftData
 
 @main
 struct MacroTrackerApp: App {
+    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool?
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Macros.self,
@@ -23,9 +24,13 @@ struct MacroTrackerApp: App {
         }
     }()
     
+    init() {
+        UserDefaultsManager.shared.isFirstLaunch()
+    }
+    
     var body: some Scene {
         WindowGroup {
-            if UserDefaultsManager.shared.isFirstLaunch() {
+            if isFirstLaunch! {
                 ObjectivesView()
             } else {
                 DiaryView()
