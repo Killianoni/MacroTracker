@@ -12,14 +12,11 @@ struct DiaryView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var macros: [Macros]
     @ObservedObject var viewModel = DiaryViewModel()
+    @State var currentDate: Date
     
     var body: some View {
         VStack {
-            HStack {
-                Text("Aujourd'hui")
-                    .font(.system(size: 25))
-                    .bold()
-            }
+            DailyDateView(date: currentDate)
             if let dailyMacros = viewModel.dailyMacros {
                 HStack {
                     ProgressCircleView(number1: dailyMacros.carbs, number2: viewModel.totalCarbs, color: Color.brown, size: 80, title: NSLocalizedString("Carbs", comment: ""))
@@ -61,6 +58,6 @@ struct DiaryView: View {
 }
 
 #Preview {
-    DiaryView()
+    DiaryView(currentDate: .now)
         .modelContainer(for: Macros.self, inMemory: true)
 }
