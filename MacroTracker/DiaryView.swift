@@ -32,16 +32,18 @@ struct DiaryView: View {
                 }
                 .padding()
                 
-                HStack {
-                    IncrementButton(number: $viewModel.incrementCarbs, width: 20, color: Color.brown)
-                    IncrementButton(number: $viewModel.incrementFat, width: 20, color: Color.orange)
-                    IncrementButton(number: $viewModel.incrementProteins, width: 20, color: Color.red)
-                }
-                
-                HStack {
-                    CustomButtonView(action: {
-                        viewModel.add(macros: macros)
-                    }, label: "Apply", color: Color.blue, width: 200, height: 50)
+                if Calendar.current.isDateInToday(viewModel.currentDate) {
+                    HStack {
+                        IncrementButton(number: $viewModel.incrementCarbs, width: 20, color: Color.brown)
+                        IncrementButton(number: $viewModel.incrementFat, width: 20, color: Color.orange)
+                        IncrementButton(number: $viewModel.incrementProteins, width: 20, color: Color.red)
+                    }
+                    
+                    HStack {
+                        CustomButtonView(action: {
+                            viewModel.add(macros: macros)
+                        }, label: "Apply", color: Color.blue, width: 200, height: 50)
+                    }
                 }
                 Spacer()
             } else {
@@ -51,6 +53,7 @@ struct DiaryView: View {
         .onAppear {
             viewModel.context = modelContext
             viewModel.isNewDay(macros: macros)
+            viewModel.refreshDefaults()
         }
     }
 }
