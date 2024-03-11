@@ -33,7 +33,7 @@ struct MacroTrackerApp: App {
             if isFirstLaunch! {
                 ObjectivesView()
             } else {
-                DiaryView()
+                TabbarView()
             }
         }
         .modelContainer(sharedModelContainer)

@@ -14,7 +14,7 @@ extension Date {
         formatter.dateFormat = "dd MMMM yyyy"
         
         if Calendar.current.isDateInToday(self) {
-            return "Aujourd'hui"
+            return "Today"
         } else {
             return formatter.string(from: self)
         }

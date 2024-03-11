@@ -41,7 +41,7 @@ struct DiaryView: View {
                 HStack {
                     CustomButtonView(action: {
                         viewModel.add(macros: macros)
-                    }, label: "Appliquer", color: Color.blue, width: 200, height: 50)
+                    }, label: "Apply", color: Color.blue, width: 200, height: 50)
                 }
                 Spacer()
             } else {
