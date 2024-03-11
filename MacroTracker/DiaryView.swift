@@ -17,18 +17,18 @@ struct DiaryView: View {
         VStack {
             DailyDateView(date: $viewModel.currentDate)
                 .onChange(of: viewModel.currentDate) { _ , newValue in
-                    viewModel.fetchMacros(macros, newValue)
+                    viewModel.isNewDay(macros: macros)
                 }
-            if let dailyMacros = viewModel.dailyMacros {
+            if viewModel.getMacros(macros: macros) != nil {
                 HStack {
-                    ProgressCircleView(number1: dailyMacros.carbs, number2: viewModel.totalCarbs, color: Color.brown, size: 80, title: NSLocalizedString("Carbs", comment: ""))
-                    ProgressCircleView(number1: dailyMacros.fat, number2: viewModel.totalFat, color: Color.orange, size: 80, title: NSLocalizedString("Fat", comment: ""))
-                    ProgressCircleView(number1: dailyMacros.proteins, number2: viewModel.totalProteins, color: Color.red, size: 80, title: NSLocalizedString("Proteins", comment: ""))
+                    ProgressCircleView(number1: viewModel.getMacros(macros: macros)!.carbs, number2: viewModel.totalCarbs, color: Color.brown, size: 80, title: NSLocalizedString("Carbs", comment: ""))
+                    ProgressCircleView(number1: viewModel.getMacros(macros: macros)!.fat, number2: viewModel.totalFat, color: Color.orange, size: 80, title: NSLocalizedString("Fat", comment: ""))
+                    ProgressCircleView(number1: viewModel.getMacros(macros: macros)!.proteins, number2: viewModel.totalProteins, color: Color.red, size: 80, title: NSLocalizedString("Proteins", comment: ""))
                 }
                 
                 HStack {
                     ProgressView()
-                        .progressViewStyle(CustomProgressBar(number1: dailyMacros.calories, number2: viewModel.totalCalories, color: Color.purple, width: 300, title: "Calories"))
+                        .progressViewStyle(CustomProgressBar(number1: viewModel.getMacros(macros: macros)!.calories, number2: viewModel.totalCalories, color: Color.purple, width: 300, title: "Calories"))
                 }
                 .padding()
                 
@@ -40,25 +40,17 @@ struct DiaryView: View {
                 
                 HStack {
                     CustomButtonView(action: {
-                        viewModel.add()
+                        viewModel.add(macros: macros)
                     }, label: "Appliquer", color: Color.blue, width: 200, height: 50)
                 }
+                Spacer()
             } else {
-                VStack(alignment: .center) {
-                    Spacer()
-                    Text("No data")
-                        .bold()
-                        .font(.title)
-                    Spacer()
-                }
+                ProgressView()
             }
-            Spacer()
         }
         .onAppear {
-            viewModel.fetchMacros(macros, .now)
             viewModel.context = modelContext
-            viewModel.isNewDay()
-            viewModel.fetchMacros(macros, .now)
+            viewModel.isNewDay(macros: macros)
         }
     }
 }
