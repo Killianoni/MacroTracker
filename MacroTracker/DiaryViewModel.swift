@@ -44,6 +44,7 @@ class DiaryViewModel: ObservableObject {
     }
     
     func add(macros: [Macros]) {
+        if checkQuickEntrys(macros: getMacros(macros: macros)!) {
             getMacros(macros: macros)?.carbs += incrementCarbs
             getMacros(macros: macros)?.fat += incrementFat
             getMacros(macros: macros)?.proteins += incrementProteins
@@ -54,7 +55,8 @@ class DiaryViewModel: ObservableObject {
             
             getMacros(macros: macros)?.calories += caloriesFromCarbs + caloriesFromFat + caloriesFromProteins
             
-        resetMacroIncrements()
+            resetMacroIncrements()
+        }
     }
 
     private func resetMacroIncrements() {
@@ -63,21 +65,18 @@ class DiaryViewModel: ObservableObject {
         incrementProteins = 0
     }
     
-//    private func checkQuickEntrys() -> Bool {
-//        guard let macros = dailyMacros,
-//              macros.carbs + incrementCarbs >= Constants.quickAddMinimalNumber,
-//                  macros.fat + incrementFat >= Constants.quickAddMinimalNumber,
-//                  macros.proteins + incrementProteins >= Constants.quickAddMinimalNumber else {
-//                return false
-//            }
-//        
-//        guard let macros = dailyMacros,
-//                  macros.carbs < Constants.quickAddMaxNumber,
-//                  macros.fat < Constants.quickAddMaxNumber,
-//                  macros.proteins < Constants.quickAddMaxNumber else {
-//                return false
-//            }
-//        
-//        return true
-//    }
+    private func checkQuickEntrys(macros: Macros) -> Bool {
+        guard macros.carbs + incrementCarbs >= Constants.quickAddMinimalNumber,
+                  macros.fat + incrementFat >= Constants.quickAddMinimalNumber,
+                  macros.proteins + incrementProteins >= Constants.quickAddMinimalNumber else {
+                return false
+            }
+        
+        guard macros.carbs < Constants.quickAddMaxNumber,
+                  macros.fat < Constants.quickAddMaxNumber,
+                  macros.proteins < Constants.quickAddMaxNumber else {
+                return false
+            }
+        return true
+    }
 }
