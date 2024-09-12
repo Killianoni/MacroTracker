@@ -29,13 +29,11 @@ struct DailyDateView: View {
                     .frame(width: Constants.chevronWidth)
             }
             Spacer()
-                .frame(width: Constants.spacerWidth)
             Text(date.formattedString())
                 .lineLimit(1)
                 .font(.title3)
                 .bold()
             Spacer()
-                .frame(width: Constants.spacerWidth)
             Button {
                 if let newDate = date.increment(by: 1, component: .day) {
                     date = newDate
@@ -49,6 +47,8 @@ struct DailyDateView: View {
                     .frame(width: Constants.chevronWidth)
             }
         }
+        .padding(.horizontal, 40)
+        .sensoryFeedback(.increase, trigger: date)
     }
 }
 

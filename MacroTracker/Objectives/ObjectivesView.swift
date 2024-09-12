@@ -7,24 +7,25 @@
 
 import SwiftUI
 
+// TODO: DEMANDER LES INFOS DU USER ET AJOUTER LA POSSIBILITE DE CUSTOM SES MACROS, HIDE LE CLAVIER
 struct ObjectivesView: View {
     @ObservedObject var viewModel = ObjectivesViewModel()
     var body: some View {
         VStack {
-            Text("Objectifs")
+            Text("Objectives")
                 .font(.title)
             
             Group {
-                CustomTextFieldView(text: $viewModel.proteinsText, prompt: "Protéines")
+                CustomTextFieldView(text: $viewModel.proteinsText, prompt: "Proteins")
                     .keyboardType(.numberPad)
                 
-                CustomTextFieldView(text: $viewModel.fatText, prompt: "Lipides")
+                CustomTextFieldView(text: $viewModel.fatText, prompt: "Fat")
                     .keyboardType(.numberPad)
                 
-                CustomTextFieldView(text: $viewModel.carbsText, prompt: "Glucides")
+                CustomTextFieldView(text: $viewModel.carbsText, prompt: "Carbs")
                     .keyboardType(.numberPad)
                 
-                CustomTextFieldView(text: $viewModel.caloriesText, prompt: "Calories (facultatif)", disableVerification: true)
+                CustomTextFieldView(text: $viewModel.caloriesText, prompt: "Calories (optional)", disableVerification: true)
                     .keyboardType(.numberPad)
             }
             .padding(.vertical)
@@ -34,7 +35,7 @@ struct ObjectivesView: View {
             CustomButtonView(action: {
                 viewModel.save()
                 UserDefaults.standard.setValue(false, forKey: "isFirstLaunch")
-            },label: "Continuer", color: .green, width: 150)
+            },label: "Continue", color: .green, width: 150)
             Spacer()
         }
     }

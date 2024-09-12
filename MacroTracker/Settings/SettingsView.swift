@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct SettingsView: View {    
+// TODO: FAIRE UN TRUC PAS MOCHE
+struct SettingsView: View {
     @State private var proteins: String = UserDefaults.standard.string(forKey: "proteins") ?? ""
     @State private var carbs: String = UserDefaults.standard.string(forKey: "carbs") ?? ""
     @State private var fat: String = UserDefaults.standard.string(forKey: "fat") ?? ""
@@ -28,16 +29,16 @@ struct SettingsView: View {
                     }
                 }
             } header: {
-                Text("PREFERENCES")
+                Text("Preferences")
             }
             
             Section {
-                editableFormField("Proteins", value: $proteins)
-                editableFormField("Carbs", value: $carbs)
-                editableFormField("Fat", value: $fat)
-                editableFormField("Calories", value: $calories)
+                editableFormField(String(localized: "Proteins"), value: $proteins)
+                editableFormField(String(localized: "Carbs"), value: $carbs)
+                editableFormField(String(localized: "Fat"), value: $fat)
+                editableFormField(String(localized: "Calories"), value: $calories)
             } header: {
-                Text("MACROS")
+                Text("Macros")
             }
         }
     }

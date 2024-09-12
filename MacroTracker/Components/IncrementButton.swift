@@ -84,6 +84,7 @@ struct IncrementButton: View {
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         }
         .padding()
+        .sensoryFeedback(.increase, trigger: number)
     }
 }
 

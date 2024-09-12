@@ -8,6 +8,7 @@
 import SwiftUI
 import SwiftData
 
+// TODO: FAIRE FONCTIONNER LA PREVIEW ET VIRER LE GETMACROS ZEBI, LE ONAPPEAR AUSSI CEST QUOI CA, ET CLAVIER IMPORTANT, FAIRE UN STATE DE LOADING PITIE
 struct DiaryView: View {
     @Environment(\.modelContext) private var modelContext
     @Query var macros: [Macros]
@@ -21,9 +22,21 @@ struct DiaryView: View {
                 }
             if viewModel.getMacros(macros: macros) != nil {
                 HStack {
-                    ProgressCircleView(number1: viewModel.getMacros(macros: macros)!.carbs, number2: viewModel.totalCarbs, color: Color.brown, size: 80, title: NSLocalizedString("Carbs", comment: ""))
-                    ProgressCircleView(number1: viewModel.getMacros(macros: macros)!.fat, number2: viewModel.totalFat, color: Color.orange, size: 80, title: NSLocalizedString("Fat", comment: ""))
-                    ProgressCircleView(number1: viewModel.getMacros(macros: macros)!.proteins, number2: viewModel.totalProteins, color: Color.red, size: 80, title: NSLocalizedString("Proteins", comment: ""))
+                    ProgressCircleView(number1: viewModel.getMacros(macros: macros)!.carbs, 
+                                       number2: viewModel.totalCarbs,
+                                       color: Color.brown,
+                                       size: 80,
+                                       title: NSLocalizedString("Carbs", comment: ""))
+                    ProgressCircleView(number1: viewModel.getMacros(macros: macros)!.fat, 
+                                       number2: viewModel.totalFat, 
+                                       color: Color.orange,
+                                       size: 80,
+                                       title: NSLocalizedString("Fat", comment: ""))
+                    ProgressCircleView(number1: viewModel.getMacros(macros: macros)!.proteins, 
+                                       number2: viewModel.totalProteins,
+                                       color: Color.red,
+                                       size: 80,
+                                       title: NSLocalizedString("Proteins", comment: ""))
                 }
                 
                 HStack {
@@ -42,7 +55,7 @@ struct DiaryView: View {
                     HStack {
                         CustomButtonView(action: {
                             viewModel.add(macros: macros)
-                        }, label: "Apply", color: Color.blue, width: 200, height: 50)
+                        }, label: String(localized: "Apply"), color: Color.blue, width: 200, height: 50)
                     }
                 }
                 Spacer()
@@ -55,10 +68,26 @@ struct DiaryView: View {
             viewModel.isNewDay(macros: macros)
             viewModel.refreshDefaults()
         }
+        .onTapGesture {
+            self.hideKeyboard()
+        }
     }
 }
 
+@MainActor
+let previewContainer: ModelContainer = {
+    do {
+        let container = try ModelContainer(for: Macros.self,
+                                           configurations: .init(isStoredInMemoryOnly: true))
+        container.mainContext.insert(Macros(id: "2", date: .now, fat: 10, carbs: 10,proteins: 10,calories: 10))
+        return container
+    } catch {
+        fatalError("Failed to create container")
+    }
+}()
+
+
 #Preview {
     DiaryView()
-        .modelContainer(for: Macros.self, inMemory: true)
+        .modelContainer(previewContainer)
 }

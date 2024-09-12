@@ -57,6 +57,7 @@ struct ProgressCircleView: View {
                     .bold()
             }
         }
+        .sensoryFeedback(.increase, trigger: number1)
         .padding()
     }
 }

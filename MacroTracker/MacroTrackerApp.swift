@@ -8,6 +8,8 @@
 import SwiftUI
 import SwiftData
 
+// TODO: BIEN CHECK QUE LA CONF EST OK
+
 @main
 struct MacroTrackerApp: App {
     @AppStorage("isFirstLaunch") var isFirstLaunch: Bool?
@@ -23,14 +25,10 @@ struct MacroTrackerApp: App {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-    
-    init() {
-        UserDefaultsManager.shared.isFirstLaunch()
-    }
-    
+
     var body: some Scene {
         WindowGroup {
-            if isFirstLaunch! {
+            if UserDefaultsManager.shared.isFirstLaunch() {
                 ObjectivesView()
             } else {
                 TabbarView()

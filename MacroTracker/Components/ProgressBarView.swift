@@ -39,6 +39,7 @@ struct CustomProgressBar: ProgressViewStyle {
         }
         .frame(width: self.width)
         .bold()
+        .sensoryFeedback(.increase, trigger: number1)
     }
 }
 

@@ -27,6 +27,8 @@ class DiaryViewModel: ObservableObject {
 
     var context: ModelContext?
 
+    // TODO: NE PAS UTILISER CE GETMACROS() PARTOUT
+    
     func isNewDay(macros: [Macros]) {
         guard macros.first(where: { Calendar.current.isDate($0.date, equalTo: currentDate, toGranularity: .day) }) != nil else {
             context?.insert(Macros(date: currentDate))

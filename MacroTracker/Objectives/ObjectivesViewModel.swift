@@ -29,6 +29,7 @@ class ObjectivesViewModel: ObservableObject {
             }
             
             UserDefaultsManager.shared.saveObjectives(fatText, carbsText, proteinsText, caloriesText)
+            UserDefaults.standard.setValue(true, forKey: "isFirstLaunch")
         }
     }
     

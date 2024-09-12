@@ -12,12 +12,11 @@ class UserDefaultsManager {
     static let shared = UserDefaultsManager()
     typealias defaults = UserDefaults
     
-    func isFirstLaunch() {
+    func isFirstLaunch() -> Bool {
         if defaults.standard.object(forKey: "isFirstLaunch") == nil {
-            defaults.standard.setValue(true, forKey: "isFirstLaunch")
-            return
+            return true
         }
-        defaults.standard.setValue(false, forKey: "isFirstLaunch")
+        return false
     }
     
     func saveObjectives(_ fat: String, _ carbs: String, _ proteins: String, _ calories: String) {
