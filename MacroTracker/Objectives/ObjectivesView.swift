@@ -9,7 +9,7 @@ import SwiftUI
 
 // TODO: DEMANDER LES INFOS DU USER ET AJOUTER LA POSSIBILITE DE CUSTOM SES MACROS, HIDE LE CLAVIER
 struct ObjectivesView: View {
-    @ObservedObject var viewModel = ObjectivesViewModel()
+    @ObservedObject var viewModel = ObjectivesViewModel(dataSource: .shared)
     var body: some View {
         VStack {
             Text("Objectives")

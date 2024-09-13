@@ -17,7 +17,13 @@ class ObjectivesViewModel: ObservableObject {
     private let proteinCoefficient = 4
     private let fatCoefficient = 9
     private let carbCoefficient = 4
-    
+
+    private let dataSource: SwiftDataManager
+
+    init(dataSource: SwiftDataManager) {
+        self.dataSource = dataSource
+    }
+
     func save() {
         if validateText(proteinsText), validateText(fatText), validateText(carbsText) {
             let proteins = Int(proteinsText)!
@@ -28,8 +34,8 @@ class ObjectivesViewModel: ObservableObject {
                 caloriesText = String(proteins * proteinCoefficient + fat * fatCoefficient + carbs * carbCoefficient)
             }
             
-            UserDefaultsManager.shared.saveObjectives(fatText, carbsText, proteinsText, caloriesText)
-            UserDefaults.standard.setValue(true, forKey: "isFirstLaunch")
+//            UserDefaultsManager.shared.saveObjectives(fatText, carbsText, proteinsText, caloriesText)
+            dataSource.fetchUser()?.isFirstLaunch = false
         }
     }
     

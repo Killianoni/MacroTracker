@@ -24,7 +24,7 @@ struct DiaryView: View {
                     viewModel.isNewDate(macros: macrosArray)
                 }
 
-            // Cirlces
+            // Circles
             HStack {
                 ProgressCircleView(number1: macros.carbs,
                                    number2: viewModel.totalCarbs,
@@ -67,29 +67,12 @@ struct DiaryView: View {
             }
             Spacer()
         }
-        .onAppear {
-            viewModel.context = modelContext
-        }
         .onTapGesture {
             self.hideKeyboard()
         }
     }
 }
 
-@MainActor
-let previewContainer: ModelContainer = {
-    do {
-        let container = try ModelContainer(for: Macros.self,
-                                           configurations: .init(isStoredInMemoryOnly: true))
-        container.mainContext.insert(Macros(id: "2", date: .now, fat: 10, carbs: 10,proteins: 10,calories: 10))
-        return container
-    } catch {
-        fatalError("Failed to create container")
-    }
-}()
-
-
 #Preview {
     DiaryView()
-        .modelContainer(previewContainer)
 }

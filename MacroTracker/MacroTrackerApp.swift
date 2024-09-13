@@ -8,30 +8,29 @@
 import SwiftUI
 import SwiftData
 
-// TODO: BIEN CHECK QUE LA CONF EST OK
-
+// TODO: ONBOARDING
 @main
 struct MacroTrackerApp: App {
-    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool?
-    var sharedModelContainer: ModelContainer = {
+    @MainActor var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Macros.self,
+            Macros.self, User.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-        
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+            if try container.mainContext.fetch(FetchDescriptor<User>()).isEmpty {
+                container.mainContext.insert(User())
+            }
+            return container
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-
     var body: some Scene {
         WindowGroup {
-            if UserDefaultsManager.shared.isFirstLaunch() {
-                ObjectivesView()
-            } else {
+            if SwiftDataManager.shared.fetchUser()?.isFirstLaunch == true {
                 TabbarView()
+                    .fullScreenCover(isPresented: <#T##Binding<Bool>#>, content: <#T##() -> View#>)
             }
         }
         .modelContainer(sharedModelContainer)

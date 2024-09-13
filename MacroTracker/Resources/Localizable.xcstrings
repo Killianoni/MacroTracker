@@ -35,7 +35,14 @@
       }
     },
     "Calories" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        }
+      }
     },
     "Carbs" : {
       "localizations" : {
@@ -48,7 +55,14 @@
       }
     },
     "Dark Mode" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mode sombre"
+          }
+        }
+      }
     },
     "Diary" : {
       "localizations" : {
@@ -81,7 +95,14 @@
       }
     },
     "Macros" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Macros"
+          }
+        }
+      }
     },
     "Objectives" : {
       "localizations" : {
