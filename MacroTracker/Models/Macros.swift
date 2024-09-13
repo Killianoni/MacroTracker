@@ -10,14 +10,14 @@ import SwiftData
 
 @Model
 final class Macros {
-    @Attribute(.unique) var id: String = UUID().uuidString
+    @Attribute(.unique) var id: String
     var date: Date
-    var fat: CGFloat
-    var carbs: CGFloat
-    var proteins: CGFloat
-    var calories: CGFloat
-    
-    init(id: String = UUID().uuidString, date: Date = .now, fat: CGFloat = 0, carbs: CGFloat = 0, proteins: CGFloat = 0, calories: CGFloat = 0) {
+    var fat: Float
+    var carbs: Float
+    var proteins: Float
+    var calories: Float
+
+    init(id: String = UUID().uuidString, date: Date = .now, fat: Float = 0, carbs: Float = 0, proteins: Float = 0, calories: Float = 0) {
         self.id = id
         self.date = date
         self.fat = fat

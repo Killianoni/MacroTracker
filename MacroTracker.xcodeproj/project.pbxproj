@@ -25,6 +25,7 @@
 		04C7C7802B2C716400EE26FF /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C77F2B2C716400EE26FF /* CustomTextFieldView.swift */; };
 		04C7C7842B2C7BF800EE26FF /* ObjectivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C7832B2C7BF800EE26FF /* ObjectivesView.swift */; };
 		04C7C7862B2C7F9900EE26FF /* ObjectivesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C7852B2C7F9900EE26FF /* ObjectivesViewModel.swift */; };
+		04CF93112C946CA6004EFAFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF93102C946CA6004EFAFE /* User.swift */; };
 		04DF991C2B334C6500F7A3E9 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF991B2B334C6500F7A3E9 /* UserDefaultsManager.swift */; };
 		04DF991F2B33501600F7A3E9 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF991E2B33501600F7A3E9 /* String+Helpers.swift */; };
 		04FA033C2B9F7F19001C8E1F /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA033B2B9F7F19001C8E1F /* TabbarView.swift */; };
@@ -51,6 +52,7 @@
 		04C7C77F2B2C716400EE26FF /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		04C7C7832B2C7BF800EE26FF /* ObjectivesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesView.swift; sourceTree = "<group>"; };
 		04C7C7852B2C7F9900EE26FF /* ObjectivesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesViewModel.swift; sourceTree = "<group>"; };
+		04CF93102C946CA6004EFAFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		04DF991B2B334C6500F7A3E9 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		04DF991E2B33501600F7A3E9 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
 		04FA033B2B9F7F19001C8E1F /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
@@ -114,9 +116,9 @@
 			isa = PBXGroup;
 			children = (
 				0449BD012B2B83BF005CF845 /* MacroTrackerApp.swift */,
+				04153BD42C92269F00168054 /* Diary */,
 				04153BD62C9226B800168054 /* Objectives */,
 				04153BD52C9226A900168054 /* Settings */,
-				04153BD42C92269F00168054 /* Diary */,
 				04C7C77A2B2C5D5500EE26FF /* Models */,
 				04DF991A2B334C5600F7A3E9 /* Managers */,
 				04DF991D2B33500600F7A3E9 /* Helpers */,
@@ -162,6 +164,7 @@
 			isa = PBXGroup;
 			children = (
 				0449BD052B2B83BF005CF845 /* Macros.swift */,
+				04CF93102C946CA6004EFAFE /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 				04FA033E2B9F7F5E001C8E1F /* SettingsView.swift in Sources */,
 				041E6A7E2B3393BD00D81483 /* Date+Helpers.swift in Sources */,
 				04C7C7842B2C7BF800EE26FF /* ObjectivesView.swift in Sources */,
+				04CF93112C946CA6004EFAFE /* User.swift in Sources */,
 				04DF991F2B33501600F7A3E9 /* String+Helpers.swift in Sources */,
 				04153BDA2C92318500168054 /* SwiftDataManager.swift in Sources */,
 				0449BD062B2B83BF005CF845 /* Macros.swift in Sources */,

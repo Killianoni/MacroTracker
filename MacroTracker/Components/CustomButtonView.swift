@@ -13,7 +13,7 @@ struct CustomButtonView: View {
     var color: Color
     var width: CGFloat
     var height: CGFloat
-    
+
     init(action: @escaping () -> Void, label: String, color: Color, width: CGFloat = 100, height: CGFloat = 50) {
         self.action = action
         self.label = label
@@ -37,7 +37,7 @@ private struct CustomButtonBody: View {
     var color: Color
     var width: CGFloat
     var height: CGFloat
-    
+
     var body: some View {
         Text(self.label)
             .bold()

@@ -9,8 +9,8 @@ import SwiftUI
 
 struct ProgressCircleView: View {
     
-    let number1: CGFloat
-    let number2: CGFloat
+    @State var number1: Float
+    let number2: Float
     let color: Color
     let size: CGFloat
     var title: String?
@@ -33,7 +33,7 @@ struct ProgressCircleView: View {
                 
                 // Progress circle
                 Circle()
-                    .trim(from: 0, to: number1/number2)
+                    .trim(from: 0, to: CGFloat(number1/number2))
                     .stroke(
                         self.color,
                         style: StrokeStyle(
@@ -42,8 +42,8 @@ struct ProgressCircleView: View {
                         )
                     )
                     .rotationEffect(.degrees(Constants.rotationDegrees))
-                    .animation(.easeOut, value: number1)
-                
+                    .animation(.easeOut(duration: 1), value: number1)
+
                 Text("\(Int(number1)) /\n\(Int(number2))")
                     .multilineTextAlignment(.center)
                     .font(.system(size: size/Constants.fontDivider))

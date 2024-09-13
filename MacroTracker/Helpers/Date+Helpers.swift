@@ -27,4 +27,11 @@ extension Date {
     func decrement(by value: Int, component: Calendar.Component) -> Date? {
         return Calendar.current.date(byAdding: component, value: -value, to: self)
     }
+
+    func isEqualTo(date: Date) -> Bool {
+        if Calendar.current.isDate(self, equalTo: date, toGranularity: .day) {
+            return true
+        }
+        return false
+    }
 }

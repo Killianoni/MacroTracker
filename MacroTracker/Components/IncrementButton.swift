@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IncrementButton: View {
-    @Binding var number: CGFloat
+    @Binding var number: Float
     @State private var timer: Timer?
     @State private var isLongPressing = false
     

@@ -14,46 +14,36 @@ class DiaryViewModel: ObservableObject {
         static let checkRange = 0...999
     }
     
-    @Published var incrementCarbs: CGFloat = 0
-    @Published var incrementProteins: CGFloat = 0
-    @Published var incrementFat: CGFloat = 0
+    @Published var incrementCarbs: Float = 0
+    @Published var incrementProteins: Float = 0
+    @Published var incrementFat: Float = 0
         
-    @Published var totalCarbs = (UserDefaults.standard.string(forKey: "carbs")?.toCGFloat())!
-    @Published var totalFat = (UserDefaults.standard.string(forKey: "fat")?.toCGFloat())!
-    @Published var totalProteins = (UserDefaults.standard.string(forKey: "proteins")?.toCGFloat())!
-    @Published var totalCalories = (UserDefaults.standard.string(forKey: "calories")?.toCGFloat())!
+    @Published var totalCarbs: Float = 0
+    @Published var totalFat: Float = 0
+    @Published var totalProteins: Float = 0
+    @Published var totalCalories: Float = 0
     
     @Published var currentDate: Date = .now
 
     var context: ModelContext?
 
-    // TODO: NE PAS UTILISER CE GETMACROS() PARTOUT
-    
-    func isNewDay(macros: [Macros]) {
-        guard macros.first(where: { Calendar.current.isDate($0.date, equalTo: currentDate, toGranularity: .day) }) != nil else {
-            context?.insert(Macros(date: currentDate))
-            return
+    func isNewDate(macros: [Macros]) {
+        if !macros.contains(where: { $0.date.isEqualTo(date: currentDate )}) {
+            context?.insert(Macros())
         }
     }
-    
-    func getMacros(macros: [Macros]) -> Macros? {
-        guard let macros = macros.first(where: { Calendar.current.isDate($0.date, equalTo: currentDate, toGranularity: .day) }) else {
-            return nil
-        }
-        return macros
-    }
-    
-    func add(macros: [Macros]) {
-        if checkQuickEntrys(macros: getMacros(macros: macros)!) {
-            getMacros(macros: macros)?.carbs += incrementCarbs
-            getMacros(macros: macros)?.fat += incrementFat
-            getMacros(macros: macros)?.proteins += incrementProteins
-            
+
+    func add(macros: Macros) {
+        if checkQuickEntrys(macros: macros) {
+            macros.carbs += incrementCarbs
+            macros.fat += incrementFat
+            macros.proteins += incrementProteins
+
             let caloriesFromCarbs = incrementCarbs * 4
             let caloriesFromFat = incrementFat * 9
             let caloriesFromProteins = incrementProteins * 4
             
-            getMacros(macros: macros)?.calories += caloriesFromCarbs + caloriesFromFat + caloriesFromProteins
+            macros.calories += caloriesFromCarbs + caloriesFromFat + caloriesFromProteins
             
             resetMacroIncrements()
         }
@@ -74,11 +64,10 @@ class DiaryViewModel: ObservableObject {
         return true
     }
     
-    func refreshDefaults() {
-        totalCarbs = (UserDefaults.standard.string(forKey: "carbs")?.toCGFloat())!
-        totalFat = (UserDefaults.standard.string(forKey: "fat")?.toCGFloat())!
-        totalProteins = (UserDefaults.standard.string(forKey: "proteins")?.toCGFloat())!
-        totalCalories = (UserDefaults.standard.string(forKey: "calories")?.toCGFloat())!
-
-    }
+//    func refreshDefaults() {
+//        totalCarbs = (UserDefaults.standard.string(forKey: "carbs")?.toFloat())!
+//        totalFat = (UserDefaults.standard.string(forKey: "fat")?.toFloat())!
+//        totalProteins = (UserDefaults.standard.string(forKey: "proteins")?.toFloat())!
+//        totalCalories = (UserDefaults.standard.string(forKey: "calories")?.toFloat())!
+//    }
 }
