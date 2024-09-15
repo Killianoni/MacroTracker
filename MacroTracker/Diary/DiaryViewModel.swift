@@ -13,40 +13,75 @@ class DiaryViewModel: ObservableObject {
     private enum Constants {
         static let checkRange = 0...999
     }
-    
+
+    enum State {
+        case normal
+        case loading
+    }
+
+
     @Published var incrementCarbs: Float = 0
     @Published var incrementProteins: Float = 0
     @Published var incrementFat: Float = 0
-        
-    @Published var totalCarbs: Float = 0
-    @Published var totalFat: Float = 0
-    @Published var totalProteins: Float = 0
-    @Published var totalCalories: Float = 0
     
     @Published var currentDate: Date = .now
 
-    var context: ModelContext?
+    @Published var macros = Macros()
+    @Published var user = User()
 
-    func isNewDate(macros: [Macros]) {
-        if !macros.contains(where: { $0.date.isEqualTo(date: currentDate )}) {
-            context?.insert(Macros())
-        }
+    @Published var state = State.loading
+
+    private let dataSource: SwiftDataManager
+    private let math = MathManager()
+
+    init(dataSource: SwiftDataManager) {
+        self.dataSource = dataSource
     }
 
-    func add(macros: Macros) {
-        if checkQuickEntrys(macros: macros) {
-            macros.carbs += incrementCarbs
-            macros.fat += incrementFat
-            macros.proteins += incrementProteins
 
-            let caloriesFromCarbs = incrementCarbs * 4
-            let caloriesFromFat = incrementFat * 9
-            let caloriesFromProteins = incrementProteins * 4
-            
-            macros.calories += caloriesFromCarbs + caloriesFromFat + caloriesFromProteins
-            
-            resetMacroIncrements()
+//    func isNewDate(macros: [Macros]) {
+//        if !macros.contains(where: { $0.date.isEqualTo(date: currentDate )}) {
+//            context?.insert(Macros())
+//        }
+//    }
+
+    func load() {
+        fetchUser()
+        fetchMacros()
+        self.state = .normal
+    }
+
+    private func fetchUser() {
+        self.state = .loading
+        guard let user = dataSource.fetchUser() else {
+            self.state = .normal
+            return
         }
+        self.user = user
+    }
+
+    private func fetchMacros() {
+        guard let macros = dataSource.fetchMacros().first(where: { $0.date.isEqualTo(date: currentDate)}) else {
+            dataSource.addMacros(Macros(date: currentDate))
+            self.macros = dataSource.fetchMacros().first(where: { $0.date.isEqualTo(date: currentDate)})!
+            self.state = .normal
+            return
+        }
+        self.macros = macros
+    }
+
+    func add() {
+        macros.carbs += incrementCarbs
+        macros.fat += incrementFat
+        macros.proteins += incrementProteins
+
+        let caloriesFromCarbs = incrementCarbs * math.carbsMultiplier
+        let caloriesFromFat = incrementFat * math.fatMultiplier
+        let caloriesFromProteins = incrementProteins * math.proteinsMultiplier
+
+        macros.calories += caloriesFromCarbs + caloriesFromFat + caloriesFromProteins
+
+        resetMacroIncrements()
     }
 
     private func resetMacroIncrements() {
@@ -63,11 +98,4 @@ class DiaryViewModel: ObservableObject {
               }
         return true
     }
-    
-//    func refreshDefaults() {
-//        totalCarbs = (UserDefaults.standard.string(forKey: "carbs")?.toFloat())!
-//        totalFat = (UserDefaults.standard.string(forKey: "fat")?.toFloat())!
-//        totalProteins = (UserDefaults.standard.string(forKey: "proteins")?.toFloat())!
-//        totalCalories = (UserDefaults.standard.string(forKey: "calories")?.toFloat())!
-//    }
 }

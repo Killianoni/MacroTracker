@@ -21,6 +21,15 @@ final class SwiftDataManager {
         self.modelContext = modelContainer.mainContext
     }
 
+    func deleteAllObjects() {
+        do {
+            try modelContext.delete(model: User.self)
+            try modelContext.delete(model: Macros.self)
+        } catch {
+            print("Failed to clear all SwiftData objects.")
+        }
+    }
+
     // MARK: Macros -
     func fetchMacros() -> [Macros] {
         do {
@@ -55,6 +64,18 @@ final class SwiftDataManager {
         modelContext.insert(user)
         do {
             try modelContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    func editUser(_ newUser: User) {
+        do {
+            let user = try modelContext.fetch(FetchDescriptor<User>()).first!
+            user.calories = newUser.calories
+            user.carbs = newUser.carbs
+            user.fat = newUser.fat
+            user.proteins = newUser.proteins
         } catch {
             print(error.localizedDescription)
         }

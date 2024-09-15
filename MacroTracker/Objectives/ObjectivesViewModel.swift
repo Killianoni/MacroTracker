@@ -7,13 +7,11 @@
 
 import Foundation
 
+// TODO: Check les entrées des champs
 class ObjectivesViewModel: ObservableObject {
-    @Published var proteinsText = ""
-    @Published var fatText = ""
-    @Published var carbsText = ""
-    @Published var caloriesText = ""
-    @Published var errorMessage = ""
-    
+    @Published var height: String = "180"
+    @Published var weight: String = "80"
+    @Published var age: String = "20"
     private let proteinCoefficient = 4
     private let fatCoefficient = 9
     private let carbCoefficient = 4
@@ -25,24 +23,6 @@ class ObjectivesViewModel: ObservableObject {
     }
 
     func save() {
-        if validateText(proteinsText), validateText(fatText), validateText(carbsText) {
-            let proteins = Int(proteinsText)!
-            let fat = Int(fatText)!
-            let carbs = Int(carbsText)!
-            
-            if caloriesText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
-                caloriesText = String(proteins * proteinCoefficient + fat * fatCoefficient + carbs * carbCoefficient)
-            }
-            
-//            UserDefaultsManager.shared.saveObjectives(fatText, carbsText, proteinsText, caloriesText)
-            dataSource.fetchUser()?.isFirstLaunch = false
-        }
-    }
-    
-    private func validateText(_ text: String) -> Bool {
-        guard !text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty, (Int(text) != nil) else {
-            return false
-        }
-        return true
+//        dataSource.editUser(<#T##newUser: User##User#>)
     }
 }

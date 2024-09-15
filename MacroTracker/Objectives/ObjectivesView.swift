@@ -9,33 +9,27 @@ import SwiftUI
 
 // TODO: DEMANDER LES INFOS DU USER ET AJOUTER LA POSSIBILITE DE CUSTOM SES MACROS, HIDE LE CLAVIER
 struct ObjectivesView: View {
+    @AppStorage("shouldShowOnboarding") var showOnboarding: Bool = true
     @ObservedObject var viewModel = ObjectivesViewModel(dataSource: .shared)
+    @Environment(\.presentationMode) var presentationMode
     var body: some View {
-        VStack {
-            Text("Objectives")
+        VStack(alignment: .center) {
+            Text("Profile")
                 .font(.title)
-            
-            Group {
-                CustomTextFieldView(text: $viewModel.proteinsText, prompt: "Proteins")
-                    .keyboardType(.numberPad)
-                
-                CustomTextFieldView(text: $viewModel.fatText, prompt: "Fat")
-                    .keyboardType(.numberPad)
-                
-                CustomTextFieldView(text: $viewModel.carbsText, prompt: "Carbs")
-                    .keyboardType(.numberPad)
-                
-                CustomTextFieldView(text: $viewModel.caloriesText, prompt: "Calories (optional)", disableVerification: true)
-                    .keyboardType(.numberPad)
-            }
-            .padding(.vertical)
-            
+                .bold()
+                .padding()
+
+//            CustomTextFieldView(text: $viewModel.height, prompt: "Taille")
+//            CustomTextFieldView(text: $viewModel.weight, prompt: "Poids")
+//            CustomTextFieldView(text: $viewModel.age, prompt: "Âge")
+
             Spacer()
                 .frame(height: 50)
+
             CustomButtonView(action: {
                 viewModel.save()
-                UserDefaults.standard.setValue(false, forKey: "isFirstLaunch")
-            },label: "Continue", color: .green, width: 150)
+                showOnboarding = false
+            },label: "Continue", color: .blue, width: 150)
             Spacer()
         }
     }

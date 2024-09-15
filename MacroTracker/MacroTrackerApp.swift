@@ -11,6 +11,7 @@ import SwiftData
 // TODO: ONBOARDING
 @main
 struct MacroTrackerApp: App {
+    @AppStorage("shouldShowOnboarding") var showOnboarding: Bool = true
     @MainActor var sharedModelContainer: ModelContainer = {
         let schema = Schema([
             Macros.self, User.self
@@ -28,9 +29,12 @@ struct MacroTrackerApp: App {
     }()
     var body: some Scene {
         WindowGroup {
-            if SwiftDataManager.shared.fetchUser()?.isFirstLaunch == true {
+            if showOnboarding == true {
+                ObjectivesView()
+                    .animation(.easeIn, value: showOnboarding)
+            } else {
                 TabbarView()
-                    .fullScreenCover(isPresented: <#T##Binding<Bool>#>, content: <#T##() -> View#>)
+                    .animation(.easeIn, value: showOnboarding)
             }
         }
         .modelContainer(sharedModelContainer)

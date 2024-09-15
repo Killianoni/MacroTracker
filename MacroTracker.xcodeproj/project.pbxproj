@@ -26,6 +26,7 @@
 		04C7C7842B2C7BF800EE26FF /* ObjectivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C7832B2C7BF800EE26FF /* ObjectivesView.swift */; };
 		04C7C7862B2C7F9900EE26FF /* ObjectivesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C7852B2C7F9900EE26FF /* ObjectivesViewModel.swift */; };
 		04CF93112C946CA6004EFAFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF93102C946CA6004EFAFE /* User.swift */; };
+		04CF931C2C973F67004EFAFE /* MathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF931B2C973F67004EFAFE /* MathManager.swift */; };
 		04DF991F2B33501600F7A3E9 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF991E2B33501600F7A3E9 /* String+Helpers.swift */; };
 		04FA033C2B9F7F19001C8E1F /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA033B2B9F7F19001C8E1F /* TabbarView.swift */; };
 		04FA033E2B9F7F5E001C8E1F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA033D2B9F7F5E001C8E1F /* SettingsView.swift */; };
@@ -52,6 +53,7 @@
 		04C7C7832B2C7BF800EE26FF /* ObjectivesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesView.swift; sourceTree = "<group>"; };
 		04C7C7852B2C7F9900EE26FF /* ObjectivesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesViewModel.swift; sourceTree = "<group>"; };
 		04CF93102C946CA6004EFAFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		04CF931B2C973F67004EFAFE /* MathManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathManager.swift; sourceTree = "<group>"; };
 		04DF991E2B33501600F7A3E9 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
 		04FA033B2B9F7F19001C8E1F /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
 		04FA033D2B9F7F5E001C8E1F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				04153BD92C92318500168054 /* SwiftDataManager.swift */,
+				04CF931B2C973F67004EFAFE /* MathManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				04153BD82C922AC800168054 /* View+Helpers.swift in Sources */,
 				0449BD022B2B83BF005CF845 /* MacroTrackerApp.swift in Sources */,
 				04C7C7862B2C7F9900EE26FF /* ObjectivesViewModel.swift in Sources */,
+				04CF931C2C973F67004EFAFE /* MathManager.swift in Sources */,
 				0449BD152B2BD10A005CF845 /* ProgressBarView.swift in Sources */,
 				0449BD172B2BD13E005CF845 /* IncrementButton.swift in Sources */,
 			);

@@ -105,6 +105,7 @@
       }
     },
     "Objectives" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -123,6 +124,9 @@
           }
         }
       }
+    },
+    "Profile" : {
+
     },
     "Proteins" : {
       "localizations" : {
