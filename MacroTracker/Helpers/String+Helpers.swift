@@ -9,15 +9,14 @@ import Foundation
 
 extension String {
     func toFloat() -> Float? {
-        // Utilisez NumberFormatter pour effectuer la conversion
         let formatter = NumberFormatter()
-        formatter.locale = Locale.current  // Vous pouvez ajuster cela en fonction de votre besoin
+        formatter.locale = Locale.current
         formatter.numberStyle = .decimal
 
         if let number = formatter.number(from: self) {
             return Float(truncating: number)
         } else {
-            return nil  // La conversion a échoué
+            return nil
         }
     }
 }

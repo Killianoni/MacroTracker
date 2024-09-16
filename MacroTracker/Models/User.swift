@@ -21,6 +21,12 @@ enum ActivityType: Hashable, Codable {
     case insaneActivity
 }
 
+enum Gender: String, Hashable, Codable, CaseIterable, Identifiable {
+    case male
+    case female
+    var id: String { return self.rawValue }
+}
+
 @Model
 final class User {
     @Attribute(.unique) var id: String
@@ -28,25 +34,37 @@ final class User {
     var fat: Float
     var carbs: Float
     var calories: Float
-//    var age: Float
-//    var weight: Float
-//    var height: Float
+    var age: Float
+    var weight: Float
+    var height: Float
     var type: ObjectiveType
     var activity: ActivityType
+    var gender: Gender
 
-    init(id: String = UUID().uuidString, proteins: Float = 150, fat: Float = 60, carbs: Float = 200, calories: Float = 2600
-//         , age: Float = 20, weight: Float = 80, height: Float = 180
-         , type: ObjectiveType = .maintain, activity: ActivityType = .lowActivity) {
+    init(id: String = UUID().uuidString, 
+         proteins: Float = 150,
+         fat: Float = 60, 
+         carbs: Float = 200,
+         calories: Float = 2000,
+         age: Float = 20,
+         weight: Float = 80,
+         height: Float = 180,
+         type: ObjectiveType = .maintain,
+         activity: ActivityType = .lowActivity,
+         gender: Gender = .male
+    ) {
+
         self.id = id
         self.proteins = proteins
         self.fat = fat
         self.carbs = carbs
         self.calories = calories
-//        self.age = age
-//        self.weight = weight
-//        self.height = height
+        self.age = age
+        self.weight = weight
+        self.height = height
         self.type = type
         self.activity = activity
+        self.gender = gender
     }
 }
 

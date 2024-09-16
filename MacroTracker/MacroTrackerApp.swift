@@ -8,7 +8,6 @@
 import SwiftUI
 import SwiftData
 
-// TODO: ONBOARDING
 @main
 struct MacroTrackerApp: App {
     @AppStorage("shouldShowOnboarding") var showOnboarding: Bool = true
@@ -19,6 +18,7 @@ struct MacroTrackerApp: App {
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         do {
             let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+//            SwiftDataManager.shared.deleteAllObjects()
             if try container.mainContext.fetch(FetchDescriptor<User>()).isEmpty {
                 container.mainContext.insert(User())
             }

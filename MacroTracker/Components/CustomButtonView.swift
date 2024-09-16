@@ -28,7 +28,7 @@ struct CustomButtonView: View {
         }, label: {
             CustomButtonBody(label: self.label, color: self.color, width: self.width, height: self.height)
         })
-        .tint(.black)
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -43,7 +43,6 @@ private struct CustomButtonBody: View {
             .bold()
             .frame(width: self.width, height: self.height)
             .background(Color(self.color))
-            .foregroundColor(.white)
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 }

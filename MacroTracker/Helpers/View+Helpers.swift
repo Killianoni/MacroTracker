@@ -9,8 +9,17 @@ import Foundation
 import SwiftUI
 
 extension View {
-    func hideKeyboard() {
-        let resign = #selector(UIResponder.resignFirstResponder)
-        UIApplication.shared.sendAction(resign, to: nil, from: nil, for: nil)
+    func hideKeyboard() -> some View {
+        modifier(hideKeyboardModifier())
+    }
+}
+
+struct hideKeyboardModifier: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .background(.white.opacity(0.01))
+            .onTapGesture {
+                UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+            }
     }
 }

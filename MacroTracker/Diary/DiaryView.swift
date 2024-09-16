@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-// TODO: FAIRE FONCTIONNER LA PREVIEW, LE ONAPPEAR AUSSI CEST QUOI CA, ET CLAVIER IMPORTANT, FAIRE UN STATE DE LOADING PITIE
+// TODO: Clavier
 struct DiaryView: View {
     @StateObject var viewModel = DiaryViewModel(dataSource: .shared)
 
@@ -53,12 +53,13 @@ struct DiaryView: View {
                         IncrementButton(number: $viewModel.incrementFat, width: 20, color: Color.orange)
                         IncrementButton(number: $viewModel.incrementProteins, width: 20, color: Color.red)
                     }
+                    .padding(.bottom, 30)
 
                     // Apply button
                     HStack {
                         CustomButtonView(action: {
                             viewModel.add()
-                        }, label: String(localized: "Apply"), color: Color.blue, width: 200, height: 50)
+                        }, label: String(localized: "Apply"), color: .green.opacity(0.6), width: 200, height: 50)
                     }
                 }
                 Spacer()
@@ -66,11 +67,9 @@ struct DiaryView: View {
                 ProgressView()
             }
         }
+        .hideKeyboard()
         .onAppear {
             viewModel.load()
-        }
-        .onTapGesture {
-            self.hideKeyboard()
         }
     }
 }

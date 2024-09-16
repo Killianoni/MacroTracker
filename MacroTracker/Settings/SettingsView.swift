@@ -9,12 +9,6 @@ import SwiftUI
 
 // TODO: FAIRE UN TRUC PAS MOCHE
 struct SettingsView: View {
-    @State private var proteins: String = UserDefaults.standard.string(forKey: "proteins") ?? ""
-    @State private var carbs: String = UserDefaults.standard.string(forKey: "carbs") ?? ""
-    @State private var fat: String = UserDefaults.standard.string(forKey: "fat") ?? ""
-    @State private var calories: String = UserDefaults.standard.string(forKey: "calories") ?? ""
-    
-    
     var body: some View {
         Form {
             Section {
@@ -33,10 +27,10 @@ struct SettingsView: View {
             }
             
             Section {
-                editableFormField(String(localized: "Proteins"), value: $proteins)
-                editableFormField(String(localized: "Carbs"), value: $carbs)
-                editableFormField(String(localized: "Fat"), value: $fat)
-                editableFormField(String(localized: "Calories"), value: $calories)
+//                editableFormField(String(localized: "Proteins"), value: $proteins)
+//                editableFormField(String(localized: "Carbs"), value: $carbs)
+//                editableFormField(String(localized: "Fat"), value: $fat)
+//                editableFormField(String(localized: "Calories"), value: $calories)
             } header: {
                 Text("Macros")
             }
