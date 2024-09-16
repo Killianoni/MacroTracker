@@ -42,7 +42,7 @@ struct IncrementButton: View {
                         self.number += 1
                     })
                 })
-                .tint(.black)
+                .buttonStyle(PlainButtonStyle())
             }
             .padding()
             .background(Color(self.color).opacity(Constants.opacity))
@@ -77,7 +77,7 @@ struct IncrementButton: View {
                         self.number -= 1
                     })
                 })
-                .tint(.black)
+                .buttonStyle(PlainButtonStyle())
             }
             .padding()
             .background(Color(self.color).opacity(Constants.opacity))

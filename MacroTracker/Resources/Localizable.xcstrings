@@ -116,6 +116,7 @@
       }
     },
     "Dark Mode" : {
+      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -140,7 +141,7 @@
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Extrèmement actif"
+            "value" : "Super actif"
           }
         }
       }
