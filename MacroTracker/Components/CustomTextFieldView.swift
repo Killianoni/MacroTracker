@@ -11,14 +11,16 @@ struct CustomTextFieldView: View {
     @Binding var text: String
     @State private var status: TextfieldStatus = .unselected
     @State var errorMessage: String?
+    let title: String
     var prompt: String?
     var width: CGFloat
     var height: CGFloat
     var disableVerification: Bool
     var isIntField: Bool
     
-    init(text: Binding<String>, prompt: String? = nil, width: CGFloat = 300, height: CGFloat = 50, disableVerification: Bool = false, isIntField: Bool = true) {
+    init(text: Binding<String>, title: String = "", prompt: String? = nil, width: CGFloat = 300, height: CGFloat = 50, disableVerification: Bool = false, isIntField: Bool = true) {
         self._text = text
+        self.title = title
         self.prompt = prompt
         self.width = width
         self.height = height
@@ -47,7 +49,9 @@ struct CustomTextFieldView: View {
     
     var body: some View {
         VStack(alignment: .leading) {
-            TextField(prompt ?? "", text: $text, onEditingChanged: { editing in
+            Text(String(title))
+                .bold()
+            TextField(prompt ?? "Saisissez votre texte ici", text: $text, onEditingChanged: { editing in
                 switch editing {
                 case true:
                     self.status = .selected
@@ -68,15 +72,17 @@ struct CustomTextFieldView: View {
             .frame(width: width, height: height)
             Spacer()
                 .frame(height: 5)
-            Text(self.errorMessage ?? "")
-                .font(.subheadline)
-                .padding(.leading, 5)
+            if errorMessage != nil {
+                Text(self.errorMessage!)
+                    .font(.subheadline)
+                    .padding(.leading, 5)
+            }
         }
     }
 }
 
 #Preview {
-    CustomTextFieldView(text: .constant(""), prompt: "Mignon textfield")
+    CustomTextFieldView(text: .constant(""),title: "Height", prompt: "Mignon textfield")
 }
 
 struct HighlightTextField: ViewModifier {

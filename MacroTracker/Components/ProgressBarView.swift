@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct CustomProgressBar: ProgressViewStyle {
-    let number1: CGFloat
-    let number2: CGFloat
+    let number1: Float
+    let number2: Float
     let color: Color
     let width: CGFloat
     var title: String
@@ -27,9 +27,9 @@ struct CustomProgressBar: ProgressViewStyle {
                     .frame(width: self.width, height: Constants.barHeight)
                     .foregroundColor(self.color.opacity(Constants.barOpacity))
                 RoundedRectangle(cornerRadius: 12)
-                    .frame(width: number1 > number2 ? self.width : self.width * number1/number2, height: Constants.barHeight)
+                    .frame(width: number1 > number2 ? self.width : self.width * CGFloat(number1/number2), height: Constants.barHeight)
                     .foregroundColor(self.color)
-                    .animation(.easeOut, value: number1)
+                    .animation(.easeOut(duration: 1), value: number1)
             }
         }
         HStack {
@@ -39,10 +39,11 @@ struct CustomProgressBar: ProgressViewStyle {
         }
         .frame(width: self.width)
         .bold()
+        .sensoryFeedback(.increase, trigger: number1)
     }
 }
 
 #Preview {
     ProgressView()
-        .progressViewStyle(CustomProgressBar(number1: 50, number2: 2500, color: .purple, width: 200, title: "Calories"))
+        .progressViewStyle(CustomProgressBar(number1: 2000, number2: 2500, color: .purple, width: 200, title: "Calories"))
 }

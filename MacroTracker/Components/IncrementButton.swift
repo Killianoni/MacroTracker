@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct IncrementButton: View {
-    @Binding var number: CGFloat
+    @Binding var number: Float
     @State private var timer: Timer?
     @State private var isLongPressing = false
     
@@ -42,7 +42,7 @@ struct IncrementButton: View {
                         self.number += 1
                     })
                 })
-                .tint(.black)
+                .buttonStyle(PlainButtonStyle())
             }
             .padding()
             .background(Color(self.color).opacity(Constants.opacity))
@@ -77,13 +77,14 @@ struct IncrementButton: View {
                         self.number -= 1
                     })
                 })
-                .tint(.black)
+                .buttonStyle(PlainButtonStyle())
             }
             .padding()
             .background(Color(self.color).opacity(Constants.opacity))
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
         }
         .padding()
+        .sensoryFeedback(.increase, trigger: number)
     }
 }
 

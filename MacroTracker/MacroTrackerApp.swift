@@ -10,30 +10,31 @@ import SwiftData
 
 @main
 struct MacroTrackerApp: App {
-    @AppStorage("isFirstLaunch") var isFirstLaunch: Bool?
-    var sharedModelContainer: ModelContainer = {
+    @AppStorage("shouldShowOnboarding") var showOnboarding: Bool = true
+    @MainActor var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Macros.self,
+            Macros.self, User.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
-        
         do {
-            return try ModelContainer(for: schema, configurations: [modelConfiguration])
+            let container = try ModelContainer(for: schema, configurations: [modelConfiguration])
+//            SwiftDataManager.shared.deleteAllObjects()
+            if try container.mainContext.fetch(FetchDescriptor<User>()).isEmpty {
+                container.mainContext.insert(User())
+            }
+            return container
         } catch {
             fatalError("Could not create ModelContainer: \(error)")
         }
     }()
-    
-    init() {
-        UserDefaultsManager.shared.isFirstLaunch()
-    }
-    
     var body: some Scene {
         WindowGroup {
-            if isFirstLaunch! {
+            if showOnboarding == true {
                 ObjectivesView()
+                    .animation(.easeIn, value: showOnboarding)
             } else {
                 TabbarView()
+                    .animation(.easeIn, value: showOnboarding)
             }
         }
         .modelContainer(sharedModelContainer)

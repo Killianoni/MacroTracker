@@ -13,7 +13,7 @@ struct CustomButtonView: View {
     var color: Color
     var width: CGFloat
     var height: CGFloat
-    
+
     init(action: @escaping () -> Void, label: String, color: Color, width: CGFloat = 100, height: CGFloat = 50) {
         self.action = action
         self.label = label
@@ -28,7 +28,7 @@ struct CustomButtonView: View {
         }, label: {
             CustomButtonBody(label: self.label, color: self.color, width: self.width, height: self.height)
         })
-        .tint(.black)
+        .buttonStyle(PlainButtonStyle())
     }
 }
 
@@ -37,13 +37,12 @@ private struct CustomButtonBody: View {
     var color: Color
     var width: CGFloat
     var height: CGFloat
-    
+
     var body: some View {
         Text(self.label)
             .bold()
             .frame(width: self.width, height: self.height)
             .background(Color(self.color))
-            .foregroundColor(.white)
             .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
     }
 }
