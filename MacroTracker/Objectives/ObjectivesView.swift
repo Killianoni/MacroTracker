@@ -10,7 +10,7 @@ import SwiftData
 
 // TODO: Clavier
 struct ObjectivesView: View {
-    @AppStorage("shouldShowOnboarding") var showOnboarding: Bool = true
+    @AppStorage("shouldShowOnboarding") private var showOnboarding: Bool = true
     @ObservedObject var viewModel = ObjectivesViewModel(dataSource: .shared)
     var body: some View {
         VStack {

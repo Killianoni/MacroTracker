@@ -23,23 +23,8 @@ struct SettingsView: View {
                         Text(Locale.current.identifier.description == "fr" ? "French" : "English")
                     })
                 }
-                HStack {
-                    Image(systemName: "moon")
-                    Toggle(isOn: .constant(true)) {
-                        Text("Dark Mode")
-                    }
-                }
             } header: {
                 Text("Preferences")
-            }
-            
-            Section {
-//                editableFormField(String(localized: "Proteins"), value: $proteins)
-//                editableFormField(String(localized: "Carbs"), value: $carbs)
-//                editableFormField(String(localized: "Fat"), value: $fat)
-//                editableFormField(String(localized: "Calories"), value: $calories)
-            } header: {
-                Text("Macros")
             }
         }
     }

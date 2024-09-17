@@ -7,10 +7,11 @@
 
 import SwiftUI
 import SwiftData
+import CodeScanner
 
 // TODO: Clavier
 struct DiaryView: View {
-    @StateObject var viewModel = DiaryViewModel(dataSource: .shared)
+    @StateObject private var viewModel = DiaryViewModel(dataSource: .shared)
 
     var body: some View {
         VStack {
@@ -26,23 +27,23 @@ struct DiaryView: View {
                                        number2: viewModel.user.carbs,
                                        color: Color.brown,
                                        size: 80,
-                                       title: NSLocalizedString("Carbs", comment: ""))
+                                       title: String(localized: "Carbs"))
                     ProgressCircleView(number1: $viewModel.macros.fat,
                                        number2: viewModel.user.fat,
                                        color: Color.orange,
                                        size: 80,
-                                       title: NSLocalizedString("Fat", comment: ""))
+                                       title: String(localized: "Fat"))
                     ProgressCircleView(number1: $viewModel.macros.proteins,
                                        number2: viewModel.user.proteins,
                                        color: Color.red,
                                        size: 80,
-                                       title: NSLocalizedString("Proteins", comment: ""))
+                                       title: String(localized: "Proteins"))
                 }
 
                 // Calories bar
                 HStack {
                     ProgressView()
-                        .progressViewStyle(CustomProgressBar(number1: viewModel.macros.calories, number2: viewModel.user.calories, color: Color.purple, width: 300, title: "Calories"))
+                        .progressViewStyle(CustomProgressBar(number1: viewModel.macros.calories, number2: viewModel.user.calories, color: Color.purple, width: 300, title: String(localized: "Calories")))
                 }
                 .padding()
 

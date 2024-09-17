@@ -20,7 +20,11 @@
 		0449BD152B2BD10A005CF845 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD142B2BD10A005CF845 /* ProgressBarView.swift */; };
 		0449BD172B2BD13E005CF845 /* IncrementButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD162B2BD13E005CF845 /* IncrementButton.swift */; };
 		0449BD192B2BD161005CF845 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD182B2BD161005CF845 /* CustomButtonView.swift */; };
+		04620CFA2C999CCE001EC653 /* OpenFoodFactsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04620CF92C999CCE001EC653 /* OpenFoodFactsAPI.swift */; };
+		04620CFD2C99A1AB001EC653 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04620CFC2C99A1AB001EC653 /* Product.swift */; };
 		047639C92C919E90000A1197 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 047639C82C919E90000A1197 /* Localizable.xcstrings */; };
+		04C29DB12C99F24E009A919E /* OpenFoodFactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29DB02C99F24E009A919E /* OpenFoodFactsRepository.swift */; };
+		04C29DB32C99F2D2009A919E /* GetProductUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29DB22C99F2D2009A919E /* GetProductUseCase.swift */; };
 		04C7C7792B2C5D2F00EE26FF /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C7782B2C5D2F00EE26FF /* DiaryViewModel.swift */; };
 		04C7C7802B2C716400EE26FF /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C77F2B2C716400EE26FF /* CustomTextFieldView.swift */; };
 		04C7C7842B2C7BF800EE26FF /* ObjectivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C7832B2C7BF800EE26FF /* ObjectivesView.swift */; };
@@ -30,6 +34,7 @@
 		04DF991F2B33501600F7A3E9 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF991E2B33501600F7A3E9 /* String+Helpers.swift */; };
 		04FA033C2B9F7F19001C8E1F /* TabbarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA033B2B9F7F19001C8E1F /* TabbarView.swift */; };
 		04FA033E2B9F7F5E001C8E1F /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04FA033D2B9F7F5E001C8E1F /* SettingsView.swift */; };
+		04FD662E2C99F8990046AACC /* CodeScanner in Frameworks */ = {isa = PBXBuildFile; productRef = 04FD662D2C99F8990046AACC /* CodeScanner */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,7 +52,11 @@
 		0449BD142B2BD10A005CF845 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		0449BD162B2BD13E005CF845 /* IncrementButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncrementButton.swift; sourceTree = "<group>"; };
 		0449BD182B2BD161005CF845 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		04620CF92C999CCE001EC653 /* OpenFoodFactsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsAPI.swift; sourceTree = "<group>"; };
+		04620CFC2C99A1AB001EC653 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		047639C82C919E90000A1197 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		04C29DB02C99F24E009A919E /* OpenFoodFactsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsRepository.swift; sourceTree = "<group>"; };
+		04C29DB22C99F2D2009A919E /* GetProductUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductUseCase.swift; sourceTree = "<group>"; };
 		04C7C7782B2C5D2F00EE26FF /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		04C7C77F2B2C716400EE26FF /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		04C7C7832B2C7BF800EE26FF /* ObjectivesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesView.swift; sourceTree = "<group>"; };
@@ -57,6 +66,7 @@
 		04DF991E2B33501600F7A3E9 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
 		04FA033B2B9F7F19001C8E1F /* TabbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabbarView.swift; sourceTree = "<group>"; };
 		04FA033D2B9F7F5E001C8E1F /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		04FD662F2C99F8F60046AACC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04FD662E2C99F8990046AACC /* CodeScanner in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,12 +126,15 @@
 		0449BD002B2B83BF005CF845 /* MacroTracker */ = {
 			isa = PBXGroup;
 			children = (
+				04FD662F2C99F8F60046AACC /* Info.plist */,
 				0449BD012B2B83BF005CF845 /* MacroTrackerApp.swift */,
 				04153BD42C92269F00168054 /* Diary */,
 				04153BD62C9226B800168054 /* Objectives */,
 				04153BD52C9226A900168054 /* Settings */,
-				04C7C77A2B2C5D5500EE26FF /* Models */,
 				04DF991A2B334C5600F7A3E9 /* Managers */,
+				04C29DAF2C99F23C009A919E /* Domain */,
+				04620CFB2C999CFD001EC653 /* Data */,
+				04C7C77A2B2C5D5500EE26FF /* Models */,
 				04DF991D2B33500600F7A3E9 /* Helpers */,
 				0449BD112B2B8CCD005CF845 /* Components */,
 				047639C72C919E5B000A1197 /* Resources */,
@@ -151,6 +165,15 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
+		04620CFB2C999CFD001EC653 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				04C29DB02C99F24E009A919E /* OpenFoodFactsRepository.swift */,
+				04620CF92C999CCE001EC653 /* OpenFoodFactsAPI.swift */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
 		047639C72C919E5B000A1197 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -160,11 +183,20 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		04C29DAF2C99F23C009A919E /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				04C29DB22C99F2D2009A919E /* GetProductUseCase.swift */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
 		04C7C77A2B2C5D5500EE26FF /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				0449BD052B2B83BF005CF845 /* Macros.swift */,
 				04CF93102C946CA6004EFAFE /* User.swift */,
+				04620CFC2C99A1AB001EC653 /* Product.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -205,6 +237,7 @@
 			);
 			name = MacroTracker;
 			packageProductDependencies = (
+				04FD662D2C99F8990046AACC /* CodeScanner */,
 			);
 			productName = MacroTracker;
 			productReference = 0449BCFE2B2B83BF005CF845 /* MacroTracker.app */;
@@ -236,6 +269,7 @@
 			);
 			mainGroup = 0449BCF52B2B83BF005CF845;
 			packageReferences = (
+				04FD662C2C99F8990046AACC /* XCRemoteSwiftPackageReference "CodeScanner" */,
 			);
 			productRefGroup = 0449BCFF2B2B83BF005CF845 /* Products */;
 			projectDirPath = "";
@@ -269,10 +303,12 @@
 				0449BD132B2B8CF8005CF845 /* ProgressCircleView.swift in Sources */,
 				04FA033C2B9F7F19001C8E1F /* TabbarView.swift in Sources */,
 				04C7C7802B2C716400EE26FF /* CustomTextFieldView.swift in Sources */,
+				04620CFD2C99A1AB001EC653 /* Product.swift in Sources */,
 				04FA033E2B9F7F5E001C8E1F /* SettingsView.swift in Sources */,
 				041E6A7E2B3393BD00D81483 /* Date+Helpers.swift in Sources */,
 				04C7C7842B2C7BF800EE26FF /* ObjectivesView.swift in Sources */,
 				04CF93112C946CA6004EFAFE /* User.swift in Sources */,
+				04620CFA2C999CCE001EC653 /* OpenFoodFactsAPI.swift in Sources */,
 				04DF991F2B33501600F7A3E9 /* String+Helpers.swift in Sources */,
 				04153BDA2C92318500168054 /* SwiftDataManager.swift in Sources */,
 				0449BD062B2B83BF005CF845 /* Macros.swift in Sources */,
@@ -281,6 +317,8 @@
 				04153BD82C922AC800168054 /* View+Helpers.swift in Sources */,
 				0449BD022B2B83BF005CF845 /* MacroTrackerApp.swift in Sources */,
 				04C7C7862B2C7F9900EE26FF /* ObjectivesViewModel.swift in Sources */,
+				04C29DB12C99F24E009A919E /* OpenFoodFactsRepository.swift in Sources */,
+				04C29DB32C99F2D2009A919E /* GetProductUseCase.swift in Sources */,
 				04CF931C2C973F67004EFAFE /* MathManager.swift in Sources */,
 				0449BD152B2BD10A005CF845 /* ProgressBarView.swift in Sources */,
 				0449BD172B2BD13E005CF845 /* IncrementButton.swift in Sources */,
@@ -420,8 +458,10 @@
 				DEVELOPMENT_TEAM = M9KBRNF39K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MacroTracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MacroTracker;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to scan barcodes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -456,8 +496,10 @@
 				DEVELOPMENT_TEAM = M9KBRNF39K;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MacroTracker/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = MacroTracker;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "We need to scan barcodes";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -503,6 +545,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04FD662C2C99F8990046AACC /* XCRemoteSwiftPackageReference "CodeScanner" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/twostraws/CodeScanner.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04FD662D2C99F8990046AACC /* CodeScanner */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04FD662C2C99F8990046AACC /* XCRemoteSwiftPackageReference "CodeScanner" */;
+			productName = CodeScanner;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0449BCF62B2B83BF005CF845 /* Project object */;
 }

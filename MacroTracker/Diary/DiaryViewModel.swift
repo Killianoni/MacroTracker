@@ -7,8 +7,9 @@
 
 import Foundation
 import SwiftData
+import Combine
 
-class DiaryViewModel: ObservableObject {
+final class DiaryViewModel: ObservableObject {
     
     private enum Constants {
         static let checkRange = 0...999
@@ -19,31 +20,23 @@ class DiaryViewModel: ObservableObject {
         case loading
     }
 
-
     @Published var incrementCarbs: Float = 0
     @Published var incrementProteins: Float = 0
     @Published var incrementFat: Float = 0
-    
     @Published var currentDate: Date = .now
 
     @Published var macros = Macros()
     @Published var user = User()
-
     @Published var state = State.loading
 
     private let dataSource: SwiftDataManager
     private let math = MathManager()
+    private let getProductUseCase = GetProductUseCase()
+    private var cancellables = Set<AnyCancellable>()
 
     init(dataSource: SwiftDataManager) {
         self.dataSource = dataSource
     }
-
-
-//    func isNewDate(macros: [Macros]) {
-//        if !macros.contains(where: { $0.date.isEqualTo(date: currentDate )}) {
-//            context?.insert(Macros())
-//        }
-//    }
 
     func load() {
         fetchUser()
@@ -89,13 +82,23 @@ class DiaryViewModel: ObservableObject {
         incrementFat = 0
         incrementProteins = 0
     }
-    
-    private func checkQuickEntrys(macros: Macros) -> Bool {
-        guard Constants.checkRange.contains(Int(macros.carbs + incrementCarbs)),
-              Constants.checkRange.contains(Int(macros.fat + incrementFat)),
-              Constants.checkRange.contains(Int(macros.proteins + incrementProteins)) else {
-                  return false
-              }
-        return true
+
+    func loadProduct(barcode: String) {
+        getProductUseCase.execute(barcode: barcode)
+            .handleEvents(receiveSubscription: { _ in
+                self.state = .loading
+            })
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                    case .finished:
+                        break
+                }
+            }, receiveValue: { response in
+//                self.product = response.product
+            })
+            .store(in: &cancellables)
+        self.state = .normal
     }
 }

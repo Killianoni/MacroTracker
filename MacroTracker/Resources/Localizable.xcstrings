@@ -75,7 +75,6 @@
       }
     },
     "Calories" : {
-      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -111,16 +110,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sèche"
-          }
-        }
-      }
-    },
-    "Dark Mode" : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mode sombre"
           }
         }
       }
@@ -202,16 +191,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Langue"
-          }
-        }
-      }
-    },
-    "Macros" : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Macros"
           }
         }
       }
