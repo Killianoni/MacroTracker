@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// TODO: FAIRE UN TRUC PAS MOCHE
 struct SettingsView: View {
     var body: some View {
         Form {
@@ -15,6 +14,14 @@ struct SettingsView: View {
                 HStack {
                     Image(systemName: "globe")
                     Text("Language")
+                    Spacer()
+                    Button(action: {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    }, label: {
+                        Text(Locale.current.identifier.description == "fr" ? "French" : "English")
+                    })
                 }
                 HStack {
                     Image(systemName: "moon")

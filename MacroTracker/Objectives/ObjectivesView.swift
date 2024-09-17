@@ -90,6 +90,6 @@ struct CustomSegmentedControl: View {
             }
         }
         .frame(height: 45)
-        .cornerRadius(20)
+        .cornerRadius(14)
     }
 }
