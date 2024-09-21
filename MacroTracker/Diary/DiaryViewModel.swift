@@ -9,6 +9,7 @@ import Foundation
 import SwiftData
 import Combine
 
+@MainActor
 final class DiaryViewModel: ObservableObject {
     
     private enum Constants {
@@ -18,6 +19,13 @@ final class DiaryViewModel: ObservableObject {
     enum State {
         case normal
         case loading
+        case success(Product)
+        case failure(Error)
+
+        var isLoading: Bool {
+            if case .loading = self { return true }
+            return false
+        }
     }
 
     @Published var incrementCarbs: Float = 0
@@ -27,7 +35,7 @@ final class DiaryViewModel: ObservableObject {
 
     @Published var macros = Macros()
     @Published var user = User()
-    @Published var state = State.loading
+    @Published var state: State = State.loading
 
     private let dataSource: SwiftDataManager
     private let math = MathManager()
@@ -91,12 +99,12 @@ final class DiaryViewModel: ObservableObject {
             .sink(receiveCompletion: { completion in
                 switch completion {
                     case .failure(let error):
-                        print(error.localizedDescription)
+                        self.state = .failure(error)
                     case .finished:
                         break
                 }
             }, receiveValue: { response in
-//                self.product = response.product
+                self.state = .success(response.product)
             })
             .store(in: &cancellables)
         self.state = .normal

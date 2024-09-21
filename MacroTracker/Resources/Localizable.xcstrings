@@ -4,16 +4,6 @@
     "" : {
 
     },
-    "%lld /\n%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld /\n%2$lld"
-          }
-        }
-      }
-    },
     "%lld / %lld" : {
       "localizations" : {
         "en" : {
@@ -50,16 +40,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Age"
-          }
-        }
-      }
-    },
-    "Apply" : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Appliquer"
           }
         }
       }
@@ -271,6 +251,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Paramètres"
+          }
+        }
+      }
+    },
+    "Steps" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas"
           }
         }
       }

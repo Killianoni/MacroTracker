@@ -28,7 +28,6 @@ struct Product: Codable {
     let saturatedFat: Double?
     let sugars: Double?
 
-    // Utilisation de CodingKeys pour mapper les noms de propriétés aux clés JSON
     enum CodingKeys: String, CodingKey {
         case productNameFR = "product_name_fr"
         case productNameEN = "product_name_en"
