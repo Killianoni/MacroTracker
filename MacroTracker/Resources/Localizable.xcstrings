@@ -75,7 +75,6 @@
       }
     },
     "Calories" : {
-      "extractionState" : "stale",
       "localizations" : {
         "fr" : {
           "stringUnit" : {
@@ -115,23 +114,22 @@
         }
       }
     },
-    "Dark Mode" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mode sombre"
-          }
-        }
-      }
-    },
     "Diary" : {
       "localizations" : {
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Journal"
+          }
+        }
+      }
+    },
+    "English" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anglais"
           }
         }
       }
@@ -152,6 +150,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Lipides"
+          }
+        }
+      }
+    },
+    "French" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Français"
           }
         }
       }
@@ -183,16 +191,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Langue"
-          }
-        }
-      }
-    },
-    "Macros" : {
-      "localizations" : {
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Macros"
           }
         }
       }

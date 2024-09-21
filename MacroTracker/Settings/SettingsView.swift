@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-// TODO: FAIRE UN TRUC PAS MOCHE
 struct SettingsView: View {
     var body: some View {
         Form {
@@ -15,24 +14,17 @@ struct SettingsView: View {
                 HStack {
                     Image(systemName: "globe")
                     Text("Language")
-                }
-                HStack {
-                    Image(systemName: "moon")
-                    Toggle(isOn: .constant(true)) {
-                        Text("Dark Mode")
-                    }
+                    Spacer()
+                    Button(action: {
+                        if let url = URL(string: UIApplication.openSettingsURLString) {
+                            UIApplication.shared.open(url)
+                        }
+                    }, label: {
+                        Text(Locale.current.identifier.description == "fr" ? "French" : "English")
+                    })
                 }
             } header: {
                 Text("Preferences")
-            }
-            
-            Section {
-//                editableFormField(String(localized: "Proteins"), value: $proteins)
-//                editableFormField(String(localized: "Carbs"), value: $carbs)
-//                editableFormField(String(localized: "Fat"), value: $fat)
-//                editableFormField(String(localized: "Calories"), value: $calories)
-            } header: {
-                Text("Macros")
             }
         }
     }

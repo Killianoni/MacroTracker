@@ -8,7 +8,7 @@
 import Foundation
 
 // TODO: Check les entrées des champs
-class ObjectivesViewModel: ObservableObject {
+final class ObjectivesViewModel: ObservableObject {
     @Published var height: String = ""
     @Published var weight: String = ""
     @Published var age: String = ""
