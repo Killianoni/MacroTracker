@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 // TODO: Check les entrées des champs
 final class ObjectivesViewModel: ObservableObject {
     @Published var height: String = ""

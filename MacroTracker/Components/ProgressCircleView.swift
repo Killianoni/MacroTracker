@@ -12,11 +12,10 @@ struct ProgressCircleView: View {
     @Binding var number1: Float
     let number2: Float
     let color: Color
-    let size: CGFloat
     var title: String?
     
     enum Constants {
-        static let lineWidth: CGFloat = 10
+        static let lineWidth: CGFloat = 8
         static let circleOpacity: CGFloat = 0.3
         static let rotationDegrees: CGFloat = -90
         static let fontDivider: CGFloat = 5
@@ -30,7 +29,11 @@ struct ProgressCircleView: View {
                         self.color.opacity(Constants.circleOpacity),
                         lineWidth: Constants.lineWidth
                     )
-                
+                if let title = self.title {
+                    Text(title.prefix(1))
+                        .font(.system(size: 16))
+                        .bold()
+                }
                 // Progress circle
                 Circle()
                     .trim(from: 0, to: CGFloat(number1/number2))
@@ -43,25 +46,33 @@ struct ProgressCircleView: View {
                     )
                     .rotationEffect(.degrees(Constants.rotationDegrees))
                     .animation(.easeOut(duration: 1), value: number1)
-
-                Text("\(Int(number1)) /\n\(Int(number2))")
-                    .multilineTextAlignment(.center)
-                    .font(.system(size: size/Constants.fontDivider))
-                    .bold()
             }
-            .frame(width: size, height: size)
+            .frame(width: 55)
             .padding(.bottom, 5)
-            if let title = self.title {
-                Text(title)
-                    .font(.system(size: size/Constants.fontDivider))
-                    .bold()
-            }
+            Text("\(Int(number1)) / \(Int(number2))")
+                .multilineTextAlignment(.center)
+                .lineLimit(1)
+                .font(.system(size: 14))
+                .bold()
         }
+        .frame(width: 100, height: 100)
         .sensoryFeedback(.increase, trigger: number1)
-        .padding()
+        .background(RoundedRectangle(cornerRadius: 12)
+            .foregroundStyle(.cardTint)
+            .opacity(0.7)
+            .overlay(
+                RoundedRectangle(cornerRadius: 12)
+                    .stroke(.shadowTint.opacity(0.3), lineWidth: 0.5)
+            )
+        )
     }
 }
 
 #Preview {
-    ProgressCircleView(number1: .constant(200), number2: 2500, color: .cyan, size: 200)
+    HStack {
+        ProgressCircleView(number1: .constant(200), number2: 2500, color: .cyan, title: "Proteines")
+        ProgressCircleView(number1: .constant(200), number2: 2500, color: .cyan, title: "Proteines")
+        ProgressCircleView(number1: .constant(200), number2: 2500, color: .cyan, title: "Proteines")
+    }
+    .padding(.horizontal, 30)
 }

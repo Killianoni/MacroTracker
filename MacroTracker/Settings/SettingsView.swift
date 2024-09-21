@@ -20,13 +20,14 @@ struct SettingsView: View {
                             UIApplication.shared.open(url)
                         }
                     }, label: {
-                        Text(Locale.current.identifier.description == "fr" ? "French" : "English")
+                        Text(Locale.current.identifier.contains("fr") ? "French" : "English")
                     })
                 }
             } header: {
                 Text("Preferences")
             }
         }
+        .background(.backgroundTint)
     }
 }
 
