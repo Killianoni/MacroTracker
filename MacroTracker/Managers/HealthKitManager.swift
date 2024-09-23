@@ -11,64 +11,50 @@ import HealthKit
 class HealthKitManager: ObservableObject {
     private let healthStore = HKHealthStore()
     static let shared = HealthKitManager()
-    @Published var stepCount: Double = 0.0
+    @Published var stepCount: Float = 0.0
 
     init() {
         requestAuthorization()
     }
 
-    // Request authorization to access HealthKit data
     private func requestAuthorization() {
-        // Check if HealthKit is available on the device
         guard HKHealthStore.isHealthDataAvailable() else {
             print("HealthKit is not available on this device.")
             return
         }
 
-        // Define the health data we want to read
         let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
 
-        // Request permission to read the step count data
         healthStore.requestAuthorization(toShare: nil, read: [stepType]) { (success, error) in
             if !success {
                 print("HealthKit authorization failed: \(String(describing: error))")
-            } else {
-                print("HealthKit authorization granted.")
-                self.fetchStepCountData()
             }
         }
     }
 
-    // Fetch step count data
-    func fetchStepCountData() {
-        let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
+    func getSteps(date: Date, completion: @escaping (Float) -> Void) {
+        let stepsQuantityType = HKQuantityType.quantityType(forIdentifier: .stepCount)!
 
-        // Set the date range to fetch steps (e.g., today)
-        let startDate = Calendar.current.startOfDay(for: Date())
-        let endDate = Date()
+        let now = date
+        let startOfDay = Calendar.current.startOfDay(for: now)
+        let predicate = HKQuery.predicateForSamples(
+            withStart: startOfDay,
+            end: date.endOfDay(),
+            options: .strictStartDate
+        )
 
-        // Create a predicate to specify the date range
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-
-        // Define a query to fetch step count samples
-        let query = HKStatisticsQuery(quantityType: stepType, quantitySamplePredicate: predicate, options: .cumulativeSum) { [weak self] _, result, error in
-            guard let self = self else { return }
-            if let error = error {
-                print("Error fetching step count: \(error.localizedDescription)")
+        let query = HKStatisticsQuery(
+            quantityType: stepsQuantityType,
+            quantitySamplePredicate: predicate,
+            options: .cumulativeSum
+        ) { _, result, _ in
+            guard let result = result, let sum = result.sumQuantity() else {
+                completion(0.0)
                 return
             }
-
-            if let result = result, let sum = result.sumQuantity() {
-                let steps = sum.doubleValue(for: HKUnit.count())
-                DispatchQueue.main.async {
-                    self.stepCount = steps
-                }
-            } else {
-                print("No step data found")
-            }
+            completion(Float(sum.doubleValue(for: HKUnit.count())))
         }
 
-        // Execute the query
         healthStore.execute(query)
     }
 }

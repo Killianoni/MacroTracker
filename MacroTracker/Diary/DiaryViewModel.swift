@@ -36,7 +36,9 @@ final class DiaryViewModel: ObservableObject {
     @Published var macros = Macros()
     @Published var user = User()
     @Published var state: State = State.loading
+    @Published var stepCount: Float = 0
 
+    private var healthKitManager = HealthKitManager.shared
     private let dataSource: SwiftDataManager
     private let math = MathManager()
     private let getProductUseCase = GetProductUseCase()
@@ -47,13 +49,14 @@ final class DiaryViewModel: ObservableObject {
     }
 
     func load() {
+        self.state = .loading
         fetchUser()
         fetchMacros()
+        fetchSteps()
         self.state = .normal
     }
 
     private func fetchUser() {
-        self.state = .loading
         guard let user = dataSource.fetchUser() else {
             self.state = .normal
             return
@@ -69,6 +72,14 @@ final class DiaryViewModel: ObservableObject {
             return
         }
         self.macros = macros
+    }
+
+    func fetchSteps() {
+        healthKitManager.getSteps(date: currentDate) { [weak self] steps in
+            DispatchQueue.main.async {
+                self?.stepCount = steps
+            }
+        }
     }
 
     func add() {
