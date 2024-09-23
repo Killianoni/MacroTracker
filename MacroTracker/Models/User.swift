@@ -37,6 +37,7 @@ final class User {
     var age: Float
     var weight: Float
     var height: Float
+    var steps: Float
     var type: ObjectiveType
     var activity: ActivityType
     var gender: Gender
@@ -49,6 +50,7 @@ final class User {
          age: Float = 20,
          weight: Float = 80,
          height: Float = 180,
+         steps: Float = 10000,
          type: ObjectiveType = .maintain,
          activity: ActivityType = .lowActivity,
          gender: Gender = .male
@@ -62,6 +64,7 @@ final class User {
         self.age = age
         self.weight = weight
         self.height = height
+        self.steps = steps
         self.type = type
         self.activity = activity
         self.gender = gender

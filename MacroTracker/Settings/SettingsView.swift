@@ -8,11 +8,14 @@
 import SwiftUI
 
 struct SettingsView: View {
+    @StateObject private var healthKitManager = HealthKitManager.shared
+
     var body: some View {
         Form {
             Section {
                 HStack {
                     Image(systemName: "globe")
+                        .foregroundStyle(.brown)
                     Text("Language")
                     Spacer()
                     Button(action: {
@@ -23,6 +26,30 @@ struct SettingsView: View {
                         Text(Locale.current.identifier.contains("fr") ? "French" : "English")
                     })
                 }
+
+                // MARK: Tracking health kit
+//                HStack {
+//                    Image(systemName: "heart.fill")
+//                        .foregroundStyle(.red)
+//                    Text("Steps tracking")
+//                    Spacer()
+//                    Button(action: {
+//                        if let url = URL(string: "x-apple-health://") {
+//                            UIApplication.shared.open(url)
+//                        }
+//                    }, label: {
+//                        Circle()
+//                            .stroke(lineWidth: 2.0)
+//                            .fill(.red)
+//                            .overlay {
+//                                Circle()
+//                                    .stroke(lineWidth: 4.0)
+//                                    .fill(.red)
+//                                    .blur(radius: 3.0)
+//                            }
+//                            .frame(width: 15)
+//                    })
+//                }
             } header: {
                 Text("Preferences")
             }

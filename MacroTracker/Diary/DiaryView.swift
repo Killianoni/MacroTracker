@@ -12,8 +12,6 @@ import CodeScanner
 // TODO: Clavier
 struct DiaryView: View {
     @StateObject private var viewModel = DiaryViewModel(dataSource: .shared)
-    @StateObject private var healthKitManager = HealthKitManager.shared
-
     var body: some View {
         VStack {
             if !viewModel.state.isLoading {
@@ -21,7 +19,7 @@ struct DiaryView: View {
                     .onChange(of: viewModel.currentDate) { _ , newValue in
                         viewModel.load()
                     }
-                    .padding(.vertical, 20)
+                    .padding(.top, 30)
 
                 // Circles
                 HStack(spacing: 0) {
@@ -40,12 +38,12 @@ struct DiaryView: View {
                                        color: Color.yellow,
                                        title: String(localized: "Fat"))
                 }
-                .padding(.bottom, 15)
+                .padding(.vertical, 15)
 
                 // Calories bar
                 HStack {
                     ProgressView()
-                        .progressViewStyle(CustomProgressBar(number1: Float(healthKitManager.stepCount), number2: 10000, color: .red, title: String(localized: "Steps")))
+                        .progressViewStyle(CustomProgressBar(number1: viewModel.stepCount, number2: 10000, color: .red, title: String(localized: "Steps")))
                 }
                 .padding(.bottom, 15)
                 HStack {
@@ -58,7 +56,6 @@ struct DiaryView: View {
             }
         }
         .padding(.horizontal, 30)
-        .hideKeyboard()
         .onAppear {
             viewModel.load()
         }
