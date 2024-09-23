@@ -31,8 +31,7 @@ struct ProgressCircleView: View {
                     )
                 if let title = self.title {
                     Text(title.prefix(1))
-                        .font(.system(size: 16))
-                        .bold()
+                        .font(.system(size: 16, weight: .bold))
                 }
                 // Progress circle
                 Circle()
@@ -52,7 +51,7 @@ struct ProgressCircleView: View {
             Text("\(Int(number1)) / \(Int(number2))")
                 .multilineTextAlignment(.center)
                 .lineLimit(1)
-                .font(.system(size: 14))
+                .font(.system(size: 14, weight: .regular))
                 .bold()
         }
         .frame(width: 100, height: 100)
@@ -62,7 +61,7 @@ struct ProgressCircleView: View {
             .opacity(0.7)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(.shadowTint.opacity(0.3), lineWidth: 0.5)
+                    .stroke(.shadowTint.opacity(0.3), lineWidth: 0.6)
             )
         )
     }

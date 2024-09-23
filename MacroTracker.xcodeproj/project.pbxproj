@@ -23,6 +23,7 @@
 		0449BD172B2BD13E005CF845 /* IncrementButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD162B2BD13E005CF845 /* IncrementButton.swift */; };
 		0449BD192B2BD161005CF845 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD182B2BD161005CF845 /* CustomButtonView.swift */; };
 		045D6AE42C9F30A20099BF2D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D6AE32C9F309B0099BF2D /* HealthKitManager.swift */; };
+		045D6AE62CA184FB0099BF2D /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D6AE52CA184F00099BF2D /* MealView.swift */; };
 		04620CFA2C999CCE001EC653 /* OpenFoodFactsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04620CF92C999CCE001EC653 /* OpenFoodFactsAPI.swift */; };
 		04620CFD2C99A1AB001EC653 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04620CFC2C99A1AB001EC653 /* Product.swift */; };
 		047639C92C919E90000A1197 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 047639C82C919E90000A1197 /* Localizable.xcstrings */; };
@@ -59,6 +60,7 @@
 		0449BD182B2BD161005CF845 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		045D6AE22C9F26670099BF2D /* MacroTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacroTracker.entitlements; sourceTree = "<group>"; };
 		045D6AE32C9F309B0099BF2D /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
+		045D6AE52CA184F00099BF2D /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
 		04620CF92C999CCE001EC653 /* OpenFoodFactsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsAPI.swift; sourceTree = "<group>"; };
 		04620CFC2C99A1AB001EC653 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		047639C82C919E90000A1197 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 		0449BD112B2B8CCD005CF845 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				045D6AE52CA184F00099BF2D /* MealView.swift */,
 				0449BD122B2B8CF8005CF845 /* ProgressCircleView.swift */,
 				0449BD142B2BD10A005CF845 /* ProgressBarView.swift */,
 				0449BD162B2BD13E005CF845 /* IncrementButton.swift */,
@@ -320,6 +323,7 @@
 				0449BD192B2BD161005CF845 /* CustomButtonView.swift in Sources */,
 				0449BD042B2B83BF005CF845 /* DiaryView.swift in Sources */,
 				0449BD132B2B8CF8005CF845 /* ProgressCircleView.swift in Sources */,
+				045D6AE62CA184FB0099BF2D /* MealView.swift in Sources */,
 				04FA033C2B9F7F19001C8E1F /* TabbarView.swift in Sources */,
 				04C7C7802B2C716400EE26FF /* CustomTextFieldView.swift in Sources */,
 				04620CFD2C99A1AB001EC653 /* Product.swift in Sources */,

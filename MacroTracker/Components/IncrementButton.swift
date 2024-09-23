@@ -54,9 +54,8 @@ struct IncrementButton: View {
             }
             .multilineTextAlignment(.center)
             .frame(width: self.width * Constants.fieldMultiplier)
-            .font(.system(size: width))
-            .bold()
-            
+            .font(.system(size: width, weight: .bold))
+
             HStack {
                 Button(action: {
                     if(self.isLongPressing) {

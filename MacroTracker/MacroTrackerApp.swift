@@ -29,13 +29,10 @@ struct MacroTrackerApp: App {
     }()
     var body: some Scene {
         WindowGroup {
-            if showOnboarding == true {
-                ObjectivesView()
-                    .animation(.easeIn, value: showOnboarding)
-            } else {
-                TabbarView()
-                    .animation(.easeIn, value: showOnboarding)
-            }
+            TabbarView()
+                .fullScreenCover(isPresented: $showOnboarding) {
+                    ObjectivesView()
+                }
         }
         .modelContainer(sharedModelContainer)
     }

@@ -14,6 +14,12 @@
         }
       }
     },
+    "15g" : {
+
+    },
+    "30 40 5" : {
+
+    },
     "Active" : {
       "localizations" : {
         "fr" : {
@@ -33,6 +39,15 @@
           }
         }
       }
+    },
+    "Add a meal" : {
+
+    },
+    "Add a meal +" : {
+
+    },
+    "Add product" : {
+
     },
     "Age" : {
       "localizations" : {
@@ -63,6 +78,9 @@
           }
         }
       }
+    },
+    "Cals" : {
+
     },
     "Carbs" : {
       "localizations" : {
@@ -103,6 +121,9 @@
           }
         }
       }
+    },
+    "Edit product" : {
+
     },
     "English" : {
       "localizations" : {
@@ -235,6 +256,9 @@
         }
       }
     },
+    "Repas" : {
+
+    },
     "Sedentary" : {
       "localizations" : {
         "fr" : {
@@ -264,9 +288,6 @@
           }
         }
       }
-    },
-    "Steps tracking" : {
-
     },
     "Today" : {
       "localizations" : {
