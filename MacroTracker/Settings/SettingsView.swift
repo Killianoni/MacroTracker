@@ -27,36 +27,34 @@ struct SettingsView: View {
                     })
                 }
 
-                HStack {
-                    Image(systemName: "heart.fill")
-                        .foregroundStyle(.red)
-                    Text("Steps tracking")
-                    Spacer()
-                    Button(action: {
-                        if let url = URL(string: "x-apple-health://") {
-                            UIApplication.shared.open(url)
-                        }
-                    }, label: {
-                        Circle()
-                            .stroke(lineWidth: 2.0)
-                            .fill(.red)
-                            .overlay {
-                                Circle()
-                                    .stroke(lineWidth: 4.0)
-                                    .fill(.red)
-                                    .blur(radius: 3.0)
-                            }
-                            .frame(width: 15)
-                    })
-                }
+                // MARK: Tracking health kit
+//                HStack {
+//                    Image(systemName: "heart.fill")
+//                        .foregroundStyle(.red)
+//                    Text("Steps tracking")
+//                    Spacer()
+//                    Button(action: {
+//                        if let url = URL(string: "x-apple-health://") {
+//                            UIApplication.shared.open(url)
+//                        }
+//                    }, label: {
+//                        Circle()
+//                            .stroke(lineWidth: 2.0)
+//                            .fill(.red)
+//                            .overlay {
+//                                Circle()
+//                                    .stroke(lineWidth: 4.0)
+//                                    .fill(.red)
+//                                    .blur(radius: 3.0)
+//                            }
+//                            .frame(width: 15)
+//                    })
+//                }
             } header: {
                 Text("Preferences")
             }
         }
         .background(.backgroundTint)
-        .onAppear {
-            print(healthKitManager.isTrackingAuthorized())
-        }
     }
 }
 
