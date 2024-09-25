@@ -17,7 +17,7 @@ final class SwiftDataManager {
 
     @MainActor
     private init() {
-        self.modelContainer = try! ModelContainer(for: Macros.self, User.self, configurations: ModelConfiguration(isStoredInMemoryOnly: false))
+        self.modelContainer = try! ModelContainer(for: Macros.self, User.self, Meal.self, configurations: ModelConfiguration(isStoredInMemoryOnly: false))
         self.modelContext = modelContainer.mainContext
     }
 
@@ -25,6 +25,7 @@ final class SwiftDataManager {
         do {
             try modelContext.delete(model: User.self)
             try modelContext.delete(model: Macros.self)
+            try modelContext.delete(model: Meal.self)
         } catch {
             print("Failed to clear all SwiftData objects.")
         }
@@ -76,6 +77,26 @@ final class SwiftDataManager {
             user.carbs = newUser.carbs
             user.fat = newUser.fat
             user.proteins = newUser.proteins
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
+    // MARK: Meal -
+
+    func fetchMeals() -> [Meal]? {
+        do {
+            return try modelContext.fetch(FetchDescriptor<Meal>())
+        } catch {
+            print(error.localizedDescription)
+            return []
+        }
+    }
+
+    func addMeal(_ meal: Meal) {
+        modelContext.insert(meal)
+        do {
+            try modelContext.save()
         } catch {
             print(error.localizedDescription)
         }

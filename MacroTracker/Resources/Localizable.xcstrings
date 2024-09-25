@@ -17,9 +17,6 @@
     "15g" : {
 
     },
-    "30 40 5" : {
-
-    },
     "Active" : {
       "localizations" : {
         "fr" : {
@@ -44,6 +41,9 @@
 
     },
     "Add a meal +" : {
+
+    },
+    "Add a product +" : {
 
     },
     "Add product" : {
@@ -78,9 +78,6 @@
           }
         }
       }
-    },
-    "Cals" : {
-
     },
     "Carbs" : {
       "localizations" : {
@@ -255,9 +252,6 @@
           }
         }
       }
-    },
-    "Repas" : {
-
     },
     "Sedentary" : {
       "localizations" : {

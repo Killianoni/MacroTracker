@@ -8,22 +8,26 @@
 import SwiftUI
 
 struct MealView: View {
+    @Binding var meal: Meal
     @State private var isOpen: Bool = false
-    @State var products = [Product]()
     @State private var showProductDetails: Bool = false
     @State private var showAddProduct: Bool = false
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
                 VStack(alignment: .leading) {
-                    Text("Repas")
+                    Text(meal.name)
                         .font(.system(size: 16, weight: .bold))
-                    Text("Cals")
+                    Text(String(meal.getCalories()))
                         .font(.system(size: 14, weight: .regular))
                 }
                 Spacer()
-                Text("30 40 5")
-                    .font(.system(size: 16, weight: .bold))
+                HStack {
+                    Text(String(meal.getProtein()))
+                    Text(String(meal.getCarbs()))
+                    Text(String(meal.getFat()))
+                }
+                    .font(.system(size: 14, weight: .bold))
                 Image(systemName: "chevron.right")
                     .rotationEffect(.degrees(isOpen ? 90 : 0))
                     .padding(.leading, 40)
@@ -45,7 +49,7 @@ struct MealView: View {
             }
             if isOpen {
                 VStack(spacing: 20) {
-                    ForEach(products, id: \.self) { product in
+                    ForEach(meal.products, id: \.self) { product in
                         HStack {
                             Button {
                                 showProductDetails = true
@@ -65,8 +69,10 @@ struct MealView: View {
                     Button {
                         showAddProduct = true
                     } label: {
-                        Text("Add a meal +")
+                        Spacer()
+                        Text("Add a product +")
                             .font(.system(size: 14, weight: .bold))
+                        Spacer()
                     }
                     .buttonStyle(PlainButtonStyle())
                 }
@@ -93,14 +99,11 @@ struct MealView: View {
         .sensoryFeedback(.impact, trigger: isOpen)
         .sensoryFeedback(.selection, trigger: showAddProduct)
         .sensoryFeedback(.selection, trigger: showProductDetails)
-        .onAppear {
-            self.products = getRandomProducts()
-        }
     }
 }
 
 #Preview {
-    MealView(products: (getRandomProducts()))
+    MealView(meal: .constant(Meal(name: "Breakfast", date: Date(), products: getRandomProducts())))
 }
 
 private func getRandomProducts() -> [Product] {

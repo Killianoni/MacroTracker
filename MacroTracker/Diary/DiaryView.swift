@@ -25,17 +25,17 @@ struct DiaryView: View {
                 ScrollView(showsIndicators: false) {
                 // Circles
                 HStack(spacing: 0) {
-                    ProgressCircleView(number1: $viewModel.macros.proteins,
+                    ProgressCircleView(number1: viewModel.getAllProteins(),
                                        number2: viewModel.user.proteins,
                                        color: .red,
                                        title: String(localized: "Proteins"))
                     Spacer()
-                    ProgressCircleView(number1: $viewModel.macros.carbs,
+                    ProgressCircleView(number1: viewModel.getAllCarbs(),
                                        number2: viewModel.user.carbs,
                                        color: .orange,
                                        title: String(localized: "Carbs"))
                     Spacer()
-                    ProgressCircleView(number1: $viewModel.macros.fat,
+                    ProgressCircleView(number1: viewModel.getAllFat(),
                                        number2: viewModel.user.fat,
                                        color: Color.yellow,
                                        title: String(localized: "Fat"))
@@ -52,13 +52,15 @@ struct DiaryView: View {
                 // Calories bar
                 HStack {
                     ProgressView()
-                        .progressViewStyle(CustomProgressBar(number1: viewModel.macros.calories, number2: viewModel.user.calories, color: .green, title: String(localized: "Calories")))
+                        .progressViewStyle(CustomProgressBar(number1: viewModel.getAllCalories(), number2: viewModel.user.calories, color: .green, title: String(localized: "Calories")))
                 }
                 .padding(.bottom, 30)
-                    MealView()
-                    MealView()
-                    MealView()
-                        .padding(.bottom, 30)
+
+                    // Meals
+                    ForEach($viewModel.meals) { meal in
+                        MealView(meal: meal)
+                    }
+                        .padding(.bottom, 10)
                     Button {
                         showAddMeal = true
                     } label: {

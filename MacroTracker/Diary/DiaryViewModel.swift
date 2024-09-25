@@ -11,10 +11,6 @@ import Combine
 
 @MainActor
 final class DiaryViewModel: ObservableObject {
-    
-    private enum Constants {
-        static let checkRange = 0...999
-    }
 
     enum State {
         case normal
@@ -28,13 +24,9 @@ final class DiaryViewModel: ObservableObject {
         }
     }
 
-    @Published var incrementCarbs: Float = 0
-    @Published var incrementProteins: Float = 0
-    @Published var incrementFat: Float = 0
     @Published var currentDate: Date = .now
-
-    @Published var macros = Macros()
     @Published var user = User()
+    @Published var meals = [Meal]()
     @Published var state: State = State.loading
     @Published var stepCount: Float = 0
 
@@ -49,57 +41,64 @@ final class DiaryViewModel: ObservableObject {
     }
 
     func load() {
-        self.state = .loading
         fetchUser()
-        fetchMacros()
         fetchSteps()
-        self.state = .normal
+        fetchMeals()
     }
 
     private func fetchUser() {
+        self.state = .loading
         guard let user = dataSource.fetchUser() else {
             self.state = .normal
             return
         }
         self.user = user
+        self.state = .normal
     }
 
-    private func fetchMacros() {
-        guard let macros = dataSource.fetchMacros().first(where: { $0.date.isEqualTo(date: currentDate)}) else {
-            dataSource.addMacros(Macros(date: currentDate))
-            self.macros = dataSource.fetchMacros().first(where: { $0.date.isEqualTo(date: currentDate)})!
+    private func fetchMeals() {
+        self.state = .loading
+        guard let meals = dataSource.fetchMeals()?.filter({ $0.date.isEqualTo(date: currentDate) }), meals != [] else {
+            addMeal(meal: Meal(name: "Breakfast", date: currentDate))
+            addMeal(meal: Meal(name: "Launch", date: currentDate))
+            addMeal(meal: Meal(name: "Snack", date: currentDate))
+            addMeal(meal: Meal(name: "Diner", date: currentDate))
+            self.meals = dataSource.fetchMeals()?.filter({ $0.date.isEqualTo(date: currentDate) }) ?? []
             self.state = .normal
             return
         }
-        self.macros = macros
+        self.meals = meals
+        self.state = .normal
     }
 
-    func fetchSteps() {
+    private func fetchSteps() {
+        self.state = .loading
         healthKitManager.getSteps(date: currentDate) { [weak self] steps in
             DispatchQueue.main.async {
                 self?.stepCount = steps
             }
         }
+        self.state = .normal
     }
 
-    func add() {
-        macros.carbs += incrementCarbs
-        macros.fat += incrementFat
-        macros.proteins += incrementProteins
-
-        let caloriesFromCarbs = incrementCarbs * math.carbsMultiplier
-        let caloriesFromFat = incrementFat * math.fatMultiplier
-        let caloriesFromProteins = incrementProteins * math.proteinsMultiplier
-
-        macros.calories += caloriesFromCarbs + caloriesFromFat + caloriesFromProteins
-
-        resetMacroIncrements()
+    private func addMeal(meal: Meal) {
+        dataSource.addMeal(meal)
     }
 
-    private func resetMacroIncrements() {
-        incrementCarbs = 0
-        incrementFat = 0
-        incrementProteins = 0
+    func getAllProteins() -> Float {
+        Float(meals.reduce(0) { $0 + $1.getProtein() })
+    }
+
+    func getAllCarbs() -> Float {
+        Float(meals.reduce(0) { $0 + $1.getCarbs() })
+    }
+
+    func getAllFat() -> Float {
+        Float(meals.reduce(0) { $0 + $1.getFat() })
+    }
+
+    func getAllCalories() -> Float {
+        Float(meals.reduce(0) { $0 + $1.getCalories() })
     }
 
     func loadProduct(barcode: String) {
