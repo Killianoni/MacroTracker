@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// TODO: la bar width est pas bonne
 struct CustomProgressBar: ProgressViewStyle {
     let number1: Float
     let number2: Float
@@ -27,7 +28,7 @@ struct CustomProgressBar: ProgressViewStyle {
                         .frame(maxWidth: UIScreen.main.bounds.size.width, maxHeight: Constants.barHeight)
                         .foregroundColor(self.color.opacity(Constants.barOpacity))
                     RoundedRectangle(cornerRadius: 12)
-                        .frame(maxWidth: number1 > number2 ? UIScreen.main.bounds.size.width : UIScreen.main.bounds.size.width * CGFloat(number1/number2), maxHeight: Constants.barHeight)
+                        .frame(maxWidth: number1 >= number2 ? UIScreen.main.bounds.size.width : UIScreen.main.bounds.size.width * CGFloat(number1/number2), maxHeight: Constants.barHeight)
                         .foregroundColor(self.color.opacity(0.6))
                         .animation(.easeOut(duration: 1), value: number1)
                 }
@@ -47,7 +48,7 @@ struct CustomProgressBar: ProgressViewStyle {
             .opacity(0.7)
             .overlay(
                 RoundedRectangle(cornerRadius: 12)
-                    .stroke(.shadowTint.opacity(0.3), lineWidth: 0.5)
+                    .stroke(.shadowTint.opacity(0.3), lineWidth: 0.6)
             )
         )
     }
@@ -55,5 +56,5 @@ struct CustomProgressBar: ProgressViewStyle {
 
 #Preview {
     ProgressView()
-        .progressViewStyle(CustomProgressBar(number1: 2000, number2: 2500, color: .green, title: "Calories"))
+        .progressViewStyle(CustomProgressBar(number1: 5000, number2: 10000, color: .green, title: "Calories"))
 }

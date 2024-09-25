@@ -14,6 +14,9 @@
         }
       }
     },
+    "15g" : {
+
+    },
     "Active" : {
       "localizations" : {
         "fr" : {
@@ -33,6 +36,18 @@
           }
         }
       }
+    },
+    "Add a meal" : {
+
+    },
+    "Add a meal +" : {
+
+    },
+    "Add a product +" : {
+
+    },
+    "Add product" : {
+
     },
     "Age" : {
       "localizations" : {
@@ -103,6 +118,9 @@
           }
         }
       }
+    },
+    "Edit product" : {
+
     },
     "English" : {
       "localizations" : {
@@ -264,9 +282,6 @@
           }
         }
       }
-    },
-    "Steps tracking" : {
-
     },
     "Today" : {
       "localizations" : {

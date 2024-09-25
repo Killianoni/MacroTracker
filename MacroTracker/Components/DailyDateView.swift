@@ -18,7 +18,9 @@ struct DailyDateView: View {
         HStack {
             Button {
                 if let newDate = date.decrement(by: 1, component: .day) {
-                    date = newDate
+                    withAnimation {
+                        date = newDate
+                    }
                 }
             } label: {
                 Image(systemName: "chevron.left")
@@ -31,12 +33,13 @@ struct DailyDateView: View {
             Spacer()
             Text(date.formattedString())
                 .lineLimit(1)
-                .font(.title3)
-                .bold()
+                .font(.system(size: 18, weight: .bold))
             Spacer()
             Button {
                 if let newDate = date.increment(by: 1, component: .day) {
-                    date = newDate
+                    withAnimation {
+                        date = newDate
+                    }
                 }
             } label: {
                 Image(systemName: "chevron.right")
@@ -48,7 +51,7 @@ struct DailyDateView: View {
             }
         }
         .padding(.horizontal, 40)
-        .sensoryFeedback(.increase, trigger: date)
+        .sensoryFeedback(.impact, trigger: date)
     }
 }
 

@@ -12,6 +12,10 @@ extension View {
     func hideKeyboard() -> some View {
         modifier(hideKeyboardModifier())
     }
+
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape(CornerRadiusShape(corners: corners, radius: radius))
+    }
 }
 
 struct hideKeyboardModifier: ViewModifier {
@@ -21,5 +25,19 @@ struct hideKeyboardModifier: ViewModifier {
             .onTapGesture {
                 UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
             }
+    }
+}
+
+struct CornerRadiusShape: Shape {
+    var corners: UIRectCorner
+    var radius: CGFloat
+
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        return Path(path.cgPath)
     }
 }

@@ -13,7 +13,7 @@ struct MacroTrackerApp: App {
     @AppStorage("shouldShowOnboarding") var showOnboarding: Bool = true
     @MainActor var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Macros.self, User.self
+            Macros.self, User.self, Meal.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
         do {
@@ -29,13 +29,10 @@ struct MacroTrackerApp: App {
     }()
     var body: some Scene {
         WindowGroup {
-            if showOnboarding == true {
-                ObjectivesView()
-                    .animation(.easeIn, value: showOnboarding)
-            } else {
-                TabbarView()
-                    .animation(.easeIn, value: showOnboarding)
-            }
+            TabbarView()
+                .fullScreenCover(isPresented: $showOnboarding) {
+                    ObjectivesView()
+                }
         }
         .modelContainer(sharedModelContainer)
     }

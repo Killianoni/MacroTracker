@@ -16,7 +16,7 @@ struct ProductResponse: Codable {
     let warnings: [String]
 }
 
-struct Product: Codable {
+struct Product: Codable, Hashable {
     let productNameFR: String?
     let productNameEN: String?
     let carbs: Double?
