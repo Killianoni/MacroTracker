@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ProductDetailView: View {
-    @State var product: Product?
+    @State var product: ProductEntity?
     @Binding var meal: Meal
     @StateObject var viewModel = ProductDetailViewModel()
     @State var quantity: String = ""
@@ -18,14 +18,14 @@ struct ProductDetailView: View {
             VStack {
                 List {
                     Section {
-                        listRow(title: "Calories", description: String(product?.calories?.dividedBy(Double(quantity) ?? 100) ?? 0))
-                        listRow(title: "Proteins", description: String(product?.proteins?.dividedBy(Double(quantity) ?? 100) ?? 0))
-                        listRow(title: "Carbs", description: String(product?.carbs?.dividedBy(Double(quantity) ?? 100) ?? 0))
-                        listRow(title: "Sugar", description: String(product?.sugars?.dividedBy(Double(quantity) ?? 100) ?? 0))
-                        listRow(title: "Fat", description: String(product?.fat?.dividedBy(Double(quantity) ?? 100) ?? 0))
-                        listRow(title: "Saturated Fat", description: String(product?.saturatedFat?.dividedBy(Double(quantity) ?? 100) ?? 0))
-                        listRow(title: "Fiber", description: String(product?.fiber?.dividedBy(Double(quantity) ?? 100) ?? 0))
-                        listRow(title: "Salt", description: String(product?.salt?.dividedBy(Double(quantity) ?? 100) ?? 0))
+                        listRow(title: "Calories", description: String(product?.calories.dividedBy(Double(quantity) ?? 100) ?? 0))
+                        listRow(title: "Proteins", description: String(product?.proteins.dividedBy(Double(quantity) ?? 100) ?? 0))
+                        listRow(title: "Carbs", description: String(product?.carbs.dividedBy(Double(quantity) ?? 100) ?? 0))
+                        listRow(title: "Sugar", description: String(product?.sugars.dividedBy(Double(quantity) ?? 100) ?? 0))
+                        listRow(title: "Fat", description: String(product?.fat.dividedBy(Double(quantity) ?? 100) ?? 0))
+                        listRow(title: "Saturated Fat", description: String(product?.saturatedFat.dividedBy(Double(quantity) ?? 100) ?? 0))
+                        listRow(title: "Fiber", description: String(product?.fiber.dividedBy(Double(quantity) ?? 100) ?? 0))
+                        listRow(title: "Salt", description: String(product?.salt.dividedBy(Double(quantity) ?? 100) ?? 0))
                         HStack {
                             Text("My quantity")
                             Spacer()
@@ -36,18 +36,18 @@ struct ProductDetailView: View {
                     }
                     Button {
                         if let product = product {
-                            meal.products.append(Product(productNameFR: product.productNameFR,
-                                                         productNameEN: product.productNameEN,
-                                                         quantity: Double(quantity) ?? 100,
-                                                         carbs: product.carbs?.dividedBy(Double(quantity) ?? 100),
-                                                         calories: product.calories?.dividedBy(Double(quantity) ?? 100),
-                                                         fat: product.fat?.dividedBy(Double(quantity) ?? 100) ?? 0,
-                                                         fiber: product.fiber?.dividedBy(Double(quantity) ?? 100) ?? 0,
-                                                         proteins: product.proteins?.dividedBy(Double(quantity) ?? 100) ?? 0,
-                                                         salt: product.salt?.dividedBy(Double(quantity) ?? 100) ?? 0,
-                                                         saturatedFat: product.saturatedFat?.dividedBy(Double(quantity) ?? 100) ?? 0,
-                                                         sugars: product.sugars?.dividedBy(Double(quantity) ?? 100) ?? 0
-                                                        )
+                            meal.products.append(ProductEntity(nameFR: product.nameFR,
+                                                               nameEN: product.nameEN,
+                                                               quantity: Double(quantity) ?? 100,
+                                                               carbs: product.carbs.dividedBy(Double(quantity) ?? 100),
+                                                               calories: product.calories.dividedBy(Double(quantity) ?? 100),
+                                                               fat: product.fat.dividedBy(Double(quantity) ?? 100),
+                                                               fiber: product.fiber.dividedBy(Double(quantity) ?? 100),
+                                                               proteins: product.proteins.dividedBy(Double(quantity) ?? 100),
+                                                               salt: product.salt.dividedBy(Double(quantity) ?? 100),
+                                                               saturatedFat: product.saturatedFat.dividedBy(Double(quantity) ?? 100),
+                                                               sugars: product.sugars.dividedBy(Double(quantity) ?? 100)
+                                                              )
                             )
                         } else {
                             print("no product")
@@ -63,8 +63,8 @@ struct ProductDetailView: View {
                 }
                 .font(.system(size: 16, weight: .bold))
                 .padding(.top, 60)
-                
-                .navigationTitle(product?.productNameFR ?? "Product")
+
+                .navigationTitle(product?.nameFR ?? "Product")
                 .navigationBarTitleDisplayMode(.large)
                 Spacer()
             }

@@ -21,10 +21,11 @@
 		0449BD132B2B8CF8005CF845 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD122B2B8CF8005CF845 /* ProgressCircleView.swift */; };
 		0449BD152B2BD10A005CF845 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD142B2BD10A005CF845 /* ProgressBarView.swift */; };
 		0449BD192B2BD161005CF845 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD182B2BD161005CF845 /* CustomButtonView.swift */; };
+		045B7D4E2CADAF4B0019E951 /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B7D4D2CADAF470019E951 /* ProductEntity.swift */; };
 		045D6AE42C9F30A20099BF2D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D6AE32C9F309B0099BF2D /* HealthKitManager.swift */; };
 		045D6AE62CA184FB0099BF2D /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D6AE52CA184F00099BF2D /* MealView.swift */; };
 		04620CFA2C999CCE001EC653 /* OpenFoodFactsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04620CF92C999CCE001EC653 /* OpenFoodFactsAPI.swift */; };
-		04620CFD2C99A1AB001EC653 /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04620CFC2C99A1AB001EC653 /* Product.swift */; };
+		04620CFD2C99A1AB001EC653 /* ProductVO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04620CFC2C99A1AB001EC653 /* ProductVO.swift */; };
 		047639C92C919E90000A1197 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 047639C82C919E90000A1197 /* Localizable.xcstrings */; };
 		0489825E2CA5C7CE004E59EF /* Double+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0489825D2CA5C7C3004E59EF /* Double+Helpers.swift */; };
 		048982612CA5D0E3004E59EF /* EditProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048982602CA5D0DB004E59EF /* EditProductView.swift */; };
@@ -62,11 +63,12 @@
 		0449BD122B2B8CF8005CF845 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
 		0449BD142B2BD10A005CF845 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		0449BD182B2BD161005CF845 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		045B7D4D2CADAF470019E951 /* ProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
 		045D6AE22C9F26670099BF2D /* MacroTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacroTracker.entitlements; sourceTree = "<group>"; };
 		045D6AE32C9F309B0099BF2D /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		045D6AE52CA184F00099BF2D /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
 		04620CF92C999CCE001EC653 /* OpenFoodFactsAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsAPI.swift; sourceTree = "<group>"; };
-		04620CFC2C99A1AB001EC653 /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
+		04620CFC2C99A1AB001EC653 /* ProductVO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductVO.swift; sourceTree = "<group>"; };
 		047639C82C919E90000A1197 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		0489825D2CA5C7C3004E59EF /* Double+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Helpers.swift"; sourceTree = "<group>"; };
 		048982602CA5D0DB004E59EF /* EditProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductView.swift; sourceTree = "<group>"; };
@@ -238,7 +240,8 @@
 				04ED9A0C2CA3366D0072D261 /* Meal.swift */,
 				0449BD052B2B83BF005CF845 /* Macros.swift */,
 				04CF93102C946CA6004EFAFE /* User.swift */,
-				04620CFC2C99A1AB001EC653 /* Product.swift */,
+				045B7D4D2CADAF470019E951 /* ProductEntity.swift */,
+				04620CFC2C99A1AB001EC653 /* ProductVO.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				045B7D4E2CADAF4B0019E951 /* ProductEntity.swift in Sources */,
 				0449BD192B2BD161005CF845 /* CustomButtonView.swift in Sources */,
 				0449BD042B2B83BF005CF845 /* DiaryView.swift in Sources */,
 				04ED9A122CA4322D0072D261 /* AddProductViewModel.swift in Sources */,
@@ -358,7 +362,7 @@
 				045D6AE62CA184FB0099BF2D /* MealView.swift in Sources */,
 				04FA033C2B9F7F19001C8E1F /* TabbarView.swift in Sources */,
 				04C7C7802B2C716400EE26FF /* CustomTextFieldView.swift in Sources */,
-				04620CFD2C99A1AB001EC653 /* Product.swift in Sources */,
+				04620CFD2C99A1AB001EC653 /* ProductVO.swift in Sources */,
 				0489825E2CA5C7CE004E59EF /* Double+Helpers.swift in Sources */,
 				04FA033E2B9F7F5E001C8E1F /* SettingsView.swift in Sources */,
 				043032492C9B16E1000D1100 /* ProductDetailView.swift in Sources */,

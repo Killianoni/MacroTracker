@@ -15,7 +15,7 @@ final class DiaryViewModel: ObservableObject {
     enum State {
         case normal
         case loading
-        case success(Product)
+        case success(ProductEntity)
         case failure(Error)
 
         var isLoading: Bool {
@@ -33,8 +33,6 @@ final class DiaryViewModel: ObservableObject {
     private var healthKitManager = HealthKitManager.shared
     private let dataSource: SwiftDataManager
     private let math = MathManager()
-    private let getProductUseCase = GetProductUseCase()
-    private var cancellables = Set<AnyCancellable>()
 
     init(dataSource: SwiftDataManager) {
         self.dataSource = dataSource

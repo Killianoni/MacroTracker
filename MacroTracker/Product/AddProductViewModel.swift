@@ -11,17 +11,17 @@ import Combine
 @MainActor
 final class AddProductViewModel: ObservableObject {
     @Published var state: State = .normal
-    @Published var product: Product? = nil
+    @Published var product: ProductEntity? = nil
     @Published var showDetails = false
 
     enum State {
         case normal
         case loading
-        case success(Product)
+        case success(ProductEntity)
         case failure(Error)
     }
 
-    private let getProductUseCase = GetProductUseCase()
+    private let getProductUseCase = GetProductUseCase(repository: MockProductRepository())
     private var cancellables = Set<AnyCancellable>()
 
     func loadProduct(barcode: String) {
@@ -39,7 +39,7 @@ final class AddProductViewModel: ObservableObject {
                         break
                 }
             }, receiveValue: { [weak self] response in
-                self?.state = .success(response.product)
+                self?.state = .success(response)
                 self?.showDetails = true
             })
             .store(in: &cancellables)

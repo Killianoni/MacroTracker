@@ -12,7 +12,7 @@ struct MealView: View {
     @State private var isOpen: Bool = false
     @State private var showEditProduct: Bool = false
     @State private var showAddProduct: Bool = false
-    @State private var product: Product?
+    @State private var product: ProductEntity?
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
@@ -57,20 +57,20 @@ struct MealView: View {
                                 self.product = product
                                 showEditProduct = true
                             } label: {
-                                Text(product.productNameFR ?? "")
+                                Text(product.nameFR)
                                     .font(.system(size: 16, weight: .bold))
-                                Text(String(product.quantity ?? 100) + "g")
+                                Text(String(product.quantity) + "g")
                                     .font(.system(size: 14, weight: .regular))
                                 Spacer()
                                 HStack {
-                                    Text(String(product.proteins ?? 0))
-                                    Text(String(product.carbs ?? 0))
-                                    Text(String(product.fat ?? 0))
+                                    Text(String(product.proteins))
+                                    Text(String(product.carbs))
+                                    Text(String(product.fat))
                                 }
                                 .multilineTextAlignment(.trailing)
                                 .font(.system(size: 14, weight: .bold))
                                 .padding(.trailing, 10)
-                                Text(String(product.calories ?? 0))
+                                Text(String(product.calories))
                                     .font(.system(size: 14, weight: .regular))
                                     .frame(width: 40)
 
@@ -115,36 +115,36 @@ struct MealView: View {
 }
 
 #Preview {
-    MealView(meal: .constant(Meal(name: "Breakfast", date: Date(), products: getRandomProducts())))
+    MealView(meal: .constant(Meal(name: "Breakfast", date: Date(), products: [])))
 }
 
-private func getRandomProducts() -> [Product] {
-    let numberOfProducts = Int.random(in: 1...5)
-    var products: [Product] = []
-
-    for _ in 1...numberOfProducts {
-        let randomNum = Int.random(in: 1...5)
-
-        let product = getProduct(by: randomNum)
-        products.append(product)
-    }
-
-    return products
-}
-
-private func getProduct(by number: Int) -> Product {
-    switch number {
-        case 1:
-            return Product(productNameFR: "Pain de mie", productNameEN: "Sliced bread", carbs: 50, calories: 150, fat: 2, fiber: 1, proteins: 4, salt: 0.5, saturatedFat: 0.1, sugars: 3)
-        case 2:
-            return Product(productNameFR: "Croissant", productNameEN: "Croissant", carbs: 25, calories: 300, fat: 17, fiber: 1, proteins: 5, salt: 0.4, saturatedFat: 10, sugars: 5)
-        case 3:
-            return Product(productNameFR: "Baguette", productNameEN: "Baguette", carbs: 60, calories: 250, fat: 1, fiber: 2, proteins: 8, salt: 0.6, saturatedFat: 0.1, sugars: 1)
-        case 4:
-            return Product(productNameFR: "Pain complet", productNameEN: "Whole wheat bread", carbs: 45, calories: 200, fat: 3, fiber: 5, proteins: 6, salt: 0.7, saturatedFat: 0.2, sugars: 2)
-        case 5:
-            return Product(productNameFR: "Brioche", productNameEN: "Brioche", carbs: 55, calories: 330, fat: 12, fiber: 1, proteins: 7, salt: 0.3, saturatedFat: 5, sugars: 8)
-        default:
-            return Product(productNameFR: "", productNameEN: "", carbs: 0, calories: 0, fat: 0, fiber: 0, proteins: 0, salt: 0, saturatedFat: 0, sugars: 0)
-    }
-}
+//private func getRandomProducts() -> [ProductEntity] {
+//    let numberOfProducts = Int.random(in: 1...5)
+//    var products: [ProductEntity] = []
+//
+//    for _ in 1...numberOfProducts {
+//        let randomNum = Int.random(in: 1...5)
+//
+//        let product = getProduct(by: randomNum)
+//        products.append(product)
+//    }
+//
+//    return products
+//}
+//
+//private func getProduct(by number: Int) -> ProductEntity {
+//    switch number {
+//        case 1:
+//            return Product(productNameFR: "Pain de mie", productNameEN: "Sliced bread", carbs: 50, calories: 150, fat: 2, fiber: 1, proteins: 4, salt: 0.5, saturatedFat: 0.1, sugars: 3)
+//        case 2:
+//            return Product(productNameFR: "Croissant", productNameEN: "Croissant", carbs: 25, calories: 300, fat: 17, fiber: 1, proteins: 5, salt: 0.4, saturatedFat: 10, sugars: 5)
+//        case 3:
+//            return Product(productNameFR: "Baguette", productNameEN: "Baguette", carbs: 60, calories: 250, fat: 1, fiber: 2, proteins: 8, salt: 0.6, saturatedFat: 0.1, sugars: 1)
+//        case 4:
+//            return Product(productNameFR: "Pain complet", productNameEN: "Whole wheat bread", carbs: 45, calories: 200, fat: 3, fiber: 5, proteins: 6, salt: 0.7, saturatedFat: 0.2, sugars: 2)
+//        case 5:
+//            return Product(productNameFR: "Brioche", productNameEN: "Brioche", carbs: 55, calories: 330, fat: 12, fiber: 1, proteins: 7, salt: 0.3, saturatedFat: 5, sugars: 8)
+//        default:
+//            return Product(productNameFR: "", productNameEN: "", carbs: 0, calories: 0, fat: 0, fiber: 0, proteins: 0, salt: 0, saturatedFat: 0, sugars: 0)
+//    }
+//}

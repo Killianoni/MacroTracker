@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditProductView: View {
-    @Binding var product: Product?
+    @Binding var product: ProductEntity?
     @Binding var meal: Meal
     @Binding var isPresented: Bool
 //    @StateObject var viewModel = ProductDetailViewModel()
@@ -20,56 +20,56 @@ struct EditProductView: View {
                     Section {
                         if let quantity = product?.quantity {
                             listRow(title: "Calories",
-                                    description: String((product?.calories?
+                                    description: String((product?.calories
                                         .reseted(quantity) ?? 0)
                                         .dividedBy((Double(newQuantity) == nil
                                                     ? quantity
                                                     : Double(newQuantity)) ?? 0)))
 
                             listRow(title: "Proteins",
-                                    description: String((product?.proteins?
+                                    description: String((product?.proteins
                                         .reseted(quantity) ?? 0)
                                         .dividedBy((Double(newQuantity) == nil
                                                     ? quantity
                                                     : Double(newQuantity)) ?? 0)))
 
                             listRow(title: "Carbs",
-                                    description: String((product?.carbs?
+                                    description: String((product?.carbs
                                         .reseted(quantity) ?? 0)
                                         .dividedBy((Double(newQuantity) == nil
                                                     ? quantity
                                                     : Double(newQuantity)) ?? 0)))
 
                             listRow(title: "Sugar",
-                                    description: String((product?.sugars?
+                                    description: String((product?.sugars
                                         .reseted(quantity) ?? 0)
                                         .dividedBy((Double(newQuantity) == nil
                                                     ? quantity
                                                     : Double(newQuantity)) ?? 0)))
 
                             listRow(title: "Fat",
-                                    description: String((product?.fat?
+                                    description: String((product?.fat
                                         .reseted(quantity) ?? 0)
                                         .dividedBy((Double(newQuantity) == nil
                                                     ? quantity
                                                     : Double(newQuantity)) ?? 0)))
 
                             listRow(title: "Saturated Fat",
-                                    description: String((product?.saturatedFat?
+                                    description: String((product?.saturatedFat
                                         .reseted(quantity) ?? 0)
                                         .dividedBy((Double(newQuantity) == nil
                                                     ? quantity
                                                     : Double(newQuantity)) ?? 0)))
 
                             listRow(title: "Fiber",
-                                    description: String((product?.fiber?
+                                    description: String((product?.fiber
                                         .reseted(quantity) ?? 0)
                                         .dividedBy((Double(newQuantity) == nil
                                                     ? quantity
                                                     : Double(newQuantity)) ?? 0)))
 
                             listRow(title: "Salt",
-                                    description: String((product?.salt?
+                                    description: String((product?.salt
                                         .reseted(quantity) ?? 0)
                                         .dividedBy((Double(newQuantity) == nil
                                                     ? quantity
@@ -85,19 +85,19 @@ struct EditProductView: View {
                             Text("g")
                         }
                         Button {
-                            if let product = product, let quantity = product.quantity {
+                            if let product = product {
                                 meal.products.removeAll(where: { $0.id == product.id })
-                                meal.products.append(Product(productNameFR: product.productNameFR,
-                                                             productNameEN: product.productNameEN,
+                                meal.products.append(ProductEntity(nameFR: product.nameFR,
+                                                                   nameEN: product.nameEN,
                                                              quantity: Double(newQuantity) ?? 100,
-                                                             carbs: product.carbs?.reseted(quantity).dividedBy(Double(newQuantity) ?? 100),
-                                                             calories: product.calories?.reseted(quantity).dividedBy(Double(newQuantity) ?? 100),
-                                                             fat: product.fat?.reseted(quantity).dividedBy(Double(newQuantity) ?? 100) ?? 0,
-                                                             fiber: product.fiber?.reseted(quantity).dividedBy(Double(newQuantity) ?? 100) ?? 0,
-                                                             proteins: product.proteins?.reseted(quantity).dividedBy(Double(newQuantity) ?? 100) ?? 0,
-                                                             salt: product.salt?.reseted(quantity).dividedBy(Double(newQuantity) ?? 100) ?? 0,
-                                                             saturatedFat: product.saturatedFat?.reseted(quantity).dividedBy(Double(newQuantity) ?? 100) ?? 0,
-                                                             sugars: product.sugars?.reseted(quantity).dividedBy(Double(newQuantity) ?? 100) ?? 0
+                                                                   carbs: product.carbs.reseted(product.quantity).dividedBy(Double(newQuantity) ?? 100),
+                                                             calories: product.calories.reseted(product.quantity).dividedBy(Double(newQuantity) ?? 100),
+                                                             fat: product.fat.reseted(product.quantity).dividedBy(Double(newQuantity) ?? 100),
+                                                             fiber: product.fiber.reseted(product.quantity).dividedBy(Double(newQuantity) ?? 100),
+                                                             proteins: product.proteins.reseted(product.quantity).dividedBy(Double(newQuantity) ?? 100),
+                                                             salt: product.salt.reseted(product.quantity).dividedBy(Double(newQuantity) ?? 100),
+                                                             saturatedFat: product.saturatedFat.reseted(product.quantity).dividedBy(Double(newQuantity) ?? 100),
+                                                             sugars: product.sugars.reseted(product.quantity).dividedBy(Double(newQuantity) ?? 100)
                                                             )
                                 )
                             } else {
@@ -133,7 +133,7 @@ struct EditProductView: View {
                 .font(.system(size: 16, weight: .bold))
                 .padding(.top, 60)
 
-                .navigationTitle(product?.productNameFR ?? "Product")
+                .navigationTitle(product?.nameFR ?? "Product")
                 .navigationBarTitleDisplayMode(.large)
                 Spacer()
             }

@@ -35,9 +35,9 @@ final class MathManager {
     func getDailyCalories(user: User) -> Float {
         switch user.type {
             case .bulk:
-                return (getDailyEnergieExpenditure(user: user) * 1.15)
+                return (getDailyEnergieExpenditure(user: user) * 1.10)
             case .cut:
-                return (getDailyEnergieExpenditure(user: user) * 0.85)
+                return (getDailyEnergieExpenditure(user: user) * 0.90)
             case .maintain:
                 return getDailyEnergieExpenditure(user: user)
         }
