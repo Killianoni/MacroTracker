@@ -10,8 +10,9 @@ import SwiftUI
 struct MealView: View {
     @Binding var meal: Meal
     @State private var isOpen: Bool = false
-    @State private var showProductDetails: Bool = false
+    @State private var showEditProduct: Bool = false
     @State private var showAddProduct: Bool = false
+    @State private var product: Product?
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
@@ -27,7 +28,7 @@ struct MealView: View {
                     Text(String(meal.getCarbs()))
                     Text(String(meal.getFat()))
                 }
-                    .font(.system(size: 14, weight: .bold))
+                .font(.system(size: 14, weight: .bold))
                 Image(systemName: "chevron.right")
                     .rotationEffect(.degrees(isOpen ? 90 : 0))
                     .padding(.leading, 40)
@@ -35,7 +36,8 @@ struct MealView: View {
             }
             .padding()
             .background(
-                CornerRadiusShape(corners: [!isOpen ? .allCorners : .topLeft, .topRight], radius: 12)                    .foregroundStyle(.cardTint)
+                CornerRadiusShape(corners: [!isOpen ? .allCorners : .topLeft, .topRight], radius: 12)
+                    .foregroundStyle(.cardTint)
                     .opacity(0.7)
                     .overlay(
                         CornerRadiusShape(corners: [!isOpen ? .allCorners : .topLeft, .topRight], radius: 12)
@@ -52,15 +54,25 @@ struct MealView: View {
                     ForEach(meal.products, id: \.self) { product in
                         HStack {
                             Button {
-                                showProductDetails = true
+                                self.product = product
+                                showEditProduct = true
                             } label: {
                                 Text(product.productNameFR ?? "")
                                     .font(.system(size: 16, weight: .bold))
-                                Text("15g")
+                                Text(String(product.quantity ?? 100) + "g")
                                     .font(.system(size: 14, weight: .regular))
                                 Spacer()
+                                HStack {
+                                    Text(String(product.proteins ?? 0))
+                                    Text(String(product.carbs ?? 0))
+                                    Text(String(product.fat ?? 0))
+                                }
+                                .multilineTextAlignment(.trailing)
+                                .font(.system(size: 14, weight: .bold))
+                                .padding(.trailing, 10)
                                 Text(String(product.calories ?? 0))
                                     .font(.system(size: 14, weight: .regular))
+                                    .frame(width: 40)
 
                             }
                             .buttonStyle(PlainButtonStyle())
@@ -88,17 +100,17 @@ struct MealView: View {
                                 .stroke(.shadowTint.opacity(0.3), lineWidth: 0.6)
                         )
                 )
-                .sheet(isPresented: $showProductDetails) {
-                    Text("Edit product")
+                .sheet(isPresented: $showEditProduct) {
+                    EditProductView(product: $product, meal: $meal, isPresented: $showEditProduct)
                 }
                 .sheet(isPresented: $showAddProduct) {
-                    Text("Add product")
+                    AddProductView(isPresented: $showAddProduct, meal: $meal)
                 }
             }
         }
         .sensoryFeedback(.impact, trigger: isOpen)
         .sensoryFeedback(.selection, trigger: showAddProduct)
-        .sensoryFeedback(.selection, trigger: showProductDetails)
+        .sensoryFeedback(.selection, trigger: showEditProduct)
     }
 }
 

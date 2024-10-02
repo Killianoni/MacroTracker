@@ -14,7 +14,7 @@
         }
       }
     },
-    "15g" : {
+    "100" : {
 
     },
     "Active" : {
@@ -41,6 +41,9 @@
 
     },
     "Add a meal +" : {
+
+    },
+    "Add a product" : {
 
     },
     "Add a product +" : {
@@ -109,6 +112,9 @@
         }
       }
     },
+    "Delete product" : {
+
+    },
     "Diary" : {
       "localizations" : {
         "fr" : {
@@ -118,9 +124,6 @@
           }
         }
       }
-    },
-    "Edit product" : {
-
     },
     "English" : {
       "localizations" : {
@@ -161,6 +164,9 @@
           }
         }
       }
+    },
+    "g" : {
+
     },
     "Genre" : {
       "localizations" : {
@@ -213,6 +219,12 @@
         }
       }
     },
+    "My quantity" : {
+
+    },
+    "New quantity" : {
+
+    },
     "Objectives" : {
       "localizations" : {
         "fr" : {
@@ -252,6 +264,18 @@
           }
         }
       }
+    },
+    "Quick add" : {
+
+    },
+    "Save product" : {
+
+    },
+    "Scan code" : {
+
+    },
+    "Search for a product" : {
+
     },
     "Sedentary" : {
       "localizations" : {

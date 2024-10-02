@@ -13,25 +13,30 @@ struct CustomProgressBar: ProgressViewStyle {
     let number2: Float
     let color: Color
     var title: String
-    
+
     enum Constants {
         static let barHeight: CGFloat = 18
         static let barRadius: CGFloat = 12
         static let barOpacity: CGFloat = 0.3
         static let fontDivider: CGFloat = 5
     }
+
     func makeBody(configuration: Configuration) -> some View {
         VStack {
             HStack {
-                ZStack(alignment: .leading) {
-                    RoundedRectangle(cornerRadius: 12)
-                        .frame(maxWidth: UIScreen.main.bounds.size.width, maxHeight: Constants.barHeight)
-                        .foregroundColor(self.color.opacity(Constants.barOpacity))
-                    RoundedRectangle(cornerRadius: 12)
-                        .frame(maxWidth: number1 >= number2 ? UIScreen.main.bounds.size.width : UIScreen.main.bounds.size.width * CGFloat(number1/number2), maxHeight: Constants.barHeight)
-                        .foregroundColor(self.color.opacity(0.6))
-                        .animation(.easeOut(duration: 1), value: number1)
+                GeometryReader { geometry in
+                    ZStack(alignment: .leading) {
+                        RoundedRectangle(cornerRadius: Constants.barRadius)
+                            .frame(height: Constants.barHeight)
+                            .foregroundColor(self.color.opacity(Constants.barOpacity))
+
+                        RoundedRectangle(cornerRadius: Constants.barRadius)
+                            .frame(width: geometry.size.width * CGFloat(min(number1 / number2, 1.0)), height: Constants.barHeight)
+                            .foregroundColor(self.color.opacity(0.6))
+                            .animation(.easeOut(duration: 1), value: number1)
+                    }
                 }
+                .frame(height: Constants.barHeight)
             }
             HStack {
                 Text(title)
@@ -54,7 +59,8 @@ struct CustomProgressBar: ProgressViewStyle {
     }
 }
 
+
 #Preview {
     ProgressView()
-        .progressViewStyle(CustomProgressBar(number1: 5000, number2: 10000, color: .green, title: "Calories"))
+        .progressViewStyle(CustomProgressBar(number1: 9900, number2: 10000, color: .green, title: "Calories"))
 }

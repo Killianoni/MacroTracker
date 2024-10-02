@@ -100,23 +100,4 @@ final class DiaryViewModel: ObservableObject {
     func getAllCalories() -> Float {
         Float(meals.reduce(0) { $0 + $1.getCalories() })
     }
-
-    func loadProduct(barcode: String) {
-        getProductUseCase.execute(barcode: barcode)
-            .handleEvents(receiveSubscription: { _ in
-                self.state = .loading
-            })
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                    case .failure(let error):
-                        self.state = .failure(error)
-                    case .finished:
-                        break
-                }
-            }, receiveValue: { response in
-                self.state = .success(response.product)
-            })
-            .store(in: &cancellables)
-        self.state = .normal
-    }
 }

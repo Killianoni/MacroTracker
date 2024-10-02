@@ -17,8 +17,10 @@ struct ProductResponse: Codable {
 }
 
 struct Product: Codable, Hashable {
+    let id : String?
     let productNameFR: String?
     let productNameEN: String?
+    let quantity: Double?
     let carbs: Double?
     let calories: Double?
     let fat: Double?
@@ -28,9 +30,26 @@ struct Product: Codable, Hashable {
     let saturatedFat: Double?
     let sugars: Double?
 
+    init(id: String? = UUID().uuidString, productNameFR: String?, productNameEN: String?, quantity: Double? = 100, carbs: Double?, calories: Double?, fat: Double?, fiber: Double?, proteins: Double?, salt: Double?, saturatedFat: Double?, sugars: Double?) {
+        self.id = id
+        self.productNameFR = productNameFR
+        self.productNameEN = productNameEN
+        self.quantity = quantity
+        self.carbs = carbs
+        self.calories = calories
+        self.fat = fat
+        self.fiber = fiber
+        self.proteins = proteins
+        self.salt = salt
+        self.saturatedFat = saturatedFat
+        self.sugars = sugars
+    }
+
     enum CodingKeys: String, CodingKey {
+        case id = "id"
         case productNameFR = "product_name_fr"
         case productNameEN = "product_name_en"
+        case quantity = "quantity"
         case carbs = "carbohydrates_100g"
         case calories = "energy-kcal_100g"
         case fat = "fat_100g"
