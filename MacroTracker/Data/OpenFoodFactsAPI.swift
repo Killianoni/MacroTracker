@@ -18,9 +18,9 @@ final class OpenFoodFactsAPI {
         case decodingError
     }
 
-    func fetchProduct(barcode: String, cc: String, lc: String, fields: [String]) -> AnyPublisher<ProductVO, Error> {
+    func fetchProduct(barcode: String, cc: String, lc: String, fields: [String]) -> AnyPublisher<ProductResponse, Error> {
 
-        guard var urlComponents = URLComponents(string: "\(devUrl)/api/v3/product/\(barcode)") else {
+        guard var urlComponents = URLComponents(string: "\(prodUrl)/api/v3/product/\(barcode)") else {
             return Fail(error: URLError(.badURL)).eraseToAnyPublisher()
         }
 
@@ -36,7 +36,7 @@ final class OpenFoodFactsAPI {
 
         return URLSession.shared.dataTaskPublisher(for: url)
             .map { $0.data }
-            .decode(type: ProductVO.self, decoder: JSONDecoder())
+            .decode(type: ProductResponse.self, decoder: JSONDecoder())
             .eraseToAnyPublisher()
     }
 }

@@ -17,8 +17,8 @@ class ProductRepository {
         return api.fetchProduct(barcode: barcode, cc: Locale.current.identifier.description, lc: Locale.current.identifier.description, fields: [
             "product_name_fr", "product_name_en", "carbohydrates_100g", "energy-kcal_100g", "fat_100g", "fiber_100g", "proteins_100g", "salt_100g", "saturated-fat_100g", "sugars_100g"
         ])
-        .tryMap { (productVO: ProductVO) -> ProductEntity in
-            return self.mapToEntity(productVO)
+        .tryMap { (response: ProductResponse) -> ProductEntity in
+            return self.mapToEntity(response.product)
         }
         .eraseToAnyPublisher()
     }

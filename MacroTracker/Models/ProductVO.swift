@@ -7,7 +7,16 @@
 
 import Foundation
 
-struct ProductVO: Codable {
+struct ProductResponse: Codable {
+    let code: String
+    let errors: [String]
+    let product: ProductVO
+    let result: ResultStatus
+    let status: String
+    let warnings: [String]
+}
+
+struct ProductVO: Codable, Hashable {
     let productNameFR: String?
     let productNameEN: String?
     let carbs: Double?
@@ -31,4 +40,23 @@ struct ProductVO: Codable {
         self.saturatedFat = saturatedFat
         self.sugars = sugars
     }
+
+    enum CodingKeys: String, CodingKey {
+        case productNameFR = "product_name_fr"
+        case productNameEN = "product_name_en"
+        case carbs = "carbohydrates_100g"
+        case calories = "energy-kcal_100g"
+        case fat = "fat_100g"
+        case fiber = "fiber_100g"
+        case proteins = "proteins_100g"
+        case salt = "salt_100g"
+        case saturatedFat = "saturated-fat_100g"
+        case sugars = "sugars_100g"
+    }
+}
+
+struct ResultStatus: Codable {
+    let id: String
+    let lc_name: String
+    let name: String
 }
