@@ -19,6 +19,7 @@ struct MealView: View {
                 VStack(alignment: .leading) {
                     Text(meal.name)
                         .font(.system(size: 16, weight: .bold))
+                        .lineLimit(1)
                     Text(String(meal.getCalories()))
                         .font(.system(size: 14, weight: .regular))
                 }
@@ -57,10 +58,13 @@ struct MealView: View {
                                 self.product = product
                                 showEditProduct = true
                             } label: {
-                                Text(product.nameFR)
-                                    .font(.system(size: 16, weight: .bold))
-                                Text(String(product.quantity) + "g")
-                                    .font(.system(size: 14, weight: .regular))
+                                VStack(alignment: .leading) {
+                                    Text(product.nameFR)
+                                        .font(.system(size: 16, weight: .bold))
+                                        .lineLimit(1)
+                                    Text(String(product.quantity) + "g")
+                                        .font(.system(size: 14, weight: .regular))
+                                }
                                 Spacer()
                                 HStack {
                                     Text(String(product.proteins))
@@ -69,11 +73,10 @@ struct MealView: View {
                                 }
                                 .multilineTextAlignment(.trailing)
                                 .font(.system(size: 14, weight: .bold))
-                                .padding(.trailing, 10)
+                                Spacer()
                                 Text(String(product.calories))
                                     .font(.system(size: 14, weight: .regular))
-                                    .frame(width: 40)
-
+                                    .padding(.leading, 16)
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
@@ -115,7 +118,8 @@ struct MealView: View {
 }
 
 #Preview {
-    MealView(meal: .constant(Meal(name: "Breakfast", date: Date(), products: [])))
+    MealView(meal: .constant(Meal(name: "BreakfastBreakfastBreakfast", date: Date(), products: [ProductEntity(nameFR: "BreakfastBreakfastBreakfast", nameEN: "", carbs: 20, calories: 200, fat: 20, fiber: 20, proteins: 20, salt: 20, saturatedFat: 20, sugars: 20)])))
+        .padding(.horizontal, 30)
 }
 
 //private func getRandomProducts() -> [ProductEntity] {
