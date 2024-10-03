@@ -21,7 +21,7 @@ final class AddProductViewModel: ObservableObject {
         case failure(Error)
     }
 
-    private let getProductUseCase = GetProductUseCase(repository: MockProductRepository())
+    private let getProductUseCase = GetProductUseCase(repository: ProductRepository())
     private var cancellables = Set<AnyCancellable>()
 
     func loadProduct(barcode: String) {

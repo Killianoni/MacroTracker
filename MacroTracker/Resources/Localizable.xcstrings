@@ -49,6 +49,9 @@
     "Add a product +" : {
 
     },
+    "Add new product" : {
+
+    },
     "Add product" : {
 
     },
@@ -264,6 +267,9 @@
           }
         }
       }
+    },
+    "Quantity" : {
+
     },
     "Quick add" : {
 

@@ -22,6 +22,8 @@
 		0449BD152B2BD10A005CF845 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD142B2BD10A005CF845 /* ProgressBarView.swift */; };
 		0449BD192B2BD161005CF845 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD182B2BD161005CF845 /* CustomButtonView.swift */; };
 		045B7D4E2CADAF4B0019E951 /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B7D4D2CADAF470019E951 /* ProductEntity.swift */; };
+		045B7D512CAF03410019E951 /* QuickAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B7D502CAF033D0019E951 /* QuickAddView.swift */; };
+		045B7D532CAF03E20019E951 /* QuickAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B7D522CAF03DE0019E951 /* QuickAddViewModel.swift */; };
 		045D6AE42C9F30A20099BF2D /* HealthKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D6AE32C9F309B0099BF2D /* HealthKitManager.swift */; };
 		045D6AE62CA184FB0099BF2D /* MealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045D6AE52CA184F00099BF2D /* MealView.swift */; };
 		04620CFA2C999CCE001EC653 /* OpenFoodFactsAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04620CF92C999CCE001EC653 /* OpenFoodFactsAPI.swift */; };
@@ -64,6 +66,8 @@
 		0449BD142B2BD10A005CF845 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		0449BD182B2BD161005CF845 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
 		045B7D4D2CADAF470019E951 /* ProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
+		045B7D502CAF033D0019E951 /* QuickAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>"; };
+		045B7D522CAF03DE0019E951 /* QuickAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddViewModel.swift; sourceTree = "<group>"; };
 		045D6AE22C9F26670099BF2D /* MacroTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MacroTracker.entitlements; sourceTree = "<group>"; };
 		045D6AE32C9F309B0099BF2D /* HealthKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitManager.swift; sourceTree = "<group>"; };
 		045D6AE52CA184F00099BF2D /* MealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealView.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 				04ED9A0F2CA42C660072D261 /* AddProductView.swift */,
 				04ED9A112CA432270072D261 /* AddProductViewModel.swift */,
 				0489825F2CA5D0C1004E59EF /* Edit */,
+				045B7D4F2CAF03310019E951 /* QuickAdd */,
 				04ED9A0E2CA42C5E0072D261 /* Detail */,
 			);
 			path = Product;
@@ -162,8 +167,8 @@
 				04FD662F2C99F8F60046AACC /* Info.plist */,
 				0449BD012B2B83BF005CF845 /* MacroTrackerApp.swift */,
 				04153BD42C92269F00168054 /* Diary */,
-				04153BD62C9226B800168054 /* Objectives */,
 				043032462C9B16C0000D1100 /* Product */,
+				04153BD62C9226B800168054 /* Objectives */,
 				04153BD52C9226A900168054 /* Settings */,
 				04DF991A2B334C5600F7A3E9 /* Managers */,
 				04C29DAF2C99F23C009A919E /* Domain */,
@@ -197,6 +202,15 @@
 				04FA033B2B9F7F19001C8E1F /* TabbarView.swift */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		045B7D4F2CAF03310019E951 /* QuickAdd */ = {
+			isa = PBXGroup;
+			children = (
+				045B7D522CAF03DE0019E951 /* QuickAddViewModel.swift */,
+				045B7D502CAF033D0019E951 /* QuickAddView.swift */,
+			);
+			path = QuickAdd;
 			sourceTree = "<group>";
 		};
 		04620CFB2C999CFD001EC653 /* Data */ = {
@@ -364,6 +378,7 @@
 				04C7C7802B2C716400EE26FF /* CustomTextFieldView.swift in Sources */,
 				04620CFD2C99A1AB001EC653 /* ProductVO.swift in Sources */,
 				0489825E2CA5C7CE004E59EF /* Double+Helpers.swift in Sources */,
+				045B7D512CAF03410019E951 /* QuickAddView.swift in Sources */,
 				04FA033E2B9F7F5E001C8E1F /* SettingsView.swift in Sources */,
 				043032492C9B16E1000D1100 /* ProductDetailView.swift in Sources */,
 				045D6AE42C9F30A20099BF2D /* HealthKitManager.swift in Sources */,
@@ -385,6 +400,7 @@
 				04C29DB12C99F24E009A919E /* OpenFoodFactsRepository.swift in Sources */,
 				04ED9A102CA42CE80072D261 /* AddProductView.swift in Sources */,
 				0430324B2C9B174C000D1100 /* ProductDetailViewModel.swift in Sources */,
+				045B7D532CAF03E20019E951 /* QuickAddViewModel.swift in Sources */,
 				04C29DB32C99F2D2009A919E /* GetProductUseCase.swift in Sources */,
 				04CF931C2C973F67004EFAFE /* MathManager.swift in Sources */,
 				0449BD152B2BD10A005CF845 /* ProgressBarView.swift in Sources */,

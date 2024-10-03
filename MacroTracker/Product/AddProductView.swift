@@ -12,6 +12,7 @@ struct AddProductView: View {
     @Binding var isPresented: Bool
     @State private var searchText = ""
     @State private var showScanner = false
+    @State private var showQuickAdd = false
     @Binding var meal: Meal
     @StateObject private var viewModel = AddProductViewModel()
     var body: some View {
@@ -22,7 +23,7 @@ struct AddProductView: View {
                 NavigationStack {
                     HStack {
                         Button {
-                            // Ajout rapide
+                            showQuickAdd = true
                         } label: {
                             VStack {
                                 Image(systemName: "bolt.fill")
@@ -46,7 +47,7 @@ struct AddProductView: View {
                             )
                         }
                         .buttonStyle(.plain)
-
+                        
                         Spacer()
                             .frame(width: 50)
                         Button {
@@ -79,9 +80,12 @@ struct AddProductView: View {
                     Spacer()
                 }
                 .searchable(text: $searchText, prompt: "Search for a product")
+                .sheet(isPresented: $showQuickAdd, onDismiss: {
+                    isPresented = false
+                }, content: {
+                    QuickAddView(meal: $meal, isPresented: $showQuickAdd)
+                })
                 .sheet(isPresented: $showScanner) {
-                    // on dismiss
-                } content: {
                     CodeScannerView(codeTypes: [.ean13], scanMode: .once, simulatedData: "3017620425035", shouldVibrateOnSuccess: true, videoCaptureDevice: .default(for: .video), completion: handleScan)
                 }
             case let .failure(error):

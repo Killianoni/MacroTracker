@@ -17,6 +17,6 @@ final class ProductDetailViewModel: ObservableObject {
         case failure(Error)
     }
     @Published var state = State.loading
-    private let getProductUseCase = GetProductUseCase(repository: MockProductRepository())
+    private let getProductUseCase = GetProductUseCase(repository: ProductRepository())
     private var cancellables = Set<AnyCancellable>()
 }
