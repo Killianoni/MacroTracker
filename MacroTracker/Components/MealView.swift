@@ -16,19 +16,24 @@ struct MealView: View {
     var body: some View {
         VStack(spacing: 0) {
             HStack(alignment: .center) {
-                VStack(alignment: .leading) {
-                    Text(meal.name)
-                        .font(.system(size: 16, weight: .bold))
-                        .lineLimit(1)
-                    Text(String(meal.getCalories()))
-                        .font(.system(size: 14, weight: .regular))
+                HStack {
+                    VStack(alignment: .leading) {
+                        Text(meal.name)
+                            .font(.system(size: 16, weight: .bold))
+                            .lineLimit(1)
+                        Text(String(meal.getCalories()))
+                            .font(.system(size: 14, weight: .regular))
+                    }
+                    Spacer()
                 }
+                .frame(maxWidth: 140)
                 Spacer()
                 HStack {
                     Text(String(meal.getProtein()))
                     Text(String(meal.getCarbs()))
                     Text(String(meal.getFat()))
                 }
+                .padding(.leading, 20)
                 .font(.system(size: 14, weight: .bold))
                 Image(systemName: "chevron.right")
                     .rotationEffect(.degrees(isOpen ? 90 : 0))
@@ -51,35 +56,37 @@ struct MealView: View {
                 }
             }
             if isOpen {
-                VStack(spacing: 20) {
+                VStack(spacing: 24) {
                     ForEach(meal.products, id: \.self) { product in
-                        HStack {
-                            Button {
-                                self.product = product
-                                showEditProduct = true
-                            } label: {
+                        Button {
+                            self.product = product
+                            showEditProduct = true
+                        } label: {
+                            HStack {
                                 VStack(alignment: .leading) {
                                     Text(product.nameFR)
                                         .font(.system(size: 16, weight: .bold))
                                         .lineLimit(1)
-                                    Text(String(product.quantity) + "g")
+                                    Text(String(Int(product.quantity)) + "g")
                                         .font(.system(size: 14, weight: .regular))
                                 }
                                 Spacer()
-                                HStack {
-                                    Text(String(product.proteins))
-                                    Text(String(product.carbs))
-                                    Text(String(product.fat))
-                                }
-                                .multilineTextAlignment(.trailing)
-                                .font(.system(size: 14, weight: .bold))
-                                Spacer()
-                                Text(String(product.calories))
-                                    .font(.system(size: 14, weight: .regular))
-                                    .padding(.leading, 16)
                             }
-                            .buttonStyle(PlainButtonStyle())
+                            .frame(maxWidth: 140)
+
+                            HStack {
+                                Text(String(Int(product.proteins)))
+                                Text(String(Int(product.carbs)))
+                                Text(String(Int(product.fat)))
+                            }
+                            .multilineTextAlignment(.leading)
+                            .padding(.leading, 20)
+                            .font(.system(size: 14, weight: .bold))
+                            Spacer()
+                            Text(String(Int(product.calories)))
+                                .font(.system(size: 14, weight: .regular))
                         }
+                        .buttonStyle(PlainButtonStyle())
                     }
                     Button {
                         showAddProduct = true
@@ -118,7 +125,7 @@ struct MealView: View {
 }
 
 #Preview {
-    MealView(meal: .constant(Meal(name: "BreakfastBreakfastBreakfast", date: Date(), products: [ProductEntity(nameFR: "BreakfastBreakfastBreakfast", nameEN: "", carbs: 20, calories: 200, fat: 20, fiber: 20, proteins: 20, salt: 20, saturatedFat: 20, sugars: 20)])))
+    MealView(meal: .constant(Meal(name: "Breakfast", date: Date(), products: [ProductEntity(nameFR: "BreakfastBreakfastBreakfast", nameEN: "", carbs: 20, calories: 100, fat: 20, fiber: 20, proteins: 20, salt: 20, saturatedFat: 20, sugars: 20),ProductEntity(nameFR: "BreakfastBreakfastBreakfast", nameEN: "", carbs: 20, calories: 299, fat: 20, fiber: 20, proteins: 20, salt: 20, saturatedFat: 20, sugars: 20),ProductEntity(nameFR: "BreakfastBreakfastBreakfast", nameEN: "", carbs: 20, calories: 20, fat: 20, fiber: 20, proteins: 20, salt: 20, saturatedFat: 20, sugars: 20),ProductEntity(nameFR: "Breakfast", nameEN: "", carbs: 20, calories: 20, fat: 20, fiber: 20, proteins: 20, salt: 20, saturatedFat: 20, sugars: 20)])))
         .padding(.horizontal, 30)
 }
 

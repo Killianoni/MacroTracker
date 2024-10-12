@@ -62,8 +62,8 @@ final class SwiftDataManager {
     }
 
     func addUser(_ user: User) {
-        modelContext.insert(user)
         do {
+            modelContext.insert(user)
             try modelContext.save()
         } catch {
             print(error.localizedDescription)
@@ -72,11 +72,10 @@ final class SwiftDataManager {
 
     func editUser(_ newUser: User) {
         do {
-            let user = try modelContext.fetch(FetchDescriptor<User>()).first!
-            user.calories = newUser.calories
-            user.carbs = newUser.carbs
-            user.fat = newUser.fat
-            user.proteins = newUser.proteins
+            if let user = try modelContext.fetch(FetchDescriptor<User>()).first {
+                user.history = newUser.history
+            }
+            try modelContext.save()
         } catch {
             print(error.localizedDescription)
         }

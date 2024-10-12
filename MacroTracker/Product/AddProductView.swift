@@ -14,7 +14,7 @@ struct AddProductView: View {
     @State private var showScanner = false
     @State private var showQuickAdd = false
     @Binding var meal: Meal
-    @StateObject private var viewModel = AddProductViewModel()
+    @StateObject private var viewModel = AddProductViewModel(dataSource: .shared)
     var body: some View {
         switch viewModel.state {
             case .loading:
@@ -77,7 +77,35 @@ struct AddProductView: View {
                     }
                     .navigationTitle("Add a product")
                     .toolbarTitleDisplayMode(.inline)
+                    if let user = viewModel.user {
+                        List {
+                            ForEach(user.history) { product in
+                                Section {
+                                    HStack {
+                                        Text(product.nameFR)
+                                        Spacer()
+                                        Text(String(product.quantity) + "g")
+                                    }
+                                    .font(.system(size: 16, weight: .bold))
+                                    .padding()
+                                    .background(RoundedRectangle(cornerRadius: 12)
+                                        .foregroundStyle(.cardTint)
+                                        .opacity(0.7)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 12)
+                                                .stroke(.shadowTint.opacity(0.3), lineWidth: 0.6)
+                                        )
+                                    )
+                                }
+                            }
+                        }
+                        .scrollContentBackground(.hidden)
+                        .listSectionSpacing(2)
+                    }
                     Spacer()
+                }
+                .onAppear {
+                    viewModel.load()
                 }
                 .searchable(text: $searchText, prompt: "Search for a product")
                 .sheet(isPresented: $showQuickAdd, onDismiss: {

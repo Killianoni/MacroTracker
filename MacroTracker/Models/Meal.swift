@@ -22,19 +22,19 @@ final class Meal {
         self.products = products
     }
 
-    func getCalories() -> Double {
-        products.reduce(0) { $0 + ($1.calories) }
+    func getCalories() -> Int {
+        Int(products.reduce(0) { $0 + ($1.calories) })
     }
 
-    func getProtein() -> Double {
-        products.reduce(0) { $0 + ($1.proteins) }
+    func getProtein() -> Int {
+        Int(products.reduce(0) { $0 + ($1.proteins) })
     }
 
-    func getCarbs() -> Double {
-        products.reduce(0) { $0 + ($1.carbs) }
+    func getCarbs() -> Int {
+        Int(products.reduce(0) { $0 + ($1.carbs) })
     }
 
-    func getFat() -> Double {
-        products.reduce(0) { $0 + ($1.fat) }
+    func getFat() -> Int {
+        Int(products.reduce(0) { $0 + ($1.fat) })
     }
 }

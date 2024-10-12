@@ -33,7 +33,6 @@
 		048982612CA5D0E3004E59EF /* EditProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048982602CA5D0DB004E59EF /* EditProductView.swift */; };
 		048982632CA5D0F0004E59EF /* EditProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048982622CA5D0E8004E59EF /* EditProductViewModel.swift */; };
 		04C29DB12C99F24E009A919E /* OpenFoodFactsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29DB02C99F24E009A919E /* OpenFoodFactsRepository.swift */; };
-		04C29DB32C99F2D2009A919E /* GetProductUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C29DB22C99F2D2009A919E /* GetProductUseCase.swift */; };
 		04C7C7792B2C5D2F00EE26FF /* DiaryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C7782B2C5D2F00EE26FF /* DiaryViewModel.swift */; };
 		04C7C7802B2C716400EE26FF /* CustomTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C77F2B2C716400EE26FF /* CustomTextFieldView.swift */; };
 		04C7C7842B2C7BF800EE26FF /* ObjectivesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C7C7832B2C7BF800EE26FF /* ObjectivesView.swift */; };
@@ -41,6 +40,7 @@
 		04CF93112C946CA6004EFAFE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF93102C946CA6004EFAFE /* User.swift */; };
 		04CF931C2C973F67004EFAFE /* MathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CF931B2C973F67004EFAFE /* MathManager.swift */; };
 		04DF991F2B33501600F7A3E9 /* String+Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DF991E2B33501600F7A3E9 /* String+Helpers.swift */; };
+		04EA7EBB2CB5158E00F41397 /* GetProductUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04EA7EB92CB5158E00F41397 /* GetProductUseCase.swift */; };
 		04ED9A0D2CA3366F0072D261 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED9A0C2CA3366D0072D261 /* Meal.swift */; };
 		04ED9A102CA42CE80072D261 /* AddProductView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED9A0F2CA42C660072D261 /* AddProductView.swift */; };
 		04ED9A122CA4322D0072D261 /* AddProductViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ED9A112CA432270072D261 /* AddProductViewModel.swift */; };
@@ -78,7 +78,6 @@
 		048982602CA5D0DB004E59EF /* EditProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductView.swift; sourceTree = "<group>"; };
 		048982622CA5D0E8004E59EF /* EditProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProductViewModel.swift; sourceTree = "<group>"; };
 		04C29DB02C99F24E009A919E /* OpenFoodFactsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenFoodFactsRepository.swift; sourceTree = "<group>"; };
-		04C29DB22C99F2D2009A919E /* GetProductUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductUseCase.swift; sourceTree = "<group>"; };
 		04C7C7782B2C5D2F00EE26FF /* DiaryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiaryViewModel.swift; sourceTree = "<group>"; };
 		04C7C77F2B2C716400EE26FF /* CustomTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextFieldView.swift; sourceTree = "<group>"; };
 		04C7C7832B2C7BF800EE26FF /* ObjectivesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectivesView.swift; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		04CF93102C946CA6004EFAFE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		04CF931B2C973F67004EFAFE /* MathManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MathManager.swift; sourceTree = "<group>"; };
 		04DF991E2B33501600F7A3E9 /* String+Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Helpers.swift"; sourceTree = "<group>"; };
+		04EA7EB92CB5158E00F41397 /* GetProductUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetProductUseCase.swift; sourceTree = "<group>"; };
 		04ED9A0C2CA3366D0072D261 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		04ED9A0F2CA42C660072D261 /* AddProductView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductView.swift; sourceTree = "<group>"; };
 		04ED9A112CA432270072D261 /* AddProductViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddProductViewModel.swift; sourceTree = "<group>"; };
@@ -137,6 +137,7 @@
 			children = (
 				04ED9A0F2CA42C660072D261 /* AddProductView.swift */,
 				04ED9A112CA432270072D261 /* AddProductViewModel.swift */,
+				04EA7EBA2CB5158E00F41397 /* Domain */,
 				0489825F2CA5D0C1004E59EF /* Edit */,
 				045B7D4F2CAF03310019E951 /* QuickAdd */,
 				04ED9A0E2CA42C5E0072D261 /* Detail */,
@@ -171,7 +172,6 @@
 				04153BD62C9226B800168054 /* Objectives */,
 				04153BD52C9226A900168054 /* Settings */,
 				04DF991A2B334C5600F7A3E9 /* Managers */,
-				04C29DAF2C99F23C009A919E /* Domain */,
 				04620CFB2C999CFD001EC653 /* Data */,
 				04C7C77A2B2C5D5500EE26FF /* Models */,
 				04DF991D2B33500600F7A3E9 /* Helpers */,
@@ -207,8 +207,8 @@
 		045B7D4F2CAF03310019E951 /* QuickAdd */ = {
 			isa = PBXGroup;
 			children = (
-				045B7D522CAF03DE0019E951 /* QuickAddViewModel.swift */,
 				045B7D502CAF033D0019E951 /* QuickAddView.swift */,
+				045B7D522CAF03DE0019E951 /* QuickAddViewModel.swift */,
 			);
 			path = QuickAdd;
 			sourceTree = "<group>";
@@ -238,14 +238,6 @@
 				048982622CA5D0E8004E59EF /* EditProductViewModel.swift */,
 			);
 			path = Edit;
-			sourceTree = "<group>";
-		};
-		04C29DAF2C99F23C009A919E /* Domain */ = {
-			isa = PBXGroup;
-			children = (
-				04C29DB22C99F2D2009A919E /* GetProductUseCase.swift */,
-			);
-			path = Domain;
 			sourceTree = "<group>";
 		};
 		04C7C77A2B2C5D5500EE26FF /* Models */ = {
@@ -279,6 +271,14 @@
 				04153BD72C922AC800168054 /* View+Helpers.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		04EA7EBA2CB5158E00F41397 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				04EA7EB92CB5158E00F41397 /* GetProductUseCase.swift */,
+			);
+			path = Domain;
 			sourceTree = "<group>";
 		};
 		04ED9A0E2CA42C5E0072D261 /* Detail */ = {
@@ -386,6 +386,7 @@
 				041E6A7E2B3393BD00D81483 /* Date+Helpers.swift in Sources */,
 				04ED9A0D2CA3366F0072D261 /* Meal.swift in Sources */,
 				04C7C7842B2C7BF800EE26FF /* ObjectivesView.swift in Sources */,
+				04EA7EBB2CB5158E00F41397 /* GetProductUseCase.swift in Sources */,
 				04CF93112C946CA6004EFAFE /* User.swift in Sources */,
 				04620CFA2C999CCE001EC653 /* OpenFoodFactsAPI.swift in Sources */,
 				04DF991F2B33501600F7A3E9 /* String+Helpers.swift in Sources */,
@@ -401,7 +402,6 @@
 				04ED9A102CA42CE80072D261 /* AddProductView.swift in Sources */,
 				0430324B2C9B174C000D1100 /* ProductDetailViewModel.swift in Sources */,
 				045B7D532CAF03E20019E951 /* QuickAddViewModel.swift in Sources */,
-				04C29DB32C99F2D2009A919E /* GetProductUseCase.swift in Sources */,
 				04CF931C2C973F67004EFAFE /* MathManager.swift in Sources */,
 				0449BD152B2BD10A005CF845 /* ProgressBarView.swift in Sources */,
 			);

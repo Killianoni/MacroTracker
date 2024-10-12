@@ -10,7 +10,7 @@ import SwiftUI
 struct QuickAddView: View {
     @Binding var meal: Meal
     @Binding var isPresented: Bool
-    @StateObject var viewModel = QuickAddViewModel()
+    @StateObject var viewModel = QuickAddViewModel(dataSource: .shared)
     var body: some View {
         NavigationStack {
             VStack {
@@ -69,6 +69,8 @@ struct QuickAddView: View {
                             )
                             meal.products.removeAll(where: { $0.id == product.id })
                             meal.products.append(product)
+                            viewModel.user?.history.append(product)
+                            viewModel.editUser()
                             isPresented = false
                         } label: {
                             HStack {
@@ -82,10 +84,12 @@ struct QuickAddView: View {
             }
             .font(.system(size: 16, weight: .bold))
             .padding(.top, 60)
-            
             .navigationTitle("Add new product")
             .navigationBarTitleDisplayMode(.large)
             Spacer()
+        }
+        .onAppear {
+            viewModel.load()
         }
     }
 }
