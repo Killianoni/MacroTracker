@@ -80,27 +80,30 @@ struct AddProductView: View {
                     if let user = viewModel.user {
                         List {
                             ForEach(user.history) { product in
-                                Section {
-                                    HStack {
-                                        Text(product.nameFR)
-                                        Spacer()
-                                        Text(String(product.quantity) + "g")
-                                    }
-                                    .font(.system(size: 16, weight: .bold))
-                                    .padding()
-                                    .background(RoundedRectangle(cornerRadius: 12)
-                                        .foregroundStyle(.cardTint)
-                                        .opacity(0.7)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 12)
-                                                .stroke(.shadowTint.opacity(0.3), lineWidth: 0.6)
-                                        )
-                                    )
+                                HStack {
+                                    Text(product.nameFR)
+                                    Spacer()
+                                    Text(String(product.quantity) + "g")
                                 }
+                                .font(.system(size: 16, weight: .bold))
+                                .padding()
+                                .background(RoundedRectangle(cornerRadius: 12)
+                                    .foregroundStyle(.cardTint)
+                                    .opacity(0.7)
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .stroke(.shadowTint.opacity(0.3), lineWidth: 0.6)
+                                    )
+                                )
+                                .listRowBackground(Color.clear)
+                                .listRowSeparator(.hidden)
                             }
                         }
                         .scrollContentBackground(.hidden)
+                        .background(Color.clear)
+                        .listStyle(PlainListStyle())
                         .listSectionSpacing(2)
+                        .padding(.horizontal, 10)
                     }
                     Spacer()
                 }
