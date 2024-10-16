@@ -21,6 +21,7 @@
 		0449BD132B2B8CF8005CF845 /* ProgressCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD122B2B8CF8005CF845 /* ProgressCircleView.swift */; };
 		0449BD152B2BD10A005CF845 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD142B2BD10A005CF845 /* ProgressBarView.swift */; };
 		0449BD192B2BD161005CF845 /* CustomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0449BD182B2BD161005CF845 /* CustomButtonView.swift */; };
+		04532C322CBFEF340097F10F /* SearchProductUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04532C312CBFEF2E0097F10F /* SearchProductUseCase.swift */; };
 		045B7D4E2CADAF4B0019E951 /* ProductEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B7D4D2CADAF470019E951 /* ProductEntity.swift */; };
 		045B7D512CAF03410019E951 /* QuickAddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B7D502CAF033D0019E951 /* QuickAddView.swift */; };
 		045B7D532CAF03E20019E951 /* QuickAddViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045B7D522CAF03DE0019E951 /* QuickAddViewModel.swift */; };
@@ -65,6 +66,7 @@
 		0449BD122B2B8CF8005CF845 /* ProgressCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressCircleView.swift; sourceTree = "<group>"; };
 		0449BD142B2BD10A005CF845 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		0449BD182B2BD161005CF845 /* CustomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButtonView.swift; sourceTree = "<group>"; };
+		04532C312CBFEF2E0097F10F /* SearchProductUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchProductUseCase.swift; sourceTree = "<group>"; };
 		045B7D4D2CADAF470019E951 /* ProductEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductEntity.swift; sourceTree = "<group>"; };
 		045B7D502CAF033D0019E951 /* QuickAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddView.swift; sourceTree = "<group>"; };
 		045B7D522CAF03DE0019E951 /* QuickAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuickAddViewModel.swift; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 		04EA7EBA2CB5158E00F41397 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				04532C312CBFEF2E0097F10F /* SearchProductUseCase.swift */,
 				04EA7EB92CB5158E00F41397 /* GetProductUseCase.swift */,
 			);
 			path = Domain;
@@ -400,6 +403,7 @@
 				048982632CA5D0F0004E59EF /* EditProductViewModel.swift in Sources */,
 				04C29DB12C99F24E009A919E /* OpenFoodFactsRepository.swift in Sources */,
 				04ED9A102CA42CE80072D261 /* AddProductView.swift in Sources */,
+				04532C322CBFEF340097F10F /* SearchProductUseCase.swift in Sources */,
 				0430324B2C9B174C000D1100 /* ProductDetailViewModel.swift in Sources */,
 				045B7D532CAF03E20019E951 /* QuickAddViewModel.swift in Sources */,
 				04CF931C2C973F67004EFAFE /* MathManager.swift in Sources */,

@@ -16,6 +16,15 @@ struct ProductResponse: Codable {
     let warnings: [String]
 }
 
+struct ProductSearchResponse: Codable {
+    let count: Int
+    let page: Int
+    let page_count: Int
+    let page_size: Int
+    let products: [ProductVO]
+    let skip: Int
+}
+
 struct ProductVO: Codable, Hashable {
     let productNameFR: String?
     let productNameEN: String?
@@ -52,6 +61,31 @@ struct ProductVO: Codable, Hashable {
         case salt = "salt_100g"
         case saturatedFat = "saturated-fat_100g"
         case sugars = "sugars_100g"
+    }
+
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+
+        productNameFR = try container.decodeIfPresent(String.self, forKey: .productNameFR)
+        productNameEN = try container.decodeIfPresent(String.self, forKey: .productNameEN)
+        carbs = try ProductVO.decodeStringOrDouble(from: container, forKey: .carbs)
+        calories = try ProductVO.decodeStringOrDouble(from: container, forKey: .calories)
+        fat = try ProductVO.decodeStringOrDouble(from: container, forKey: .fat)
+        fiber = try ProductVO.decodeStringOrDouble(from: container, forKey: .fiber)
+        proteins = try ProductVO.decodeStringOrDouble(from: container, forKey: .proteins)
+        salt = try ProductVO.decodeStringOrDouble(from: container, forKey: .salt)
+        saturatedFat = try ProductVO.decodeStringOrDouble(from: container, forKey: .saturatedFat)
+        sugars = try ProductVO.decodeStringOrDouble(from: container, forKey: .sugars)
+    }
+
+    static func decodeStringOrDouble(from container: KeyedDecodingContainer<CodingKeys>, forKey key: CodingKeys) throws -> Double? {
+        if let doubleValue = try? container.decode(Double.self, forKey: key) {
+            return doubleValue
+        }
+        if let stringValue = try? container.decode(String.self, forKey: key), let doubleValue = Double(stringValue) {
+            return doubleValue
+        }
+        return nil
     }
 }
 

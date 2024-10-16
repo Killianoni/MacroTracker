@@ -14,7 +14,10 @@ class ProductRepository {
     private let api = OpenFoodFactsAPI()
 
     func getProduct(barcode: String) -> AnyPublisher<ProductEntity, Error> {
-        return api.fetchProduct(barcode: barcode, cc: Locale.current.identifier.description, lc: Locale.current.identifier.description, fields: [
+        return api.fetchProduct(barcode: barcode,
+                                cc: String(Locale.current.identifier.description.prefix(2)),
+                                lc: String(Locale.current.identifier.description.prefix(2)),
+                                fields: [
             "product_name_fr", "product_name_en", "carbohydrates_100g", "energy-kcal_100g", "fat_100g", "fiber_100g", "proteins_100g", "salt_100g", "saturated-fat_100g", "sugars_100g"
         ])
         .tryMap { (response: ProductResponse) -> ProductEntity in
@@ -22,6 +25,27 @@ class ProductRepository {
         }
         .eraseToAnyPublisher()
     }
+
+    func searchProduct(productName: String) -> AnyPublisher<[ProductEntity], Error> {
+        return api.searchProduct(productName: productName,
+                                 cc: String(Locale.current.identifier.description.prefix(2)),
+                                 lc: String(Locale.current.identifier.description.prefix(2)),
+                                 fields: [
+                                    "product_name_fr", "product_name_en",
+                                    "carbohydrates_100g", "energy-kcal_100g",
+                                    "fat_100g", "fiber_100g", "proteins_100g",
+                                    "salt_100g", "saturated-fat_100g", "sugars_100g"
+                                 ])
+        .tryMap { (response: ProductSearchResponse) -> [ProductEntity] in
+            return response.products.map { self.mapToEntity($0) }.filter {
+                $0.nameFR != "" || $0.nameEN != "" 
+                && $0.nameFR != "Unknown" || $0.nameEN != "Unknown"
+            }
+        }
+        .eraseToAnyPublisher()
+    }
+
+
 
     private func mapToEntity(_ vo: ProductVO) -> ProductEntity {
         return ProductEntity(
@@ -54,10 +78,9 @@ final class MockProductRepository: ProductRepository {
     )
     
     override func getProduct(barcode: String) -> AnyPublisher<ProductEntity, Error> {
-        // Simulate a successful fetch with a delay
         return Just(mockProductVO)
-            .setFailureType(to: Error.self) // Set the failure type
-            .delay(for: .seconds(1), scheduler: RunLoop.main) // Simulate network delay
+            .setFailureType(to: Error.self)
+            .delay(for: .seconds(1), scheduler: RunLoop.main)
             .tryMap { productVO in
                 return self.mapToEntity(productVO)
             }

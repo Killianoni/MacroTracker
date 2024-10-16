@@ -11,14 +11,18 @@ struct EditProductView: View {
     @Binding var product: ProductEntity?
     @Binding var meal: Meal
     @Binding var isPresented: Bool
-//    @StateObject var viewModel = ProductDetailViewModel()
+    @StateObject var viewModel = EditProductViewModel()
     @State var newQuantity: String = ""
     var body: some View {
         NavigationStack {
             VStack {
                 List {
-                    Section {
                         if let quantity = product?.quantity {
+                            Section {
+//                                TextField(text: T##Binding<String>, label: <#T##() -> Label#>)
+                            }
+
+                            Section {
                             listRow(title: "Calories",
                                     description: String((product?.calories
                                         .reseted(quantity) ?? 0)
