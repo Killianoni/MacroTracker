@@ -99,17 +99,16 @@ final class AddProductViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    // Nouvelle fonction pour configurer le debounce sur le texte de recherche
     private func setupSearchDebounce() {
         $searchText
-            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)  // Délais de 500ms après la dernière frappe
-            .removeDuplicates()  // Ne pas déclencher si le texte n'a pas changé
+            .debounce(for: .milliseconds(500), scheduler: RunLoop.main)
+            .removeDuplicates()
             .sink { [weak self] newValue in
                 guard !newValue.isEmpty else {
-                    self?.products = []  // Efface les produits si la recherche est vide
+                    self?.products = []
                     return
                 }
-                self?.searchProduct(productName: newValue)  // Lancer la recherche API
+                self?.searchProduct(productName: newValue)
             }
             .store(in: &cancellables)
     }

@@ -50,7 +50,7 @@ final class OpenFoodFactsAPI {
             URLQueryItem(name: "search_terms", value: productName),
             URLQueryItem(name: "search_simple", value: "1"),
             URLQueryItem(name: "json", value: "1"),
-            URLQueryItem(name: "page_size", value: "50"),
+            URLQueryItem(name: "page_size", value: "20"),
             URLQueryItem(name: "cc", value: cc),
             URLQueryItem(name: "lc", value: lc),
             URLQueryItem(name: "fields", value: fields.joined(separator: ","))
