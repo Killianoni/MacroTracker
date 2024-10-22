@@ -11,7 +11,7 @@ struct EditProductView: View {
     @Binding var product: ProductEntity?
     @Binding var meal: Meal
     @Binding var isPresented: Bool
-    @StateObject var viewModel = EditProductViewModel()
+    @StateObject var viewModel = EditProductViewModel(dataSource: .shared)
     @State var newQuantity: String = ""
     var body: some View {
         NavigationStack {
@@ -120,6 +120,7 @@ struct EditProductView: View {
                         Button {
                             if let product = product {
                                 meal.products.removeAll(where: { $0.id == product.id })
+                                viewModel.dataSource.saveContext()
                             } else {
                                 print("no product")
                             }
@@ -136,9 +137,9 @@ struct EditProductView: View {
                 }
                 .font(.system(size: 16, weight: .bold))
                 .padding(.top, 60)
-
                 .navigationTitle(product?.nameFR ?? "Product")
                 .navigationBarTitleDisplayMode(.large)
+                .scrollContentBackground(.hidden)
                 Spacer()
             }
         }
@@ -146,5 +147,5 @@ struct EditProductView: View {
 }
 
 #Preview {
-    ProductDetailView(meal: .constant(Meal()), didDissmiss: {} )
+    ProductDetailView(meal: .constant(Meal()), didDissmiss: {})
 }

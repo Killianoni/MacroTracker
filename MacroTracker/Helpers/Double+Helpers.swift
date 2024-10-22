@@ -7,10 +7,10 @@
 
 extension Double {
     func dividedBy(_ divisor: Double) -> Double {
-        return (self * divisor / 100).rounded()
+        return (self * divisor / 100)
     }
 
     func reseted(_ multiplier: Double) -> Double {
-        return (self * 100 / multiplier).rounded()
+        return (self * 100 / multiplier)
     }
 }

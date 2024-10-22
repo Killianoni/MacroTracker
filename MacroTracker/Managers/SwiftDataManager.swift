@@ -21,6 +21,14 @@ final class SwiftDataManager {
         self.modelContext = modelContainer.mainContext
     }
 
+    func saveContext() {
+        do {
+            try modelContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
     func deleteAllObjects() {
         do {
             try modelContext.delete(model: User.self)

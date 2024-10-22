@@ -8,5 +8,9 @@
 import Foundation
 
 final class EditProductViewModel: ObservableObject {
-    
+    let dataSource: SwiftDataManager
+
+    init(dataSource: SwiftDataManager) {
+        self.dataSource = dataSource
+    }
 }

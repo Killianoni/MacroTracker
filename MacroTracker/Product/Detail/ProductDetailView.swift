@@ -10,7 +10,7 @@ import SwiftUI
 struct ProductDetailView: View {
     @State var product: ProductEntity?
     @Binding var meal: Meal
-    @StateObject var viewModel = ProductDetailViewModel()
+    @StateObject var viewModel = ProductDetailViewModel(dataSource: .shared)
     @State var quantity: String = ""
     var didDissmiss: (() -> Void)
     var body: some View {
@@ -49,6 +49,8 @@ struct ProductDetailView: View {
                                                                sugars: product.sugars.dividedBy(Double(quantity) ?? 100)
                                                               )
                             )
+                            viewModel.user?.history.append(product)
+                            viewModel.editUser()
                         } else {
                             print("no product")
                         }
@@ -63,10 +65,13 @@ struct ProductDetailView: View {
                 }
                 .font(.system(size: 16, weight: .bold))
                 .padding(.top, 60)
-
                 .navigationTitle(product?.nameFR ?? "Product")
                 .navigationBarTitleDisplayMode(.large)
+                .scrollContentBackground(.hidden)
                 Spacer()
+            }
+            .onAppear {
+                viewModel.load()
             }
         }
     }

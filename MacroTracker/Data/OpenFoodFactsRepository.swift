@@ -37,9 +37,10 @@ class ProductRepository {
                                     "salt_100g", "saturated-fat_100g", "sugars_100g"
                                  ])
         .tryMap { (response: ProductSearchResponse) -> [ProductEntity] in
-            return response.products.map { self.mapToEntity($0) }.filter {
-                $0.nameFR != "" || $0.nameEN != "" 
-                && $0.nameFR != "Unknown" || $0.nameEN != "Unknown"
+            return response.products.map { self.mapToEntity($0) }.filter { product in
+                (product.nameFR != "" || product.nameEN != "")
+                && (product.nameFR != "Unknown" || product.nameEN != "Unknown")
+                && (product.calories > 0.0)
             }
         }
         .eraseToAnyPublisher()

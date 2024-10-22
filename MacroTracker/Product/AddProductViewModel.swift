@@ -29,6 +29,7 @@ final class AddProductViewModel: ObservableObject {
     @Published var state: State = .normal
     @Published var product: ProductEntity? = nil
     @Published var showDetails = false
+    @Published var showQuickAdd = false
     @Published var user: User?
     @Published var products: [ProductEntity] = []
     @Published var searchText = ""
@@ -72,10 +73,15 @@ final class AddProductViewModel: ObservableObject {
                         break
                 }
             }, receiveValue: { [weak self] response in
-                self?.state = .success(response)
+                self?.state = .normal
+                self?.product = response
                 self?.showDetails = true
             })
             .store(in: &cancellables)
+    }
+
+    func deleteItem(at offsets: IndexSet) {
+        user?.history.remove(atOffsets: offsets)
     }
 
     private func searchProduct(productName: String) {

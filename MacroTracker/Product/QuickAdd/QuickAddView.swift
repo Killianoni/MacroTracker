@@ -86,6 +86,7 @@ struct QuickAddView: View {
             .padding(.top, 60)
             .navigationTitle("Add new product")
             .navigationBarTitleDisplayMode(.large)
+            .scrollContentBackground(.hidden)
             Spacer()
         }
         .onAppear {

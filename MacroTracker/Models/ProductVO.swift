@@ -8,21 +8,11 @@
 import Foundation
 
 struct ProductResponse: Codable {
-    let code: String
-    let errors: [String]
     let product: ProductVO
-    let result: ResultStatus
-    let status: String
-    let warnings: [String]
 }
 
 struct ProductSearchResponse: Codable {
-    let count: Int
-    let page: Int
-    let page_count: Int
-    let page_size: Int
     let products: [ProductVO]
-    let skip: Int
 }
 
 struct ProductVO: Codable, Hashable {
@@ -87,10 +77,4 @@ struct ProductVO: Codable, Hashable {
         }
         return nil
     }
-}
-
-struct ResultStatus: Codable {
-    let id: String
-    let lc_name: String
-    let name: String
 }
