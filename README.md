@@ -11,3 +11,4 @@
  - [ ] Ajouter un produit par IA
  - [ ] Synchroniser avec ICloud
  - [ ] Affichage de stats détaillées
+ - [ ] Prise en compte des steps dans calories
