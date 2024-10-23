@@ -1,11 +1,13 @@
- - [ ] Créer un user
+ - [x] Créer un user
  - [ ] Editer ses objectifs
- - [ ] Ajouter un produit via code barre
- - [ ] Ajouter un produit manuellement
- - [ ] Rechercher un produit
+ - [x] Ajouter un produit via code barre
+ - [x] Ajouter un produit manuellement
+ - [x] Rechercher un produit
  - [ ] Créer un repas
  - [ ] Supprimer un produit
- - [ ] Editer un produit
- - [ ] Avoir un historique des produits ajoutés
+ - [x] Editer un produit
+ - [x] Avoir un historique des produits ajoutés
  - [ ] Supprimer un produit de l'historique
  - [ ] Ajouter un produit par IA
+ - [ ] Synchroniser avec ICloud
+ - [ ] Affichage de stats détaillées
