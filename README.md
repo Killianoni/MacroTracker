@@ -1,0 +1,11 @@
+ - [ ] Créer un user
+ - [ ] Editer ses objectifs
+ - [ ] Ajouter un produit via code barre
+ - [ ] Ajouter un produit manuellement
+ - [ ] Rechercher un produit
+ - [ ] Créer un repas
+ - [ ] Supprimer un produit
+ - [ ] Editer un produit
+ - [ ] Avoir un historique des produits ajoutés
+ - [ ] Supprimer un produit de l'historique
+ - [ ] Ajouter un produit par IA
