@@ -38,6 +38,7 @@ final class User {
     var weight: Float
     var height: Float
     var steps: Float
+    var history: [ProductEntity]
     var type: ObjectiveType
     var activity: ActivityType
     var gender: Gender
@@ -51,6 +52,7 @@ final class User {
          weight: Float = 80,
          height: Float = 180,
          steps: Float = 10000,
+         history: [ProductEntity] = [],
          type: ObjectiveType = .maintain,
          activity: ActivityType = .lowActivity,
          gender: Gender = .male
@@ -65,6 +67,7 @@ final class User {
         self.weight = weight
         self.height = height
         self.steps = steps
+        self.history = history
         self.type = type
         self.activity = activity
         self.gender = gender

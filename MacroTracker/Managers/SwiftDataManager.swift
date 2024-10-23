@@ -21,6 +21,14 @@ final class SwiftDataManager {
         self.modelContext = modelContainer.mainContext
     }
 
+    func saveContext() {
+        do {
+            try modelContext.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+
     func deleteAllObjects() {
         do {
             try modelContext.delete(model: User.self)
@@ -54,7 +62,7 @@ final class SwiftDataManager {
 
     func fetchUser() -> User? {
         do {
-            return try modelContext.fetch(FetchDescriptor<User>()).first!
+            return try modelContext.fetch(FetchDescriptor<User>()).first
         } catch {
             print(error.localizedDescription)
             return nil
@@ -62,21 +70,20 @@ final class SwiftDataManager {
     }
 
     func addUser(_ user: User) {
-        modelContext.insert(user)
         do {
+            modelContext.insert(user)
             try modelContext.save()
         } catch {
             print(error.localizedDescription)
         }
     }
 
-    func editUser(_ newUser: User) {
+    func saveHistory(_ newUser: User) {
         do {
-            let user = try modelContext.fetch(FetchDescriptor<User>()).first!
-            user.calories = newUser.calories
-            user.carbs = newUser.carbs
-            user.fat = newUser.fat
-            user.proteins = newUser.proteins
+            if let user = try modelContext.fetch(FetchDescriptor<User>()).first {
+                user.history = newUser.history
+            }
+            try modelContext.save()
         } catch {
             print(error.localizedDescription)
         }

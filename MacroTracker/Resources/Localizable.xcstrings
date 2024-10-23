@@ -14,7 +14,7 @@
         }
       }
     },
-    "15g" : {
+    "100" : {
 
     },
     "Active" : {
@@ -38,16 +38,64 @@
       }
     },
     "Add a meal" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un repas"
+          }
+        }
+      }
     },
     "Add a meal +" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un repas +"
+          }
+        }
+      }
+    },
+    "Add a product" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un produit"
+          }
+        }
+      }
     },
     "Add a product +" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter un produit +"
+          }
+        }
+      }
+    },
+    "Add new product" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter nouveau produit"
+          }
+        }
+      }
     },
     "Add product" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ajouter produit"
+          }
+        }
+      }
     },
     "Age" : {
       "localizations" : {
@@ -109,6 +157,16 @@
         }
       }
     },
+    "Delete product" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer produit"
+          }
+        }
+      }
+    },
     "Diary" : {
       "localizations" : {
         "fr" : {
@@ -118,9 +176,6 @@
           }
         }
       }
-    },
-    "Edit product" : {
-
     },
     "English" : {
       "localizations" : {
@@ -161,6 +216,9 @@
           }
         }
       }
+    },
+    "g" : {
+
     },
     "Genre" : {
       "localizations" : {
@@ -213,6 +271,26 @@
         }
       }
     },
+    "My quantity" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ma quantité"
+          }
+        }
+      }
+    },
+    "New quantity" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nouvelle quantité"
+          }
+        }
+      }
+    },
     "Objectives" : {
       "localizations" : {
         "fr" : {
@@ -249,6 +327,36 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Protéines"
+          }
+        }
+      }
+    },
+    "Quantity" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quantité"
+          }
+        }
+      }
+    },
+    "Save product" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sauvegarder produit"
+          }
+        }
+      }
+    },
+    "Search for a product" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rechercher un produit"
           }
         }
       }

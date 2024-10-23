@@ -13,28 +13,28 @@ final class Meal {
     @Attribute(.unique) var id: String
     var name: String
     var date: Date
-    var products: [Product]
+    var products: [ProductEntity]
 
-    init(id: String = UUID().uuidString, name: String = "", date: Date = .now, products: [Product] = []) {
+    init(id: String = UUID().uuidString, name: String = "", date: Date = .now, products: [ProductEntity] = []) {
         self.id = id
         self.name = name
         self.date = date
         self.products = products
     }
 
-    func getCalories() -> Double {
-        products.reduce(0) { $0 + ($1.calories ?? 0) }
+    func getCalories() -> Int {
+        Int(products.reduce(0) { $0 + ($1.calories) })
     }
 
-    func getProtein() -> Double {
-        products.reduce(0) { $0 + ($1.proteins ?? 0) }
+    func getProtein() -> Int {
+        Int(products.reduce(0) { $0 + ($1.proteins) })
     }
 
-    func getCarbs() -> Double {
-        products.reduce(0) { $0 + ($1.carbs ?? 0) }
+    func getCarbs() -> Int {
+        Int(products.reduce(0) { $0 + ($1.carbs) })
     }
 
-    func getFat() -> Double {
-        products.reduce(0) { $0 + ($1.fat ?? 0) }
+    func getFat() -> Int {
+        Int(products.reduce(0) { $0 + ($1.fat) })
     }
 }

@@ -15,7 +15,7 @@ final class DiaryViewModel: ObservableObject {
     enum State {
         case normal
         case loading
-        case success(Product)
+        case success(ProductEntity)
         case failure(Error)
 
         var isLoading: Bool {
@@ -25,7 +25,7 @@ final class DiaryViewModel: ObservableObject {
     }
 
     @Published var currentDate: Date = .now
-    @Published var user = User()
+    @Published var user: User?
     @Published var meals = [Meal]()
     @Published var state: State = State.loading
     @Published var stepCount: Float = 0
@@ -33,8 +33,6 @@ final class DiaryViewModel: ObservableObject {
     private var healthKitManager = HealthKitManager.shared
     private let dataSource: SwiftDataManager
     private let math = MathManager()
-    private let getProductUseCase = GetProductUseCase()
-    private var cancellables = Set<AnyCancellable>()
 
     init(dataSource: SwiftDataManager) {
         self.dataSource = dataSource
@@ -99,24 +97,5 @@ final class DiaryViewModel: ObservableObject {
 
     func getAllCalories() -> Float {
         Float(meals.reduce(0) { $0 + $1.getCalories() })
-    }
-
-    func loadProduct(barcode: String) {
-        getProductUseCase.execute(barcode: barcode)
-            .handleEvents(receiveSubscription: { _ in
-                self.state = .loading
-            })
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                    case .failure(let error):
-                        self.state = .failure(error)
-                    case .finished:
-                        break
-                }
-            }, receiveValue: { response in
-                self.state = .success(response.product)
-            })
-            .store(in: &cancellables)
-        self.state = .normal
     }
 }

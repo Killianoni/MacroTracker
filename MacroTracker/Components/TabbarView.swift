@@ -9,12 +9,13 @@ import SwiftUI
 import UIKit
 
 struct TabbarView: View {
+    @Binding var onboardingShowing: Bool
     @State private var selectedTab = 0
     let feedback = UIImpactFeedbackGenerator(style: .light)
 
     var body: some View {
         TabView(selection: $selectedTab) {
-            DiaryView()
+            DiaryView(onboardingShowing: $onboardingShowing)
                 .tabItem {
                     Label("Diary", systemImage: "chart.bar.xaxis")
                 }
@@ -33,5 +34,5 @@ struct TabbarView: View {
 }
 
 #Preview {
-    TabbarView()
+    TabbarView(onboardingShowing: .constant(false))
 }
