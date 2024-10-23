@@ -36,7 +36,7 @@ final class ObjectivesViewModel: ObservableObject {
         user.proteins = math.getMacros(user: user).first(where: { $0.key == "proteins" })!.value
         user.carbs = math.getMacros(user: user).first(where: { $0.key == "carbs" })!.value
         user.fat = math.getMacros(user: user).first(where: { $0.key == "fat" })!.value
-        dataSource.editUser(user)
+        dataSource.addUser(user)
     }
 
     func getActivity() -> ActivityType {

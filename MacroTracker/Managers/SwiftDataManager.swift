@@ -62,7 +62,7 @@ final class SwiftDataManager {
 
     func fetchUser() -> User? {
         do {
-            return try modelContext.fetch(FetchDescriptor<User>()).first!
+            return try modelContext.fetch(FetchDescriptor<User>()).first
         } catch {
             print(error.localizedDescription)
             return nil
@@ -78,7 +78,7 @@ final class SwiftDataManager {
         }
     }
 
-    func editUser(_ newUser: User) {
+    func saveHistory(_ newUser: User) {
         do {
             if let user = try modelContext.fetch(FetchDescriptor<User>()).first {
                 user.history = newUser.history

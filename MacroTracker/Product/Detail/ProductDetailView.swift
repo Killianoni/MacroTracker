@@ -50,7 +50,7 @@ struct ProductDetailView: View {
                                                               )
                             )
                             viewModel.user?.history.append(product)
-                            viewModel.editUser()
+                            viewModel.saveHistory()
                         } else {
                             print("no product")
                         }

@@ -70,7 +70,7 @@ struct QuickAddView: View {
                             meal.products.removeAll(where: { $0.id == product.id })
                             meal.products.append(product)
                             viewModel.user?.history.append(product)
-                            viewModel.editUser()
+                            viewModel.saveHistory()
                             isPresented = false
                         } label: {
                             HStack {

@@ -25,7 +25,7 @@ final class DiaryViewModel: ObservableObject {
     }
 
     @Published var currentDate: Date = .now
-    @Published var user = User()
+    @Published var user: User?
     @Published var meals = [Meal]()
     @Published var state: State = State.loading
     @Published var stepCount: Float = 0

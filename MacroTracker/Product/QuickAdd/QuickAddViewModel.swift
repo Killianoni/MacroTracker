@@ -49,13 +49,13 @@ final class QuickAddViewModel: ObservableObject {
         self.state = .normal
     }
 
-    func editUser() {
+    func saveHistory() {
         self.state = .loading
         guard let user = user else {
             self.state = .normal
             return
         }
-        dataSource.editUser(user)
+        dataSource.saveHistory(user)
         load()
     }
 }
